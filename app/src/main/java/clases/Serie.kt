@@ -6,7 +6,7 @@ class Serie(
     score: Int,
     var numberSeasons: Int,
     var director: String,
-    var genre: String
+    var genre: String,
     var characters: ArrayList<Character>
 ) : Title(name, review, score) {
     /**
