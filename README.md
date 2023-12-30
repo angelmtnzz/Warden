@@ -1,4 +1,5 @@
 # <em>  Proyecto Warden </em>
+![WardenLogo](https://github.com/angelmtnzz/Warden/assets/37885556/cb655fc6-48b6-47c9-b0f0-e1894cc5b5c1)
 
 ## Equipo:
 
