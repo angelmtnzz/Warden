@@ -10,21 +10,21 @@ open class User(var nickname: String, var password: String, var preferences: Str
      * Metodo que cambia el nombre y/o contraseña de un perfil.
      */
     fun editProfile(newNickname: String, newPassword: String){
-        if(newNickname!=null){setNickname(newNickname)}
-        if(newPassword!=null){setPassword(newPassword)}
+        if(newNickname!=null){setNewNickname(newNickname)}
+        if(newPassword!=null){setNewPassword(newPassword)}
     }
 
     /**
      * Metodo que cambia la contraseña de un perfil.
      */
-    private fun setPassword(newPassword: String){
+    private fun setNewPassword(newPassword: String){
         this.password = newPassword
     }
 
     /**
      * Metodo que cambia el nickname de un perfil.
      */
-    private fun setNickname(newNickname: String){
+    private fun setNewNickname(newNickname: String){
         this.nickname = newNickname
     }
 }

@@ -10,27 +10,6 @@ class Serie(
     var characters: ArrayList<Character>
 ) : Title(name, reviews, score) {
     /**
-     * Metodo que devuelve el numero de temporadas que tiene la serie.
-     */
-    fun getNumberSeasons(): Int {
-        return this.numberSeasons
-    }
-
-    /**
-     * Metodo que devuelve el nombre del director de la serie.
-     */
-    fun getDirector(): String {
-        return this.director
-    }
-
-    /**
-     * Metodo que devuelve el genero de la serie.
-     */
-    fun getGenre(): String {
-        return this.genre
-    }
-
-    /**
      * Metodo que devuelve el numero de actores de las serie.
      */
     fun getnumCharacters(): Int{

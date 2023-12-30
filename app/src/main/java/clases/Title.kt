@@ -12,19 +12,4 @@ open class Title(var name: String, var reviews: ArrayList<String>) {
     }
 
 
-    /**
-     * Metodo que devuelve el nombre del título
-     * @return this.name
-     */
-    fun getName(): String {
-        return this.name
-    }
-
-    /**
-     * Metodo que devuelve la puntuación del título
-     * @return this.score
-     */
-    fun getScore(): Int {
-        return this.score
-    }
 }

@@ -10,26 +10,6 @@ class Film(
     var characters: ArrayList<Character>
 ) : Title(name, reviews, score) {
     /**
-     * Metodo que devuelve el director del libro.
-     */
-    fun getDirector(): String {
-        return this.director
-    }
-
-    /**
-     * Metodo que devuelve la duración de la pelicula de la pelicula en minutos.
-     */
-    fun getLenght(): Int {
-        return this.lenght
-    }
-
-    /**
-     * Metodo que devueve el genero de la pelicula
-     */
-    fun getGenre(): String {
-        return this.genre
-    }
-    /**
      * Metodo que devuelve el numero de actores de la pelicula.
      */
     fun getnumCharacters(): Int{
