@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.warden"
+    namespace = "java.clases"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.warden"
+        applicationId = "java.clases"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
