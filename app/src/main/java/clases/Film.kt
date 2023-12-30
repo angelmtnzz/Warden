@@ -4,18 +4,27 @@ class Film(
     name: String,
     review: String,
     score: Int,
-    var author: String,
-    var pages: Int,
+    var director: String,
+    var lenght: Int,
     var genre: String
 ) : Title(name, review, score) {
-    fun getAuthor(): String {
-        return this.author
+    /**
+     * Metodo que devuelve el director del libro.
+     */
+    fun getDirector(): String {
+        return this.director
     }
 
-    fun getPages(): Int {
-        return this.pages
+    /**
+     * Metodo que devuelve la duración de la pelicula de la pelicula en minutos.
+     */
+    fun getLenght(): Int {
+        return this.lenght
     }
 
+    /**
+     * Metodo que devueve el genero de la pelicula
+     */
     fun getGenre(): String {
         return this.genre
     }
