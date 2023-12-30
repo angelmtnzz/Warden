@@ -1,4 +1,5 @@
 # <em>  Proyecto Warden </em>
+![WardenLogo](https://github.com/marcosfnmr/Warden/assets/37885556/ba560d7f-7e8f-4a5f-b3da-b4032f4305a5)
 
 ## Equipo:
 
