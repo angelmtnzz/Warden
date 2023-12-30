@@ -2,13 +2,13 @@ package clases;
 
 class Film(
     name: String,
-    review: String,
+    reviews: ArrayList<String>,
     score: Int,
     var director: String,
     var lenght: Int,
     var genre: String,
     var characters: ArrayList<Character>
-) : Title(name, review, score) {
+) : Title(name, reviews, score) {
     /**
      * Metodo que devuelve el director del libro.
      */

@@ -2,13 +2,13 @@ package clases
 
 class Serie(
     name: String,
-    review: String,
+    reviews: ArrayList<String>,
     score: Int,
     var numberSeasons: Int,
     var director: String,
     var genre: String,
     var characters: ArrayList<Character>
-) : Title(name, review, score) {
+) : Title(name, reviews, score) {
     /**
      * Metodo que devuelve el numero de temporadas que tiene la serie.
      */

@@ -2,12 +2,12 @@ package clases
 
 class Book(
     name: String,
-    review: String,
+    reviews: ArrayList<String>,
     score: Int,
     var author: String,
     var pages: Int,
     var genre: String
-) : Title(name, review, score) {
+) : Title(name, reviews, score) {
     /**
      * Metodo que devuelve el numero de paginas que tiene el libro
      */
