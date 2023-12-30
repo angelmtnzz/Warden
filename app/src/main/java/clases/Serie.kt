@@ -10,35 +10,35 @@ class Serie(
     var characters: ArrayList<Character>
 ) : Title(name, review, score) {
     /**
-     * Metodo que devuelve el numero de temporadas que tiene la serie
+     * Metodo que devuelve el numero de temporadas que tiene la serie.
      */
     fun getNumberSeasons(): Int {
         return this.numberSeasons
     }
 
     /**
-     * Metodo que devuelve el nombre del director de laserie
+     * Metodo que devuelve el nombre del director de la serie.
      */
     fun getDirector(): String {
         return this.director
     }
 
     /**
-     * Metodo que devuelve el genero de la serie
+     * Metodo que devuelve el genero de la serie.
      */
     fun getGenre(): String {
         return this.genre
     }
 
     /**
-     * Metodo que devuelve el numero de actores de las serie
+     * Metodo que devuelve el numero de actores de las serie.
      */
     fun getnumCharacters(): Int{
         return this.characters.size
     }
 
     /**
-     * Metodo que nos devuelve el actor que se encuentra en la posicion n
+     * Metodo que nos devuelve el actor que se encuentra en la posicion n.
      * @param n posicion en la que seencuentra el actor
      * @return character en la posicion n
      */
