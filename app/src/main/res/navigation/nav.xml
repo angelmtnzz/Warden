@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/MainPage"
+    android:id="@+id/nav">
+
+    <fragment
+        android:id="@+id/MainPage"
+        android:name="vistas.MainPageFragment"
+        tools:layout="@layout/fragment_main_page"/>
+    <fragment
+        android:id="@+id/libraryFragment"
+        android:name="vistas.LibraryFragment"
+        tools:layout="@layout/fragment_library" />
+    <fragment
+        android:id="@+id/ProfileFragment"
+        android:name="vistas.ProfileFragment"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/ConfigurationFragment"
+        android:name="vistas.ConfigurationFragment"
+        tools:layout="@layout/fragment_configuration" />
+    <fragment
+        android:id="@+id/ExtraFragment"
+        android:name="vistas.ExtraFragment"
+        tools:layout="@layout/fragment_extra" />
+
+</navigation>
