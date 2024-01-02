@@ -1,0 +1,4 @@
+package vistas
+
+class SearchFragment {
+}
