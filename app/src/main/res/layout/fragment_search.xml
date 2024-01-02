@@ -3,29 +3,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/color6G"
     android:orientation="vertical">
 
     <SearchView
         android:id="@+id/searchView"
-        android:singleLine="true"
-        android:maxLines="1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:queryHint="Libro, serie, película..."
-        android:iconifiedByDefault="false"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="16dp"
+        android:alwaysDrawnWithCache="true"
+        android:animateLayoutChanges="false"
         android:background="@drawable/searchview_background"
+        android:backgroundTint="@color/color1G"
+        android:baselineAligned="false"
+        android:iconifiedByDefault="false"
+        android:maxLines="1"
         android:queryBackGround="@android:color/transparent"
-        />
+        android:queryBackground="@android:color/transparent"
+        android:queryHint="Libro, serie, película..."
+        android:singleLine="true"
+        android:visibility="visible" />
 
     <ListView
-        android:id="@+id/userList"
+        android:id="@+id/titleList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
+        android:background="@android:color/transparent"
+        android:textColor="@color/color1G" />
 
-        />
 </LinearLayout>
