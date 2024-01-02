@@ -8,6 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    //Paleta principal RGB
     <color name="color1">#9FFFDB</color>
     <color name="color2">#47FF94</color>
     <color name="color3">#28DA77</color>
@@ -15,6 +16,15 @@
     <color name="color5">#008D75</color>
     <color name="color6">#064037</color>
     <color name="color7">#FF8C00</color>
+
+    //Paleta principal Grey Scale
+    <color name="color1G">#DEDEDE</color>
+    <color name="color2G">#BCBCBC</color>
+    <color name="color3G">#9A9A9A</color>
+    <color name="color4G">#7A7A7A</color>
+    <color name="color5G">#606060</color>
+    <color name="color6G">#2A2A2A</color>
+    <color name="color7G">#9F9F9F</color>
 
     <color name="color01">#b3d2c3</color>
     <color name="color02">#4d8771</color>
