@@ -9,12 +9,12 @@ open class User(
     val id: Int,
     var nickname: String,
     var password: String,
-    var range: Int,
+    var range: Boolean,
     var preferences: String,
 
 
     ) {
-    constructor(nickname: String, password: String, range: Int, preferences: String) : this(
+    constructor(nickname: String, password: String, range: Boolean, preferences: String) : this(
         0,
         nickname,
         password,
