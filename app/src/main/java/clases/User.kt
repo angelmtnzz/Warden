@@ -4,13 +4,24 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-data class User(
+open class User(
     @PrimaryKey(autoGenerate = true)
-    val id:Int,
+    val id: Int,
     var nickname: String,
     var password: String,
     var range: Int,
-    var preferences: String) {
+    var preferences: String,
+
+
+    ) {
+    constructor(nickname: String, password: String, range: Int, preferences: String) : this(
+        0,
+        nickname,
+        password,
+        range,
+        preferences
+    )
+
     // Hay que mirar como añadimos la foto de perfil al usuario.
     fun editpreferences(newPreferences: String) {
         this.preferences = newPreferences
@@ -22,24 +33,12 @@ data class User(
      */
     fun editProfile(newNickname: String, newPassword: String) {
         if (newNickname != null) {
-            setNewNickname(newNickname)
+            this.nickname = newNickname
         }
         if (newPassword != null) {
-            setNewPassword(newPassword)
+            this.password = newPassword
         }
     }
 
-    /**
-     * Metodo que cambia la contraseña de un perfil.
-     */
-    private fun setNewPassword(newPassword: String) {
-        this.password = newPassword
-    }
 
-    /**
-     * Metodo que cambia el nickname de un perfil.
-     */
-    private fun setNewNickname(newNickname: String) {
-        this.nickname = newNickname
-    }
 }
