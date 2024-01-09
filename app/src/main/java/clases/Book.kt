@@ -7,8 +7,8 @@ class Book(
     var author: String,
     var pages: Int,
     var genre: String
-) : Title(name, reviews, score) {
+) /*: Title(name, reviews, score) {
 
 
 
-}
+}*/

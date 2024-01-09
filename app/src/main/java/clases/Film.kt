@@ -8,7 +8,7 @@ class Film(
     var lenght: Int,
     var genre: String,
     var characters: ArrayList<Character>
-) : Title(name, reviews, score) {
+) /*: Title(name, reviews, score) {
     /**
      * Metodo que devuelve el numero de actores de la pelicula.
      */
@@ -26,3 +26,4 @@ class Film(
     }
 
 }
+*/

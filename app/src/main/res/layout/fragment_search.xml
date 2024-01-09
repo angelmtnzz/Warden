@@ -20,7 +20,6 @@
         android:baselineAligned="false"
         android:iconifiedByDefault="false"
         android:maxLines="1"
-        android:queryBackGround="@android:color/transparent"
         android:queryBackground="@android:color/transparent"
         android:queryHint="Libro, serie, película..."
         android:singleLine="true"

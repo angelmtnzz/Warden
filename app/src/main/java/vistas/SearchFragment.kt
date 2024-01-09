@@ -15,10 +15,10 @@ class SearchFragment : Fragment(R.layout.fragment_search){
     override fun onCreate(savedInstanceState : Bundle?){
         super.onCreate(savedInstanceState)
         binding = FragmentMainPageBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        binding.etFilter.addTextChangedListener{
+        //setContentView(binding.root)
+        /*binding.etFilter.addTextChangedListener{
 
-        }
+        }*/
     }
 
     override fun onCreateView(inflater:LayoutInflater, container:ViewGroup?, savedInstancesState: Bundle?): View? {

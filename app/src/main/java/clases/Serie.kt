@@ -8,7 +8,7 @@ class Serie(
     var director: String,
     var genre: String,
     var characters: ArrayList<Character>
-) : Title(name, reviews, score) {
+) /*: Title(name, reviews, score) {
     /**
      * Metodo que devuelve el numero de actores de las serie.
      */
@@ -21,7 +21,7 @@ class Serie(
      * @param n posicion en la que seencuentra el actor
      * @return character en la posicion n
      */
-    fun getCharacter(n:Int): Character{
+    /*fun getCharacter(n:Int): Character{
         return this.characters.get(n)
     }
-}
+}*/
