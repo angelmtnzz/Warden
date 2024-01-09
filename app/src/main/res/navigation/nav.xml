@@ -21,9 +21,5 @@
         android:id="@+id/ConfigurationFragment"
         android:name="vistas.ConfigurationFragment"
         tools:layout="@layout/fragment_configuration" />
-    <fragment
-        android:id="@+id/ExtraFragment"
-        android:name="vistas.ExtraFragment"
-        tools:layout="@layout/fragment_extra" />
 
 </navigation>
