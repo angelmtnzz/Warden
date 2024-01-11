@@ -9,8 +9,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/carouselRecyclerView"
         android:background="@color/white"
-        android:layout_width="200dp"
-        android:layout_height="600dp"
+        android:layout_width="600dp"
+        android:layout_height="200dp"
         android:clipChildren="false"
         android:clipToPadding="false"
         android:orientation="horizontal"
