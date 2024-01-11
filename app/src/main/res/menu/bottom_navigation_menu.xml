@@ -4,20 +4,20 @@
         android:id="@+id/MainPage"
         android:enabled="true"
         android:icon="@drawable/icon1"
-        android:title="@string/text_label_1"/>
+        android:title="@string/Home"/>
     <item
         android:id="@+id/libraryFragment"
         android:enabled="true"
         android:icon="@drawable/icon1"
-        android:title="@string/text_label_2"/>
+        android:title="@string/Library"/>
     <item
         android:id="@+id/ProfileFragment"
         android:enabled="true"
         android:icon="@drawable/icon1"
-        android:title="@string/text_label_3"/>
+        android:title="@string/Profile"/>
     <item
         android:id="@+id/ConfigurationFragment"
         android:enabled="true"
         android:icon="@drawable/icon1"
-        android:title="@string/text_label_4"/>
+        android:title="@string/Search"/>
 </menu>

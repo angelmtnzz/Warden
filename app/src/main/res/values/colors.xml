@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!---Colores por defecto-->
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
@@ -7,7 +8,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-
+    <!---Paleta de colores Angel-->
     //Paleta principal RGB
     <color name="color1">#9FFFDB</color>
     <color name="color2">#47FF94</color>
@@ -16,7 +17,7 @@
     <color name="color5">#008D75</color>
     <color name="color6">#064037</color>
     <color name="color7">#FF8C00</color>
-
+    <!---Tonos logo Warden-->
     //Paleta principal Grey Scale
     <color name="color1G">#DEDEDE</color>
     <color name="color2G">#BCBCBC</color>
@@ -29,4 +30,8 @@
     <color name="color01">#b3d2c3</color>
     <color name="color02">#4d8771</color>
     <color name="color03">#234139</color>
+    <!---Tonos oscuros para la UI-->
+    <color name="bottomBarBackground">#2e2e2e</color>
+    <color name="fragmentBackground">#606060</color>
+
 </resources>

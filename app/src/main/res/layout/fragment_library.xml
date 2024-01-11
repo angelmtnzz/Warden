@@ -4,14 +4,14 @@
     android:layout_height="match_parent"
     tools:context="vistas.LibraryFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:id="@+id/tvTexto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="LIBRARY PAGE"
         android:gravity="center"
+        android:textColor="@color/white"
         android:textSize="30dp"
-        android:background="@color/color01"/>
+        android:background="@color/fragmentBackground"/>
 
 </FrameLayout>

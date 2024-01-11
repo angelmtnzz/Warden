@@ -22,7 +22,7 @@ class SearchFragment : Fragment(R.layout.fragment_search){
     }
 
     override fun onCreateView(inflater:LayoutInflater, container:ViewGroup?, savedInstancesState: Bundle?): View? {
-        binding.tvTexto.text= "Search Fragment"
+        //binding.tvTexto.text= "Search Fragment"
         return inflater.inflate(R.layout.fragment_search, container, false)
     }
 
