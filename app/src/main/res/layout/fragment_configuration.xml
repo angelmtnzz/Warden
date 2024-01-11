@@ -4,12 +4,13 @@
     android:layout_height="match_parent"
     tools:context="vistas.ConfigurationFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="CONFIGURATION PAGE"
         android:gravity="center"
-        android:textSize="30dp"/>
+        android:textSize="30dp"
+        android:textColor="@color/white"
+        android:background="@color/fragmentBackground"/>
 
 </FrameLayout>

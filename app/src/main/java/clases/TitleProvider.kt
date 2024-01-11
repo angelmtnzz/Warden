@@ -2,7 +2,7 @@ package clases
 
 class TitleProvider {
 
-    companion object{
+    /*companion object{
         val titleList = listOf<Title>(
             Title(
                 "Harry Potter y la piedra filosofal",
@@ -33,5 +33,5 @@ class TitleProvider {
                 7.0f
             )
         )
-    }
+    }*/
 }

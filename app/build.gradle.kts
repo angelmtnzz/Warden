@@ -54,6 +54,8 @@ android {
 }
 dependencies {
 
+    implementation("androidx.room:room-common:2.6.1")
+    implementation("androidx.media3:media3-common:1.2.0")
     //Room
     val room_version = "2.6.1"
 
@@ -80,6 +82,9 @@ dependencies {
     // optional - Paging 3 Integration
     implementation("androidx.room:room-paging:$room_version")
 
+    //PARA EL CAROUSEL
+    implementation("io.coil-kt:coil:2.5.0")
+
     //Default dependencies
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
@@ -103,5 +108,7 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+
+
 
 }
