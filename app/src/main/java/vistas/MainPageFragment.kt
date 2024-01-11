@@ -53,8 +53,9 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
         carouselRecyclerView.adapter = CarouselAdapter(images)
 
         // Luego, configura el LayoutManager y el SnapHelper
-        val layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        val layoutManager = CarouselLayoutManager()
         carouselRecyclerView.layoutManager = layoutManager
+
         CarouselSnapHelper().attachToRecyclerView(carouselRecyclerView)
         Log.d("Warden", "fin de setup")
     }
