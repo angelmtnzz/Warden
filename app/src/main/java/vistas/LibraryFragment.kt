@@ -25,7 +25,7 @@ class LibraryFragment : Fragment(R.layout.fragment_library) {
     ): View? {
         // Inflate the layout for this fragment
 
-        binding.tvTexto.text = "Fragment Library"
+        //binding.tvTexto.text = "Fragment Library"
 
         return inflater.inflate(R.layout.fragment_library, container, false)
     }

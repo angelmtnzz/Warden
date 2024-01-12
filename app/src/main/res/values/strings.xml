@@ -7,6 +7,8 @@
     <string name="Profile">Profile</string>
     <string name="text_label_5">Page 5</string>
 
+    <!---FragmentMainPage-->
     <string name="Recomendaciones">Recomendaciones</string>
+    <string name="Bienvenida">Bienvenido Usuario</string>
 
 </resources>

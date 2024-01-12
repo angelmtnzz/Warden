@@ -11,13 +11,14 @@
         android:icon="@drawable/icon_library_noselected"
         android:title="@string/Library"/>
     <item
-        android:id="@+id/ProfileFragment"
-        android:enabled="true"
-        android:icon="@drawable/icon_profile_noselected"
-        android:title="@string/Profile"/>
-    <item
         android:id="@+id/ConfigurationFragment"
         android:enabled="true"
         android:icon="@drawable/icon_search_noselected"
         android:title="@string/Search"/>
+    <item
+        android:id="@+id/ProfileFragment"
+        android:enabled="true"
+        android:icon="@drawable/icon_profile_noselected"
+        android:title="@string/Profile"/>
+
 </menu>

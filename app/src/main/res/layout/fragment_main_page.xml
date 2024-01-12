@@ -6,14 +6,29 @@
     tools:context="vistas.MainPageFragment"
     android:orientation="vertical"
     android:layout_gravity="top">
+
+    <TextView
+        android:id="@+id/tvBienvenida"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/Bienvenida"
+        android:textStyle="bold"
+        android:textSize="30dp"
+        />
+
     <TextView
         android:id="@+id/tvRecomendado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvBienvenida"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:text="@string/Recomendaciones"
         android:textStyle="bold"
         android:textSize="20dp"/>
