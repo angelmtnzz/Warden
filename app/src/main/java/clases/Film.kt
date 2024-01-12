@@ -1,13 +1,14 @@
 package clases;
 
-class Film(
-    name: String,
-    reviews: ArrayList<String>,
-    score: Int,
+import androidx.room.Entity
+
+@Entity
+data class Film(
     var director: String,
     var lenght: Int,
     var genre: String,
-    var characters: ArrayList<Character>
+    val titleId: Int,
+    var actors: ArrayList<Actor>
 ) /*: Title(name, reviews, score) {
     /**
      * Metodo que devuelve el numero de actores de la pelicula.

@@ -1,13 +1,14 @@
 package clases
 
-class Book(
-    name: String,
-    reviews: ArrayList<String>,
-    score: Int,
+import androidx.room.Entity
+
+@Entity
+data class Book(
     var author: String,
     var pages: Int,
-    var genre: String
-) /*: Title(name, reviews, score) {
+    var genre: String,
+    val titleId: Int
+)/* : Title(name, reviews, score) {
 
 
 

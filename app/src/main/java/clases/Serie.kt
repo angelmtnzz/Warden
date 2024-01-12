@@ -1,18 +1,18 @@
 package clases
 
-class Serie(
-    name: String,
-    reviews: ArrayList<String>,
-    score: Int,
+import androidx.room.Entity
+
+@Entity
+data class Serie(
     var numberSeasons: Int,
     var director: String,
     var genre: String,
-    var characters: ArrayList<Character>
-) /*: Title(name, reviews, score) {
+    val titleId: Int
+) /* {
     /**
      * Metodo que devuelve el numero de actores de las serie.
      */
-    fun getnumCharacters(): Int{
+    fun getnumActors(): Int{
         return this.characters.size
     }
 
@@ -21,7 +21,7 @@ class Serie(
      * @param n posicion en la que seencuentra el actor
      * @return character en la posicion n
      */
-    /*fun getCharacter(n:Int): Character{
+    /*fun getActor(n:Int): Character{
         return this.characters.get(n)
     }
 }*/
