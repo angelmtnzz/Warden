@@ -18,8 +18,8 @@
         android:name="vistas.ProfileFragment"
         tools:layout="@layout/fragment_profile" />
     <fragment
-        android:id="@+id/ConfigurationFragment"
-        android:name="vistas.ConfigurationFragment"
-        tools:layout="@layout/fragment_configuration" />
+        android:id="@+id/SearchFragment"
+        android:name="vistas.SearchFragment"
+        tools:layout="@layout/fragment_search" />
 
 </navigation>
