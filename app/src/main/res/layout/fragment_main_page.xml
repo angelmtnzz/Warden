@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     tools:context="vistas.MainPageFragment"
     android:orientation="vertical"
-    android:layout_gravity="top">
+    android:layout_gravity="top"
+    android:background="@color/color6G">
 
     <TextView
         android:id="@+id/tvBienvenida"
@@ -19,6 +20,7 @@
         android:text="@string/Bienvenida"
         android:textStyle="bold"
         android:textSize="30dp"
+        android:textColor = "@color/color1G"
         />
 
     <TextView
@@ -31,7 +33,9 @@
         android:layout_marginTop="40dp"
         android:text="@string/Recomendaciones"
         android:textStyle="bold"
-        android:textSize="20dp"/>
+        android:textSize="20dp"
+        android:textColor = "@color/color1G"/>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/carouselRecyclerView"

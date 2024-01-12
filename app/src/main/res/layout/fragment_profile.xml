@@ -11,6 +11,6 @@
         android:textSize="30dp"
         android:textColor="@color/white"
         android:gravity="center"
-        android:background="@color/fragmentBackground"/>
+        android:background="@color/color6G"/>
 
 </FrameLayout>
