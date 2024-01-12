@@ -3,21 +3,21 @@
     <item
         android:id="@+id/MainPage"
         android:enabled="true"
-        android:icon="@drawable/icon1"
+        android:icon="@drawable/icon_home_noselected"
         android:title="@string/Home"/>
     <item
         android:id="@+id/libraryFragment"
         android:enabled="true"
-        android:icon="@drawable/icon1"
+        android:icon="@drawable/icon_library_noselected"
         android:title="@string/Library"/>
     <item
         android:id="@+id/ProfileFragment"
         android:enabled="true"
-        android:icon="@drawable/icon1"
+        android:icon="@drawable/icon_profile_noselected"
         android:title="@string/Profile"/>
     <item
         android:id="@+id/ConfigurationFragment"
         android:enabled="true"
-        android:icon="@drawable/icon1"
+        android:icon="@drawable/icon_search_noselected"
         android:title="@string/Search"/>
 </menu>
