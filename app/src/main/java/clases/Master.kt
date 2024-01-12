@@ -5,7 +5,5 @@ class Master(nickname: String, password: String, preferences: String) :
 
     /* Metodo que añade una review a un titulo
     */
-    fun  writeReview(review: Review, title: Title){// nose si este metodo seria mejor hacerlo dentro de la clase Titulo.
-        title.reviews.add(review)
-    }
+
 }
