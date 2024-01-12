@@ -11,4 +11,13 @@
     <string name="Recomendaciones">Recomendaciones</string>
     <string name="Bienvenida">Bienvenido Usuario</string>
 
+    <!---FragmentLibraryPage-->
+    <string name="Favoritos">Favoritos</string>
+    <string name="Libros">Libros</string>
+    <string name="Peliculas">Películas</string>
+    <string name="Series">Series</string>
+    <string name="subtituloFavoritos"> Títulos</string>
+    <string name="subtituloLibros"> Libros</string>
+    <string name="subtituloPeliculas"> Películas</string>
+    <string name="subtituloSeries"> Series</string>
 </resources>
