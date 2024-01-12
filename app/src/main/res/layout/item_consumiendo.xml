@@ -37,7 +37,7 @@
 
                 <TextView
                     android:id="@+id/itemConsumingTitle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="TLOTR: Fellowship of the Ring"
                     android:textSize="24sp"
@@ -45,7 +45,7 @@
 
                 <TextView
                     android:id="@+id/itemConsumingSubtitle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="54/432 Pages"
                     android:textSize="18sp"/>

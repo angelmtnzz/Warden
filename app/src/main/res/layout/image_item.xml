@@ -14,8 +14,8 @@
         android:id="@+id/carouselImageView"
         android:adjustViewBounds="true"
         android:layout_width="wrap_content"
-        android:layout_height="200dp"
-        android:scaleType="centerCrop" />
+        android:layout_height="wrap_content"
+        android:scaleType="fitCenter"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

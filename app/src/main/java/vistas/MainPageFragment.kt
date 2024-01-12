@@ -61,7 +61,7 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
         // Luego, configura el LayoutManager y el SnapHelper
 
         val layoutManager = CarouselLayoutManager() //Añadir estrategia dentro de este parentesis
-        layoutManager.itemCount
+        layoutManager.scrollToPosition(0)
         carouselRecyclerView.layoutManager = layoutManager
 
         CarouselSnapHelper().attachToRecyclerView(carouselRecyclerView)
