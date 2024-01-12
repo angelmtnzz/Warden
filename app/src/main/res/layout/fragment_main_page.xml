@@ -16,7 +16,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="40dp"
         android:text="@string/Bienvenida"
         android:textStyle="bold"
         android:textSize="30dp"
