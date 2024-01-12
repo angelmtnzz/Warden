@@ -7,72 +7,13 @@
     android:layout_marginTop="40dp">
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
-        <TextView
-            android:id="@+id/tvFavoritos"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvLibrary"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="FAVS"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:textSize="30sp"/>
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cvFavoritos"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:backgroundTint="@color/color01"
-            android:layout_gravity="center"/>
-        <TextView
-            android:id="@+id/tvPeliculas"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="PELICULAS"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:textSize="30sp"/>
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cvPeliculas"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:backgroundTint="@color/color02"
-            android:layout_gravity="center"/>
-        <TextView
-            android:id="@+id/tvlibros"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="LIBROS"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:textSize="30sp"/>
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cvlibros"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:backgroundTint="@color/color03"
-            android:layout_gravity="center"/>
-        <TextView
-            android:id="@+id/tvSeries"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="SERIES"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:textSize="30sp"/>
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cvSeries"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:backgroundTint="@color/color4"
-            android:layout_gravity="center"/>
+            android:padding="16dp"
+            tools:listitem="@layout/item_category" />
     </androidx.appcompat.widget.LinearLayoutCompat>
-
 </androidx.core.widget.NestedScrollView>
