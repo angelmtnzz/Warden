@@ -51,4 +51,34 @@
         android:paddingEnd="16dp"
         android:visibility="visible"
         app:layoutManager="com.google.android.material.carousel.CarouselLayoutManager"/>
+
+    <TextView
+        android:id="@+id/tvConsumiendo"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/carouselRecyclerView"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="20dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/color1G"
+        android:text="@string/Consumiendo"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvConsumiendo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tvConsumiendo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:visibility="visible"
+        app:layoutManager="com.google.android.material.carousel.CarouselLayoutManager"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

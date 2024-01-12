@@ -12,8 +12,21 @@ class BooksLibraryPage : AppCompatActivity() {
         setTheme(R.style.Theme_Warden_library)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_books_library_page)
+        initComponents()
+        initListeners()
+    }
 
-        val backwardsButton: CardView = findViewById(R.id.backwardsButton)
+    /**
+     * Inicializa los componentes
+     */
+    private fun initComponents(){
+        backwardsButton = findViewById(R.id.backwardsButton)
+    }
+
+    /**
+     * inicializa los listeners
+     */
+    private fun initListeners(){
         backwardsButton.setOnClickListener {
             // Llama a finish() para cerrar la actividad actual y volver a la anterior
             finish()
