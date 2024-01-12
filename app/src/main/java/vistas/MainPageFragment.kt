@@ -14,6 +14,8 @@ import com.google.android.material.carousel.CarouselSnapHelper
 import java.clases.R
 import java.clases.databinding.FragmentMainPageBinding
 import android.util.Log
+import com.google.android.material.carousel.HeroCarouselStrategy
+import com.google.android.material.carousel.UncontainedCarouselStrategy
 
 
 class MainPageFragment : Fragment(R.layout.fragment_main_page) {
@@ -53,7 +55,9 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
         carouselRecyclerView.adapter = CarouselAdapter(images)
 
         // Luego, configura el LayoutManager y el SnapHelper
-        val layoutManager = CarouselLayoutManager()
+
+        val layoutManager = CarouselLayoutManager() //Añadir estrategia dentro de este parentesis
+        layoutManager.itemCount
         carouselRecyclerView.layoutManager = layoutManager
 
         CarouselSnapHelper().attachToRecyclerView(carouselRecyclerView)
