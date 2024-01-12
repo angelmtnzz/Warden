@@ -1,0 +1,4 @@
+package modelos
+
+interface SerieDao {
+}
