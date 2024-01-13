@@ -1,0 +1,375 @@
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="vistas.LibraryFragment"
+    android:background="@color/color6G">
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/title"
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/white"
+            android:text="Tus preferencias:" />
+
+        <TextView
+            android:id="@+id/subtitle"
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="12dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/color1"
+            android:text="Selecciona las preferencias con las que sientas afinidad." />
+
+            <GridLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="2"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <Button
+                    android:id="@+id/button1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ciencia Ficcion"
+                    android:backgroundTint="@color/color1"
+                    android:textColor="@color/black"
+                    android:layout_marginRight="5dp"
+                    android:layout_gravity="fill_horizontal"/>
+
+                <Button
+                    android:id="@+id/button2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Aventura"
+                    android:backgroundTint="@color/color1"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="5dp"
+                    android:layout_gravity="fill_horizontal"/>
+
+                <Button
+                    android:id="@+id/button3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Accion"
+                    android:backgroundTint="@color/color1"
+                    android:textColor="@color/black"
+                    android:layout_marginRight="5dp"
+                    android:layout_gravity="fill_horizontal"/>
+                <Button
+                    android:id="@+id/button4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Fantasia"
+                    android:backgroundTint="@color/color1"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="5dp"
+                    android:layout_gravity="fill_horizontal"/>
+
+                <Button
+                    android:id="@+id/button5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Drama"
+                    android:backgroundTint="@color/color1"
+                    android:textColor="@color/black"
+                    android:layout_marginRight="5dp"
+                    android:layout_gravity="fill_horizontal"/>
+
+                <Button
+                    android:id="@+id/button6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Comedia"
+                    android:backgroundTint="@color/color1"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="5dp"
+                    android:layout_gravity="fill_horizontal"/>
+
+                <Button
+                    android:id="@+id/button7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Terror"
+                    android:backgroundTint="@color/color1"
+                    android:textColor="@color/black"
+                    android:layout_marginRight="5dp"
+                    android:layout_gravity="fill_horizontal"/>
+
+                <Button
+                    android:id="@+id/button8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Misterio"
+                    android:backgroundTint="@color/color1"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="5dp"
+                    android:layout_gravity="fill_horizontal"/>
+
+                <Button
+                    android:id="@+id/button9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Romance"
+                    android:backgroundTint="@color/color1"
+                    android:textColor="@color/black"
+                    android:layout_marginRight="5dp"
+                    android:layout_gravity="fill_horizontal"/>
+
+                <Button
+                    android:id="@+id/button10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Thriller"
+                    android:backgroundTint="@color/color1"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="5dp"
+                    android:layout_gravity="fill_horizontal"/>
+
+                <Button
+                    android:id="@+id/button11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Crimen"
+                    android:backgroundTint="@color/color1"
+                    android:textColor="@color/black"
+                    android:layout_marginRight="5dp"
+                    android:layout_gravity="fill_horizontal"/>
+
+                <Button
+                    android:id="@+id/button12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Historia real"
+                    android:backgroundTint="@color/color1"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="5dp"
+                    android:layout_gravity="fill_horizontal"/>
+
+                <Button
+                    android:id="@+id/button13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Animación"
+                    android:backgroundTint="@color/color1"
+                    android:textColor="@color/black"
+                    android:layout_marginRight="5dp"
+                    android:layout_gravity="fill_horizontal"/>
+
+                <Button
+                    android:id="@+id/button14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Documental"
+                    android:backgroundTint="@color/color1"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="5dp"
+                    android:layout_gravity="fill_horizontal"/>
+
+                <Button
+                    android:id="@+id/button15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Superhéroes"
+                    android:backgroundTint="@color/color1"
+                    android:textColor="@color/black"
+                    android:layout_marginRight="5dp"
+                    android:layout_gravity="fill_horizontal"/>
+
+                <Button
+                    android:id="@+id/button16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Viajes"
+                    android:backgroundTint="@color/color1"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="5dp"
+                    android:layout_gravity="fill_horizontal"/>
+
+                <Button
+                    android:id="@+id/button17"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Deportes"
+                    android:backgroundTint="@color/color1"
+                    android:textColor="@color/black"
+                    android:layout_marginRight="5dp"
+                    android:layout_gravity="fill_horizontal"/>
+
+                <Button
+                    android:id="@+id/button18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Guerra"
+                    android:backgroundTint="@color/color1"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="5dp"
+                    android:layout_gravity="fill_horizontal"/>
+
+                <Button
+                    android:id="@+id/button19"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Western"
+                    android:backgroundTint="@color/color1"
+                    android:textColor="@color/black"
+                    android:layout_marginRight="5dp"
+                    android:layout_gravity="fill_horizontal"/>
+
+                <Button
+                    android:id="@+id/button20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Psicología"
+                    android:backgroundTint="@color/color1"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="5dp"
+                    android:layout_gravity="fill_horizontal"/>
+
+                <Button
+                    android:id="@+id/button21"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Crecimiento personal    "
+                    android:backgroundTint="@color/color1"
+                    android:textColor="@color/black"
+                    android:layout_marginRight="5dp"
+                    android:layout_gravity="fill_horizontal"
+                    />
+
+                <Button
+                    android:id="@+id/button22"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cocina"
+                    android:backgroundTint="@color/color1"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="5dp"
+                    android:layout_gravity="fill_horizontal"/>
+
+                <Button
+                    android:id="@+id/button23"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Animales"
+                    android:backgroundTint="@color/color1"
+                    android:textColor="@color/black"
+                    android:layout_marginRight="5dp"
+                    android:layout_gravity="fill_horizontal"/>
+
+                <Button
+                    android:id="@+id/button24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Preferencia 3"
+                    android:backgroundTint="@color/color1"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="5dp"
+                    android:layout_gravity="fill_horizontal"/>
+
+                <Button
+                    android:id="@+id/button25"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Preferencia 3"
+                    android:backgroundTint="@color/color1"
+                    android:textColor="@color/black"
+                    android:layout_marginRight="5dp"
+                    android:layout_gravity="fill_horizontal"/>
+
+                <Button
+                    android:id="@+id/button26"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Preferencia 3"
+                    android:backgroundTint="@color/color1"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="5dp"
+                    android:layout_gravity="fill_horizontal"/>
+
+                <Button
+                    android:id="@+id/button27"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Preferencia 3"
+                    android:backgroundTint="@color/color1"
+                    android:textColor="@color/black"
+                    android:layout_marginRight="5dp"
+                    android:layout_gravity="fill_horizontal"/>
+
+                <Button
+                    android:id="@+id/button28"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Preferencia 3"
+                    android:backgroundTint="@color/color1"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="5dp"
+                    android:layout_gravity="fill_horizontal"/>
+
+                <Button
+                    android:id="@+id/button29"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Preferencia 3"
+                    android:backgroundTint="@color/color1"
+                    android:textColor="@color/black"
+                    android:layout_marginRight="5dp"
+                    android:layout_gravity="fill_horizontal"/>
+
+                <Button
+                    android:id="@+id/button30"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Preferencia 3"
+                    android:backgroundTint="@color/color1"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="5dp"
+                    android:layout_gravity="fill_horizontal"/>
+
+                <Button
+                    android:id="@+id/button31"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Preferencia 3"
+                    android:backgroundTint="@color/color1"
+                    android:textColor="@color/black"
+                    android:layout_marginRight="5dp"
+                    android:layout_gravity="fill_horizontal"/>
+
+                <Button
+                    android:id="@+id/button32"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Preferencia 3"
+                    android:backgroundTint="@color/color1"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="5dp"
+                    android:layout_gravity="fill_horizontal"/>
+
+            </GridLayout>
+        <Button
+            android:id="@+id/registerButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@color/color5"
+            android:text="REGISTER"
+            />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

@@ -5,6 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/color6G"
     android:gravity="center">
 
     <ImageView
@@ -25,7 +26,9 @@
             android:layout_height="wrap_content"
             android:textSize="20dp"
             android:textStyle="bold"
-            android:text="Login" />
+            android:textColor="@color/white"
+            android:text="LOGIN"
+            android:layout_marginBottom="10dp"/>
 
         <EditText
             android:id="@+id/userName"
@@ -33,7 +36,9 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:hint="User name"/>
+            android:textColorHint="@color/white"
+            android:alpha="0.5"
+            android:hint="Username" />
 
         <EditText
             android:id="@+id/userPassword"
@@ -41,6 +46,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
+            android:textColorHint="@color/white"
+            android:alpha="0.5"
             android:hint="Password"/>
 
         <Button
@@ -48,6 +55,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:backgroundTint="@color/color1"
+            android:textColor="@color/black"
             android:text="LOGIN"
             />
 
@@ -55,7 +64,8 @@
             android:id="@+id/registerButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Register"
+            android:backgroundTint="@color/color5"
+            android:text="Registrarme"
             />
 
 
