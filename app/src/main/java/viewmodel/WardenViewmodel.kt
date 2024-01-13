@@ -1,5 +1,6 @@
 package viewmodel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
@@ -10,6 +11,7 @@ import repository.WardenRepository
 
 class WardenViewModel(private val repository: WardenRepository) : ViewModel() {
 
+    val books: LiveData<List<Book>> = repository.getAllBooks()
     // Añadir mas metodos
 
     fun addBookAndTitleToDatabase(title: Title, book: Book) {

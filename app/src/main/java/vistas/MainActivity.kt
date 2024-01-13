@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
 
         lifecycleScope.launch {
             val title = Title(id = 0, name = "The Lord of The Rings")
-            val book = Book(titleId = 0, author = "Tolkien", pages = 1191, genre = "Fantasy", coverpath = "@drawable/tlotrcover")
+            val book = Book(titleId = 0, author = "Tolkien", pages = 1191, genre = "Fantasy", cover = R.drawable.tlotrcover)
             viewModel.addBookAndTitleToDatabase(title, book) }
 
         setupNavigation()

@@ -18,8 +18,12 @@ import java.clases.databinding.ItemConsumiendoBinding
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.carousel.HeroCarouselStrategy
 import com.google.android.material.carousel.UncontainedCarouselStrategy
+import repository.WardenRepository
+import viewmodel.WardenViewModel
 import java.clases.databinding.FragmentLibraryBinding
 
 
@@ -28,12 +32,20 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
     private lateinit var binding: FragmentMainPageBinding   //Para el bottom menu
     private lateinit var carouselRecyclerView: RecyclerView //Para el carousel
     private val images = listOf(R.drawable.cyberpunkedgerunners, R.drawable.onepiececover, R.drawable.scottpilgrimcover, R.drawable.theofficecover) //Imagenes del carousel
+    //private val viewModel: WardenViewModel by viewModels()
+    private lateinit var adapter: ItemConsumingAdapter
+
+    private lateinit var repository: WardenRepository
+    private lateinit var factory: WardenViewModel.Factory
+    private lateinit var viewModel: WardenViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = FragmentMainPageBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
+        repository = WardenRepository(requireContext())
+        factory = WardenViewModel.Factory(repository)
+        viewModel = ViewModelProvider(this, factory).get(WardenViewModel::class.java)
     }
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,6 +58,21 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
         val layoutManager = LinearLayoutManager(context)
         binding.rvConsumiendo.layoutManager = layoutManager
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {   //PARA SACAR DATOS DE LA BBDD
+        super.onViewCreated(view, savedInstanceState)
+
+        adapter = ItemConsumingAdapter(itemsConsuming)
+        binding.rvConsumiendo.adapter = adapter
+
+        viewModel.books.observe(viewLifecycleOwner, { books ->
+            itemsConsuming.clear()
+            itemsConsuming.addAll(books.map { book ->
+                ItemConsuming(book.cover, book.author, book.pages.toString())
+            })
+            adapter.notifyDataSetChanged()
+        })
     }
 
     /**
@@ -67,17 +94,22 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
         CarouselSnapHelper().attachToRecyclerView(carouselRecyclerView)
     }
     data class ItemConsuming(val image: Int, val title: String, val subtitle: String)
-    val itemsConsuming = listOf(
+    var itemsConsuming = mutableListOf(
         ItemConsuming(R.drawable.tlotrcover, "TLOTR: Fellowship of the Ring", "54/432 Pages"),
     )
+
+
+
     // Use a separate binding class for your item layout
     class ItemConsumingAdapter(private val items: List<ItemConsuming>) : RecyclerView.Adapter<ItemConsumingAdapter.ItemconsumingViewHolder>() {
-
+        var itemsConsuming = mutableListOf<ItemConsuming>()
+        lateinit var adapter: ItemConsumingAdapter
         inner class ItemconsumingViewHolder(private val binding: ItemConsumiendoBinding) : RecyclerView.ViewHolder(binding.root) {
             // Use the generated binding instead of finding views by ID
             val imageView: ImageView = binding.itemConsumingCover
             val titleView: TextView = binding.itemConsumingTitle
             val subtitleView: TextView = binding.itemConsumingSubtitle
+
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemconsumingViewHolder {

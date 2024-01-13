@@ -10,7 +10,7 @@ data class Book(
     var author: String,
     var pages: Int,
     var genre: String,
-    var coverpath: String
+    var cover: Int
 
 )/* : Title(name, reviews, score) {
 
