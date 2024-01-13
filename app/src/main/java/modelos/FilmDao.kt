@@ -1,4 +1,4 @@
 package modelos
 
-class FilmDao {
+interface FilmDao {
 }
