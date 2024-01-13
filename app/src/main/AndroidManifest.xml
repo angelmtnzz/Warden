@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Warden"
         tools:targetApi="31">
+        <meta-data
+            android:name="androidx.room.auto.RoomDatabase"
+            android:value="database.WardenDatabase" />
         <activity
             android:name="vistas.BooksLibraryPage"
             android:exported="false" />

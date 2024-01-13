@@ -17,6 +17,7 @@ import clases.User
 import clases.relations.FilmActorCrossRef
 import clases.relations.SerieActorCrossRef
 import clases.relations.UserTitleCrossRef
+import modelos.TitleDao
 import modelos.UserDao
 
 @Database(
@@ -26,6 +27,7 @@ import modelos.UserDao
 )
 abstract class WardenDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
+    abstract fun titleDao(): TitleDao
 
     companion object {
         @Volatile
@@ -41,7 +43,7 @@ abstract class WardenDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     WardenDatabase::class.java,
-                    "user_database"
+                    "warden_database"
                 ).build()
                 INSTANCE = instance
                 return instance
