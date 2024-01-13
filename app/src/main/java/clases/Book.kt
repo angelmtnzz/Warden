@@ -6,10 +6,11 @@ import androidx.room.PrimaryKey
 @Entity
 data class Book(
     @PrimaryKey
-    val titleId: Int,
+    var titleId: Int,
     var author: String,
     var pages: Int,
     var genre: String,
+    var coverpath: String
 
 )/* : Title(name, reviews, score) {
 

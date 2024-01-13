@@ -17,6 +17,7 @@ import clases.User
 import clases.relations.FilmActorCrossRef
 import clases.relations.SerieActorCrossRef
 import clases.relations.UserTitleCrossRef
+import modelos.BookDao
 import modelos.TitleDao
 import modelos.UserDao
 
@@ -28,6 +29,7 @@ import modelos.UserDao
 abstract class WardenDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
     abstract fun titleDao(): TitleDao
+    abstract fun bookDao(): BookDao
 
     companion object {
         @Volatile
