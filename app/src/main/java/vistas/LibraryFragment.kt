@@ -14,7 +14,7 @@ import java.clases.R
 import java.clases.databinding.FragmentLibraryBinding
 
 
-class LibraryFragment : Fragment(R.layout.fragment_library) {
+class  LibraryFragment : Fragment(R.layout.fragment_library) {
 
     private lateinit var binding: FragmentLibraryBinding
 
