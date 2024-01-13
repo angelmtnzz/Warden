@@ -5,13 +5,14 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import clases.Title
+import clases.Book
 
 @Dao
-interface TitleDao {
+interface BookDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertTitle(title: Title)
+    suspend fun insertBook(book: Book)
 
-    @Query("SELECT * FROM Title ORDER BY id ASC")
-    fun readAllData(): LiveData<List<Title>>
+    @Query("SELECT * FROM Book")
+    fun getAllBooks(): LiveData<List<Book>>
+
 }

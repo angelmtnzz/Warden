@@ -8,5 +8,6 @@ data class Actor(
     @PrimaryKey(autoGenerate = true)
     val id: Int,
     var name: String,
-    var surname: String
+    var surname: String,
+    var age: Int
 )

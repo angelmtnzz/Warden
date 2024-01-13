@@ -15,7 +15,6 @@ class CarouselAdapter(private val images: List<Int>):
     RecyclerView.Adapter<CarouselAdapter.CarouselViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CarouselViewHolder {
-        Log.d("Warden", "funciona " + images.size)
         return CarouselViewHolder(
             LayoutInflater.from(parent.context).inflate(
                 R.layout.image_item, parent, false
@@ -36,6 +35,17 @@ class CarouselAdapter(private val images: List<Int>):
     override fun getItemCount(): Int {
         return images.size
     }
+
+    /**
+     * devuelve el ID del item en cuestion
+     */
+    override fun getItemId(position: Int): Long {
+        return position.toLong()
+    }
+    override fun getItemViewType(position: Int): Int {
+        return position
+    }
+
 
     /**
      * Esto lo hacen en todos lso tutos pero no entiendo muy bien que es

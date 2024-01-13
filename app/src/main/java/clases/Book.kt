@@ -1,13 +1,17 @@
 package clases
 
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 
 @Entity
 data class Book(
+    @PrimaryKey
+    var titleId: Int,
     var author: String,
     var pages: Int,
     var genre: String,
-    val titleId: Int
+    var cover: Int
+
 )/* : Title(name, reviews, score) {
 
 

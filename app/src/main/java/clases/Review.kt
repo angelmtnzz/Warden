@@ -6,6 +6,7 @@ import androidx.room.PrimaryKey
 @Entity
 data class Review(
     @PrimaryKey
-    val user: String,
-    var comment: String
+    val userNickname: String,
+    var comment: String,
+    val titleId: Int
 )

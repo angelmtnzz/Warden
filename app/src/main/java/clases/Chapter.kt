@@ -1,9 +1,15 @@
 package clases
 
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 
 @Entity
-class Chapter(var duration: Int, var chapterNumber: Int) {
+data class Chapter(
+    @PrimaryKey
+    var chapterNumber: Int,
+    var duration: Int,
+    val seasonNumber: Int
+) {
     /**
      * Metodo que devuelve la duración de un capitulo, en minutos.
      */
