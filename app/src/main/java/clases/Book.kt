@@ -10,10 +10,11 @@ data class Book(
     var author: String,
     var pages: Int,
     var genre: String,
-    var cover: Int
+    var cover: Int,
+    override var name: String,
 
-)/* : Title(name, reviews, score) {
+    ) : Title( id=titleId, name=name) {
 
 
 
-}*/
+}

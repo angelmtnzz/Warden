@@ -6,25 +6,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.findViewTreeViewModelStoreOwner
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.carousel.CarouselLayoutManager
 import com.google.android.material.carousel.CarouselSnapHelper
 import java.clases.R
 import java.clases.databinding.FragmentMainPageBinding
 import java.clases.databinding.ItemConsumiendoBinding
-import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
-import com.google.android.material.carousel.HeroCarouselStrategy
-import com.google.android.material.carousel.UncontainedCarouselStrategy
-import repository.WardenRepository
-import viewmodel.WardenViewModel
-import java.clases.databinding.FragmentLibraryBinding
+
 
 
 class MainPageFragment : Fragment(R.layout.fragment_main_page) {
@@ -32,19 +23,11 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
     private lateinit var binding: FragmentMainPageBinding   //Para el bottom menu
     private lateinit var carouselRecyclerView: RecyclerView //Para el carousel
     private val images = listOf(R.drawable.cyberpunkedgerunners, R.drawable.onepiececover, R.drawable.scottpilgrimcover, R.drawable.theofficecover) //Imagenes del carousel
-    //private val viewModel: WardenViewModel by viewModels()
     private lateinit var adapter: ItemConsumingAdapter
-
-    private lateinit var repository: WardenRepository
-    private lateinit var factory: WardenViewModel.Factory
-    private lateinit var viewModel: WardenViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = FragmentMainPageBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
-        repository = WardenRepository(requireContext())
-        factory = WardenViewModel.Factory(repository)
-        viewModel = ViewModelProvider(this, factory).get(WardenViewModel::class.java)
     }
 
     override fun onCreateView(
@@ -66,13 +49,6 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
         adapter = ItemConsumingAdapter(itemsConsuming)
         binding.rvConsumiendo.adapter = adapter
 
-        viewModel.books.observe(viewLifecycleOwner, { books ->
-            itemsConsuming.clear()
-            itemsConsuming.addAll(books.map { book ->
-                ItemConsuming(book.cover, book.author, book.pages.toString())
-            })
-            adapter.notifyDataSetChanged()
-        })
     }
 
     /**

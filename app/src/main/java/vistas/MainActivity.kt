@@ -3,8 +3,6 @@ package vistas
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ArrayAdapter
-import androidx.activity.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
@@ -13,23 +11,15 @@ import clases.Book
 import clases.Title
 import database.WardenDatabase
 import kotlinx.coroutines.launch
-import repository.WardenRepository
 import java.clases.R
 import java.clases.databinding.ActivityMainBinding
-import viewmodel.WardenViewModel
 
 
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private lateinit var repository: WardenRepository
-    private lateinit var factory: WardenViewModel.Factory
-    private lateinit var viewModel: WardenViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        repository = WardenRepository(this)
-        factory = WardenViewModel.Factory(repository)
-        viewModel = ViewModelProvider(this, factory).get(WardenViewModel::class.java)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val titleDao = WardenDatabase.getDatabase(this).titleDao()
@@ -42,8 +32,8 @@ class MainActivity : AppCompatActivity() {
 
         lifecycleScope.launch {
             val title = Title(id = 0, name = "The Lord of The Rings")
-            val book = Book(titleId = 0, author = "Tolkien", pages = 1191, genre = "Fantasy", cover = R.drawable.tlotrcover)
-            viewModel.addBookAndTitleToDatabase(title, book) }
+            val book = Book(titleId = 0, author = "Tolkien", pages = 1191, genre = "Fantasy", cover = R.drawable.tlotrcover, name = "The Lord of the rings")
+        }
 
         setupNavigation()
     }

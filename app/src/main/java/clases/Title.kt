@@ -6,8 +6,8 @@ import androidx.room.PrimaryKey
 @Entity
 open class Title(
     @PrimaryKey(autoGenerate = true)
-    val id: Int,
-    var name: String,
+    var id: Int,
+    open var name: String,
 ) {
 }
 
