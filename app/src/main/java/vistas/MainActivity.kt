@@ -2,10 +2,12 @@ package vistas
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import java.clases.R
 import java.clases.databinding.ActivityMainBinding
+
 
 
 class MainActivity : AppCompatActivity() {

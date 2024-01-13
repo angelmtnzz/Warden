@@ -5,9 +5,10 @@
     android:layout_height="match_parent"
     android:background="@color/color6G"
     android:id="@+id/fragmentContainer"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    >
 
-    <androidx.appcompat.widget.SearchView
+    <SearchView
         android:id="@+id/searchBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -34,5 +35,6 @@
         android:layout_marginEnd="16dp"
         android:background="@android:color/transparent"
         android:textColor="@color/color1G" />
+
 
 </LinearLayout>
