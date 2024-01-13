@@ -3,13 +3,10 @@ package vistas
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-<<<<<<< HEAD
 import android.widget.ArrayAdapter
-=======
 import androidx.activity.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
->>>>>>> 4fc9980f14eb927f9e937f8a723097c12f23829c
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import clases.Book
