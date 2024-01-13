@@ -48,7 +48,7 @@ class LibraryFragment : Fragment(R.layout.fragment_library) {
     val categories = listOf(
         Category(R.drawable.banner_favourites, "Favoritos", "Subtítulo 1"),
         Category(R.drawable.banner_books, "Libros", "Subtítulo 2"),
-        Category(R.drawable.banner_films, "Pelculas", "Subtítulo 3"),
+        Category(R.drawable.banner_films, "Pelbaculas", "Subtítulo 3"),
         Category(R.drawable.banner_series, "Series", "Subtítulo 4"),
     )
 
