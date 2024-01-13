@@ -3,8 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="vistas.LibraryFragment"
-    android:background="@color/color6G"
-    android:layout_marginTop="40dp">
+    android:background="@color/color6G">
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
