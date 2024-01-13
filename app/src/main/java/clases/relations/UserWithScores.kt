@@ -3,13 +3,13 @@ package clases.relations
 import androidx.room.Embedded
 import androidx.room.Relation
 import clases.Score
-import clases.Title
+import clases.User
 
-data class TitleWithScores (
-    @Embedded var title: Title,
+data class UserWithScores (
+    @Embedded var user: User,
     @Relation(
-        parentColumn = "id",
-        entityColumn = "titleId"
+        parentColumn = "nickname",
+        entityColumn = "userNickname"
     )
     var scores: List<Score>
 )

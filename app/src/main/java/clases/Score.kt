@@ -6,6 +6,7 @@ import androidx.room.PrimaryKey
 @Entity
 data class Score (
     @PrimaryKey
-    val user: String,
-    var score: Double
+    val userNickname: String,
+    var score: Double,
+    val titleId: Int
 )

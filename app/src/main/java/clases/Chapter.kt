@@ -7,7 +7,8 @@ import androidx.room.PrimaryKey
 data class Chapter(
     @PrimaryKey
     var chapterNumber: Int,
-    var duration: Int
+    var duration: Int,
+    val seasonNumber: Int
 ) {
     /**
      * Metodo que devuelve la duración de un capitulo, en minutos.

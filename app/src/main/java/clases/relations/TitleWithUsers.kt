@@ -1,15 +1,18 @@
 package clases.relations
 
 import androidx.room.Embedded
+import androidx.room.Junction
 import androidx.room.Relation
-import clases.Review
 import clases.Title
+import clases.User
 
-data class TitleWithReviews (
+data class TitleWithUsers(
     @Embedded var title: Title,
     @Relation(
         parentColumn = "id",
-        entityColumn = "titleId"
+        entityColumn = "id",
+        associateBy = Junction(UserTitleCrossRef::class)
+
     )
-    var reviews: List<Review>
+    var users: List<User>
 )
