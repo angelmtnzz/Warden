@@ -5,7 +5,6 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class Book(
-    @PrimaryKey
     var titleId: Int,
     var author: String,
     var pages: Int,
@@ -13,8 +12,6 @@ data class Book(
     var cover: Int,
     override var name: String,
 
-    ) : Title( id=titleId, name=name) {
-
-
+    ) : Title( titleId, name=name) {
 
 }
