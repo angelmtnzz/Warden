@@ -13,7 +13,7 @@
         android:gravity="center">
 
         <TextView
-            android:id="@+id/title"
+            android:id="@+id/preferenciasTitulo"
             android:textAlignment="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -24,14 +24,14 @@
             android:text="Tus preferencias:" />
 
         <TextView
-            android:id="@+id/subtitle"
+            android:id="@+id/preferenciasSubtitulo"
             android:textAlignment="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="12dp"
             android:layout_marginBottom="10dp"
             android:textColor="@color/color1"
-            android:text="Selecciona las preferencias con las que sientas afinidad." />
+            android:text="Para terminar con el registro y mejorar tu experiencia&#10;selecciona las preferencias con las que sientas afinidad." />
 
             <GridLayout
                 xmlns:android="http://schemas.android.com/apk/res/android"
@@ -42,7 +42,7 @@
                 android:padding="10dp">
 
                 <Button
-                    android:id="@+id/button1"
+                    android:id="@+id/preferenciaFiccion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Ciencia Ficcion"
@@ -52,7 +52,7 @@
                     android:layout_gravity="fill_horizontal"/>
 
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/preferenciaAventura"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Aventura"
@@ -62,16 +62,16 @@
                     android:layout_gravity="fill_horizontal"/>
 
                 <Button
-                    android:id="@+id/button3"
+                    android:id="@+id/preferenciaAccion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Accion"
+                    android:text="Acción"
                     android:backgroundTint="@color/color1"
                     android:textColor="@color/black"
                     android:layout_marginRight="5dp"
                     android:layout_gravity="fill_horizontal"/>
                 <Button
-                    android:id="@+id/button4"
+                    android:id="@+id/preferenciaFantasia"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Fantasia"
@@ -81,7 +81,7 @@
                     android:layout_gravity="fill_horizontal"/>
 
                 <Button
-                    android:id="@+id/button5"
+                    android:id="@+id/preferenciaDrama"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Drama"
@@ -91,7 +91,7 @@
                     android:layout_gravity="fill_horizontal"/>
 
                 <Button
-                    android:id="@+id/button6"
+                    android:id="@+id/preferenciaComedia"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Comedia"
@@ -101,7 +101,7 @@
                     android:layout_gravity="fill_horizontal"/>
 
                 <Button
-                    android:id="@+id/button7"
+                    android:id="@+id/preferenciaTerror"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Terror"
@@ -111,7 +111,7 @@
                     android:layout_gravity="fill_horizontal"/>
 
                 <Button
-                    android:id="@+id/button8"
+                    android:id="@+id/preferenciaMisterio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Misterio"
@@ -121,7 +121,7 @@
                     android:layout_gravity="fill_horizontal"/>
 
                 <Button
-                    android:id="@+id/button9"
+                    android:id="@+id/preferenciaRomance"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Romance"
@@ -131,7 +131,7 @@
                     android:layout_gravity="fill_horizontal"/>
 
                 <Button
-                    android:id="@+id/button10"
+                    android:id="@+id/preferenciaThriller"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Thriller"
@@ -141,7 +141,7 @@
                     android:layout_gravity="fill_horizontal"/>
 
                 <Button
-                    android:id="@+id/button11"
+                    android:id="@+id/preferenciaCrimen"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Crimen"
@@ -151,7 +151,7 @@
                     android:layout_gravity="fill_horizontal"/>
 
                 <Button
-                    android:id="@+id/button12"
+                    android:id="@+id/preferenciaHistoriaReal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Historia real"
@@ -161,7 +161,7 @@
                     android:layout_gravity="fill_horizontal"/>
 
                 <Button
-                    android:id="@+id/button13"
+                    android:id="@+id/preferenciaAnimacion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Animación"
@@ -171,7 +171,7 @@
                     android:layout_gravity="fill_horizontal"/>
 
                 <Button
-                    android:id="@+id/button14"
+                    android:id="@+id/preferenciaDocumental"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Documental"
@@ -181,7 +181,7 @@
                     android:layout_gravity="fill_horizontal"/>
 
                 <Button
-                    android:id="@+id/button15"
+                    android:id="@+id/preferenciaSuperheroes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Superhéroes"
@@ -191,7 +191,7 @@
                     android:layout_gravity="fill_horizontal"/>
 
                 <Button
-                    android:id="@+id/button16"
+                    android:id="@+id/preferenciaViajes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Viajes"
@@ -201,7 +201,7 @@
                     android:layout_gravity="fill_horizontal"/>
 
                 <Button
-                    android:id="@+id/button17"
+                    android:id="@+id/preferenciaDeportes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Deportes"
@@ -211,7 +211,7 @@
                     android:layout_gravity="fill_horizontal"/>
 
                 <Button
-                    android:id="@+id/button18"
+                    android:id="@+id/preferenciaGuerra"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Guerra"
@@ -221,7 +221,7 @@
                     android:layout_gravity="fill_horizontal"/>
 
                 <Button
-                    android:id="@+id/button19"
+                    android:id="@+id/preferenciaWestern"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Western"
@@ -231,7 +231,7 @@
                     android:layout_gravity="fill_horizontal"/>
 
                 <Button
-                    android:id="@+id/button20"
+                    android:id="@+id/preferenciaPsicologia"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Psicología"
@@ -241,7 +241,7 @@
                     android:layout_gravity="fill_horizontal"/>
 
                 <Button
-                    android:id="@+id/button21"
+                    android:id="@+id/preferenciaCrecimientoPersonal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Crecimiento personal    "
@@ -252,7 +252,7 @@
                     />
 
                 <Button
-                    android:id="@+id/button22"
+                    android:id="@+id/preferenciaCocina"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Cocina"
@@ -262,7 +262,7 @@
                     android:layout_gravity="fill_horizontal"/>
 
                 <Button
-                    android:id="@+id/button23"
+                    android:id="@+id/preferenciaAnimales"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Animales"
@@ -275,7 +275,7 @@
                     android:id="@+id/button24"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Preferencia 3"
+                    android:text="Preferencia24"
                     android:backgroundTint="@color/color1"
                     android:textColor="@color/black"
                     android:layout_marginLeft="5dp"
@@ -285,7 +285,7 @@
                     android:id="@+id/button25"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Preferencia 3"
+                    android:text="Preferencia25"
                     android:backgroundTint="@color/color1"
                     android:textColor="@color/black"
                     android:layout_marginRight="5dp"
@@ -295,7 +295,7 @@
                     android:id="@+id/button26"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Preferencia 3"
+                    android:text="Preferencia26"
                     android:backgroundTint="@color/color1"
                     android:textColor="@color/black"
                     android:layout_marginLeft="5dp"
@@ -305,7 +305,7 @@
                     android:id="@+id/button27"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Preferencia 3"
+                    android:text="Preferencia27"
                     android:backgroundTint="@color/color1"
                     android:textColor="@color/black"
                     android:layout_marginRight="5dp"
@@ -315,7 +315,7 @@
                     android:id="@+id/button28"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Preferencia 3"
+                    android:text="Preferencia28"
                     android:backgroundTint="@color/color1"
                     android:textColor="@color/black"
                     android:layout_marginLeft="5dp"
@@ -325,7 +325,7 @@
                     android:id="@+id/button29"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Preferencia 3"
+                    android:text="Preferencia29"
                     android:backgroundTint="@color/color1"
                     android:textColor="@color/black"
                     android:layout_marginRight="5dp"
@@ -335,7 +335,7 @@
                     android:id="@+id/button30"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Preferencia 3"
+                    android:text="Preferencia30"
                     android:backgroundTint="@color/color1"
                     android:textColor="@color/black"
                     android:layout_marginLeft="5dp"
@@ -345,7 +345,7 @@
                     android:id="@+id/button31"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Preferencia 3"
+                    android:text="Preferencia31"
                     android:backgroundTint="@color/color1"
                     android:textColor="@color/black"
                     android:layout_marginRight="5dp"
@@ -355,7 +355,7 @@
                     android:id="@+id/button32"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Preferencia 3"
+                    android:text="Preferencia32"
                     android:backgroundTint="@color/color1"
                     android:textColor="@color/black"
                     android:layout_marginLeft="5dp"
@@ -363,13 +363,15 @@
 
             </GridLayout>
         <Button
-            android:id="@+id/registerButton"
+            android:id="@+id/preferenciasRegisterButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:layout_marginBottom="10dp"
             android:backgroundTint="@color/color5"
-            android:text="REGISTER"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:text="¡Listo!"
             />
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

@@ -19,14 +19,14 @@ class RegisterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.registerButton.setOnClickListener {
+        binding.registerRegisterButton.setOnClickListener {
             // Lógica de registro
-            val userName = binding.userName.text.toString()
-            val userSurname = binding
-            val userUsername = binding.userUsername.text.toString()
-            val email = binding.userEmail.text.toString()
-            val password = binding.userPassword.text.toString()
-            val confirmedPassword = binding.userConfirmedPassword.text.toString()
+            val userName = binding.registerUserName.text.toString()
+            val userSurname = binding.registerUserSurname.text.toString()
+            val userUsername = binding.registerUserUsername.text.toString()
+            val email = binding.registerUserEmail.text.toString()
+            val password = binding.registerUserPassword.text.toString()
+            val confirmedPassword = binding.registerUserConfirmedPassword.text.toString()
 
         }
     }

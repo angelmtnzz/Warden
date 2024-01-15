@@ -19,7 +19,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/registerTitle"
             android:textAlignment="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -29,7 +29,7 @@
             android:text="Registro" />
 
         <EditText
-            android:id="@+id/userName"
+            android:id="@+id/registerUserName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -39,7 +39,7 @@
             android:hint="Name"/>
 
         <EditText
-            android:id="@+id/userSurname"
+            android:id="@+id/registerUserSurname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -49,7 +49,7 @@
             android:hint="Surname"/>
 
         <EditText
-            android:id="@+id/userUsername"
+            android:id="@+id/registerUserUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -59,7 +59,7 @@
             android:hint="Username"/>
 
         <EditText
-            android:id="@+id/userEmail"
+            android:id="@+id/registerUserEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -69,7 +69,7 @@
             android:hint="Email"/>
 
         <EditText
-            android:id="@+id/userPassword"
+            android:id="@+id/registerUserPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -79,7 +79,7 @@
             android:hint="Password"/>
 
         <EditText
-            android:id="@+id/userConfirmedPassword"
+            android:id="@+id/registerUserConfirmedPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -89,7 +89,7 @@
             android:hint="Confirm password"/>
 
         <Button
-            android:id="@+id/registerButton"
+            android:id="@+id/registerRegisterButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"

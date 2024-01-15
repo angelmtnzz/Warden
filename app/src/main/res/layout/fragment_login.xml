@@ -9,7 +9,7 @@
     android:gravity="center">
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/loginLogo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/ic_launcher_foreground" />
@@ -20,7 +20,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/loginTitulo"
             android:textAlignment="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -31,7 +31,7 @@
             android:layout_marginBottom="10dp"/>
 
         <EditText
-            android:id="@+id/userName"
+            android:id="@+id/loginUserName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -41,7 +41,7 @@
             android:hint="Username" />
 
         <EditText
-            android:id="@+id/userPassword"
+            android:id="@+id/loginUserPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -61,7 +61,7 @@
             />
 
         <Button
-            android:id="@+id/registerButton"
+            android:id="@+id/loginRegisterButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/color5"

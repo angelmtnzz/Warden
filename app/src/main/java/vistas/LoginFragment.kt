@@ -21,12 +21,12 @@ class LoginFragment : Fragment() {
 
         binding.loginButton.setOnClickListener {
             // Lógica de inicio de sesión
-            val username = binding.userName.text.toString()
-            val password = binding.userPassword.text.toString()
+            val username = binding.loginUserName.text.toString()
+            val password = binding.loginUserPassword.text.toString()
 
         }
 
-        binding.registerButton.setOnClickListener {
+        binding.loginRegisterButton.setOnClickListener {
             // Lógica de registro
         }
     }
