@@ -13,6 +13,9 @@ interface SerieDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertSerie(serie: Serie)
 
+    @Query("SELECT COUNT(*) FROM Serie WHERE name = :name")  // Comprueba si existe una serie por su nombre
+    suspend fun doesSerieExist(name: String): Int
+
     @Query("SELECT * FROM Serie")
     suspend fun getAllSeries(): List<Serie>
 

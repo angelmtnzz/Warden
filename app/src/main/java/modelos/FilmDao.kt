@@ -14,6 +14,9 @@ interface FilmDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertFilm(film: Film)
 
+    @Query("SELECT COUNT(*) FROM Film WHERE name = :name")  // Comprueba si existe una pelicula por su nombre
+    suspend fun doesFilmExist(name: String): Int
+
     @Query("SELECT * FROM Film")
     suspend fun getAllFilms(): List<Film>
 

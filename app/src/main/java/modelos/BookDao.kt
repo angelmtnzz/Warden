@@ -14,6 +14,9 @@ interface BookDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertBook(book: Book)
 
+    @Query("SELECT COUNT(*) FROM Book WHERE name = :name")  // Comprueba si existe un libro por su nombre
+    suspend fun doesBookExist(name: String): Int
+
     @Query("SELECT * FROM Book")
     suspend fun getAllBooks(): List<Book>
 
