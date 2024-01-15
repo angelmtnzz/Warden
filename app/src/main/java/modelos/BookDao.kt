@@ -15,7 +15,7 @@ interface BookDao {
     suspend fun insertBook(book: Book)
 
     @Query("SELECT * FROM Book")
-    fun getAllBooks(): List<Book>
+    suspend fun getAllBooks(): List<Book>
 
     @Query("SELECT cover FROM Book WHERE titleId = :id")
     fun getBookCover(id: Int): Int            //Imagenes se tratan como int
