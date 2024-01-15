@@ -9,8 +9,8 @@ import clases.Title
 data class TitleAndFilm(
     @Embedded var title: Title,
     @Relation(
-        parentColumn = "id",
-        entityColumn = "titleId"
+        parentColumn = "name",
+        entityColumn = "name"
     )
     var film: Film
 )

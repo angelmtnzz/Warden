@@ -8,8 +8,8 @@ import clases.Title
 data class TitleAndBook (
     @Embedded var title: Title,
     @Relation(
-        parentColumn = "id",
-        entityColumn = "titleId"
+        parentColumn = "name",
+        entityColumn = "name"
     )
     var book: Book
 )
