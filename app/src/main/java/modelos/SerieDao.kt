@@ -13,30 +13,33 @@ interface SerieDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertSerie(serie: Serie)
 
+    @Query("SELECT COUNT(*) FROM Serie WHERE name = :name")  // Comprueba si existe una serie por su nombre
+    suspend fun doesSerieExist(name: String): Int
+
     @Query("SELECT * FROM Serie")
     suspend fun getAllSeries(): List<Serie>
 
-    @Query("SELECT cover FROM Serie WHERE titleId = :id")
+    @Query("SELECT cover FROM Serie WHERE id = :id")
     suspend fun getSerieCover(id: Int): Int            //Imagenes se tratan como int
     @Query("SELECT cover FROM Serie WHERE name = :name")
     suspend fun getSerieCover(name: String): Int
 
-    @Query("SELECT name FROM Serie WHERE titleId = :id")
+    @Query("SELECT name FROM Serie WHERE id = :id")
     suspend fun getSerieName(id: Int): String
-    @Query("SELECT titleId FROM Serie WHERE name= :name")
+    @Query("SELECT id FROM Serie WHERE name= :name")
     suspend fun getSerieId(name: String): Int
 
-    @Query("SELECT director FROM Serie WHERE titleId = :id")
+    @Query("SELECT director FROM Serie WHERE id = :id")
     suspend fun getSerieDirector(id: Int): String
     @Query("SELECT director FROM Serie WHERE name= :name")
     suspend fun getSerieDirector(name: String): String
 
-    @Query("SELECT lenght FROM Serie WHERE titleId = :id")
+    @Query("SELECT lenght FROM Serie WHERE id = :id")
     suspend fun getSerieLenght(id: Int): Int
     @Query("SELECT lenght FROM Serie WHERE name= :name")
     suspend fun getSerieLenght(name: String): Int
 
-    @Query("SELECT genre FROM Serie WHERE titleId = :id")
+    @Query("SELECT genre FROM Serie WHERE id = :id")
     suspend fun getSerieGenre(id: Int): String
     @Query("SELECT genre FROM Serie WHERE name= :name")
     suspend fun getSerieGenre(name: String): String
