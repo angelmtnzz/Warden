@@ -9,5 +9,4 @@ data class Season(
     var seasonNumber: Int,
     val titleId: Int
 ) {
-
 }
