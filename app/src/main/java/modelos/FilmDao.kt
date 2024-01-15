@@ -15,31 +15,31 @@ interface FilmDao {
     suspend fun insertFilm(film: Film)
 
     @Query("SELECT * FROM Film")
-    fun getAllFilms(): List<Film>
+    suspend fun getAllFilms(): List<Film>
 
     @Query("SELECT cover FROM Film WHERE titleId = :id")
-    fun getFilmCover(id: Int): Int            //Imagenes se tratan como int
+    suspend fun getFilmCover(id: Int): Int            //Imagenes se tratan como int
     @Query("SELECT cover FROM Film WHERE name = :name")
-    fun getFilmCover(name: String): Int
+    suspend fun getFilmCover(name: String): Int
 
     @Query("SELECT name FROM Film WHERE titleId = :id")
-    fun getFilmName(id: Int): String
+    suspend fun getFilmName(id: Int): String
     @Query("SELECT titleId FROM Film WHERE name= :name")
-    fun getFilmId(name: String): Int
+    suspend fun getFilmId(name: String): Int
 
     @Query("SELECT director FROM Film WHERE titleId = :id")
-    fun getFilmDirector(id: Int): String
+    suspend fun getFilmDirector(id: Int): String
     @Query("SELECT director FROM Film WHERE name= :name")
-    fun getFilmDirector(name: String): String
+    suspend fun getFilmDirector(name: String): String
 
     @Query("SELECT lenght FROM Film WHERE titleId = :id")
-    fun getFilmLenght(id: Int): Int
+    suspend fun getFilmLenght(id: Int): Int
     @Query("SELECT lenght FROM Film WHERE name= :name")
-    fun getFilmLenght(name: String): Int
+    suspend fun getFilmLenght(name: String): Int
 
     @Query("SELECT genre FROM Film WHERE titleId = :id")
-    fun getFilmGenre(id: Int): String
+    suspend fun getFilmGenre(id: Int): String
     @Query("SELECT genre FROM Film WHERE name= :name")
-    fun getFilmGenre(name: String): String
+    suspend fun getFilmGenre(name: String): String
 
 }
