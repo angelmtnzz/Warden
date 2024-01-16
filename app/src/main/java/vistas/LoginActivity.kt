@@ -52,10 +52,10 @@ class LoginActivity : AppCompatActivity() {
 
         login()
 
-        register()
+        navigateToRegister()
     }
 
-    private fun register() {
+    private fun navigateToRegister() {
         btnRegister.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
@@ -78,7 +78,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun login() {
 
-        var user:User = User(0,"","","","","",false,"")
+        var user = User(0,"","","","","",false,"")
 
         btnLogin.setOnClickListener {
             var name:String = etNickname.text.toString()

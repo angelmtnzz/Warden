@@ -17,7 +17,6 @@ open class User(
     var range: Boolean,
     var preferences: String?,
 
-
     ) {
 
     // Hay que mirar como añadimos la foto de perfil al usuario.
