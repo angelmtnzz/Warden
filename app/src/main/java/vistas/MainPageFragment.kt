@@ -63,7 +63,7 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
             val books = bookdao.getAllBooks()   // guardo el contenido de los libros en la variable books usando el metodo del DAO
 
             itemsConsuming = mutableListOf(
-                ItemConsuming(books[0].cover, books[0].name, books[0].pages.toString()) // Asigno a itemconsuming los valores de book (en caso de ser mas de uno podemos hacerlo con un for)
+                ItemConsuming(books[0].cover, books[0].name, books[0].pages.toString(), books[0].author) // Asigno a itemconsuming los valores de book (en caso de ser mas de uno podemos hacerlo con un for)
             )
 
             if(itemsConsuming!=null){   //Importante poner el if para que no de nullpointer si hay algun error
@@ -80,7 +80,7 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
             itemsConsuming.clear()
 
             for (i in 0 until bookdao.getNumBooks()) {
-                itemsConsuming.add(ItemConsuming(books[i].cover, books[i].name, books[i].pages.toString()))
+                itemsConsuming.add(ItemConsuming(books[i].cover, books[i].name, books[i].pages.toString(), books[i].author))
             }
 
             val adapter = context?.let {
@@ -96,7 +96,7 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
 
 
 
-    data class ItemConsuming(val image: Int, val title: String, val subtitle: String) : Serializable    // Serializable permite enviarlo a traves de un intent a otra activity
+    data class ItemConsuming(val image: Int, val title: String, val subtitle: String, val author: String) : Serializable    // Serializable permite enviarlo a traves de un intent a otra activity
 
 
 
@@ -132,6 +132,10 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
             holder.itemView.setOnClickListener {
                 val intent = Intent(context, TitlePageActivity::class.java)
                 intent.putExtra("itemConsuming", itemConsuming)
+                intent.putExtra("cover", itemConsuming.image)
+                intent.putExtra("name", itemConsuming.title)
+                intent.putExtra("pages", itemConsuming.subtitle)
+                intent.putExtra("author", itemConsuming.author)
                 context.startActivity(intent)
             }
         }
