@@ -20,6 +20,10 @@ interface BookDao {
     @Query("SELECT Favourite FROM Book WHERE name = :name")
     suspend fun isFavourite(name: String): Boolean
 
+    @Query("UPDATE Book SET favourite = :isFavourite WHERE name = :name")   // Para cambiar el status de favorito
+    suspend fun updateFavouriteStatus(name: String, isFavourite: Boolean)
+
+
     @Query("SELECT COUNT(*) FROM Book")
     suspend fun getNumBooks(): Int
 
