@@ -15,8 +15,6 @@
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="50dp"
         android:layout_marginBottom="16dp"
-        android:alwaysDrawnWithCache="true"
-        android:animateLayoutChanges="false"
         android:background="@drawable/searchview_background"
         android:backgroundTint="@color/color1G"
         android:baselineAligned="false"
@@ -27,8 +25,8 @@
         android:singleLine="true"
         android:visibility="visible" />
 
-    <ListView
-        android:id="@+id/titleList"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/titleRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"

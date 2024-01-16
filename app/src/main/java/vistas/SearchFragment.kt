@@ -2,17 +2,15 @@ package vistas
 
 import android.app.SearchManager
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import android.widget.LinearLayout
 import android.widget.ListView
 import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import java.clases.R
 import java.clases.databinding.FragmentMainPageBinding
 
@@ -23,7 +21,6 @@ class SearchFragment : Fragment(R.layout.fragment_search), SearchView.OnQueryTex
     private lateinit var searchView: SearchView
     private lateinit var listView: ListView
     private lateinit var fragmentContainer: LinearLayout
-
 
 
     override fun onCreate(savedInstanceState : Bundle?){
@@ -79,4 +76,5 @@ class SearchFragment : Fragment(R.layout.fragment_search), SearchView.OnQueryTex
         // Handle search query text changes here
         return false
     }
+
 }

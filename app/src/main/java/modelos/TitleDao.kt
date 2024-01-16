@@ -6,6 +6,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import clases.Title
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface TitleDao {
@@ -14,4 +15,7 @@ interface TitleDao {
 
     @Query("SELECT * FROM Title ORDER BY id ASC")
     fun readAllData(): LiveData<List<Title>>
+
+    @Query("SELECT * FROM Title WHERE name LIKE :searchQuery")
+    fun search(searchQuery: String): Flow<List<Title>>
 }
