@@ -188,14 +188,15 @@ class LoginActivity : AppCompatActivity() {
     private fun addBooksToDatabase() {
 
         var books = listOf(
-            Book("The Lord of the rings", "Tolkien", 1191, "Fantasy", R.drawable.coverbooktlotr),
-            Book("Hyperion", "Dan Simmons", 648, "Sci-Fy", R.drawable.coverbookhyperion),
+            Book("The Lord of the rings", "Tolkien", 1191, "Fantasy", R.drawable.coverbooktlotr, true),
+            Book("Hyperion", "Dan Simmons", 648, "Sci-Fy", R.drawable.coverbookhyperion, true),
             Book(
                 "The Fall of Hyperion",
                 "Dan Simmons",
                 744,
                 "Sci-Fy",
-                R.drawable.coverbookfallhyperion
+                R.drawable.coverbookfallhyperion,
+                false
             ),
             Book(
                 "At the Mountains of Madness",
@@ -203,6 +204,7 @@ class LoginActivity : AppCompatActivity() {
                 176,
                 "Horror",
                 R.drawable.coverbookmadnessmountains,
+                true
             ),
 
             )
