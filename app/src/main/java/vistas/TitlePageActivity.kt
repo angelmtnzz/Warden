@@ -28,6 +28,7 @@ class TitlePageActivity : AppCompatActivity() {
         val title = intent.getStringExtra("name")
         val subtitle = intent.getStringExtra("pages")
         val author = intent.getStringExtra("author")
+        val isFavourite = intent.getBooleanExtra("favourite", false)
         Log.d("TitlePageActivity", "Received data: cover=$cover,author=$author, title=$title, subtitle=$subtitle")
 
         ivTitle.load(cover) {

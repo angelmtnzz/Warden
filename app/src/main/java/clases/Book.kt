@@ -11,6 +11,7 @@ data class Book(
     var pages: Int,
     var genre: String,
     var cover: Int,
+    var favourite: Boolean
 
     ) : Title( 0, name=name) {
 
