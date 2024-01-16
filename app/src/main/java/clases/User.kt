@@ -1,26 +1,24 @@
 package clases
 
 import androidx.room.Entity
+import androidx.room.Index
 import androidx.room.PrimaryKey
 
-@Entity
+@Entity(indices = [Index(value = ["nickname", "email"],
+    unique = true)])
 open class User(
     @PrimaryKey(autoGenerate = true)
     val id: Int,
     var nickname: String,
+    var name: String,
+    var apellidos: String,
+    var email: String,
     var password: String,
     var range: Boolean,
-    var preferences: String,
+    var preferences: String?,
 
 
     ) {
-    constructor(nickname: String, password: String, range: Boolean, preferences: String) : this(
-        0,
-        nickname,
-        password,
-        range,
-        preferences
-    )
 
     // Hay que mirar como añadimos la foto de perfil al usuario.
     fun editpreferences(newPreferences: String) {
@@ -40,5 +38,32 @@ open class User(
         }
     }
 
+
+}
+
+class Common(
+    nickname: String,
+    name: String,
+    apellidos: String,
+    email: String,
+    password: String,
+    range: Boolean,
+    preferences: String?,
+) : User(0, nickname, name, apellidos, email, password, false, preferences) {
+
+}
+
+class Master(
+    nickname: String,
+    name: String,
+    apellidos: String,
+    email: String,
+    password: String,
+    range: Boolean,
+    preferences: String?,
+) : User(0, nickname, name, apellidos, email, password, false, preferences) {
+
+    /* Metodo que añade una review a un titulo
+    */
 
 }
