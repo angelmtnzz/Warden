@@ -38,10 +38,8 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
 
     override fun onAttach(context: Context) {   // onAttach se ejecuta antes que onCreated, inicializamos la BBDD y el DAO aqui para que no haya problemas antes
         super.onAttach(context)
-
         // Inicializo el DAO
         bookdao = WardenDatabase.getDatabase(requireContext()).bookDao()
-
     }
 
 
