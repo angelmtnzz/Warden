@@ -40,6 +40,7 @@ android {
     }
     buildFeatures {
         compose = true
+        viewBinding = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.4.3"
@@ -60,6 +61,8 @@ dependencies {
 
     implementation("androidx.room:room-common:2.6.1")
     implementation("androidx.media3:media3-common:1.2.0")
+    implementation("androidx.annotation:annotation:1.7.1")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
     //Room
     val room_version = "2.6.1"
 

@@ -82,7 +82,7 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
         lifecycleScope.launch {
             val books = bookdao.getAllBooks()   // guardo el contenido de los libros en la variable books usando el metodo del DAO
 
-            for (i in 0..bookdao.getNumBooks()-1){  // si quitas el -1 PETA.
+            for (i in 1..bookdao.getNumBooks()-1){  // si quitas el -1 PETA.
                 itemsConsuming.add(ItemConsuming(books[i].cover, books[i].name, books[i].pages.toString()))
             }
 

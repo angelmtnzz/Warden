@@ -5,11 +5,12 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class Film(
+    override var name: String,
     var director: String,
     var lenght: Int,
     var genre: String,
     var cover: Int,
-    override var name: String
+
 ) : Title(0, name=name) {
 
 }

@@ -10,8 +10,14 @@ import clases.User
 @Dao
 interface UserDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun addUser(user: User)
+    suspend fun insertUser(user: User)
 
+    @Query("SELECT COUNT(*) FROM User WHERE nickname = :nickname")  // Comprueba si existe un libro por su nombre
+    suspend fun doesUserExist(nickname: String): Int
+
+    @Query("SELECT * FROM User WHERE nickname = :nickname")
+    suspend fun getUserByNickname(nickname: String) : User
+    
     @Query("SELECT * FROM User ORDER BY id ASC")
     fun readAllData(): LiveData<List<User>>
 }

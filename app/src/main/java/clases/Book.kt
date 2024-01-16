@@ -12,7 +12,6 @@ data class Book(
     var genre: String,
     var cover: Int,
 
-
     ) : Title( 0, name=name) {
 
 }
