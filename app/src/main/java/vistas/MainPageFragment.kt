@@ -40,6 +40,8 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
         super.onAttach(context)
         // Inicializo el DAO
         bookdao = WardenDatabase.getDatabase(requireContext()).bookDao()
+
+
     }
 
 
@@ -48,6 +50,7 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentMainPageBinding.inflate(inflater, container, false)
+
         setupCarouselRecyclerView()
         return binding.root
     }

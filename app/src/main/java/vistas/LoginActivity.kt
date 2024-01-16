@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import clases.Book
 import clases.Film
@@ -90,8 +91,8 @@ class LoginActivity : AppCompatActivity() {
                 }
                 if (name == user.nickname && password == user.password) {
                     val intent = Intent(this@LoginActivity, MainActivity::class.java)
-                    intent.putExtra("nickname", user.nickname)
                     startActivity(intent)
+
                 } else {
                     Log.i("mine", "login fallido ")
                 }
