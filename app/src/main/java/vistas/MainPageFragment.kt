@@ -22,6 +22,7 @@ import androidx.room.Room
 import database.WardenDatabase
 import kotlinx.coroutines.launch
 import modelos.BookDao
+import java.io.Serializable
 
 class MainPageFragment : Fragment(R.layout.fragment_main_page) {
 
@@ -95,7 +96,7 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
 
     }
 
-    data class ItemConsuming(val image: Int, val title: String, val subtitle: String)
+    data class ItemConsuming(val image: Int, val title: String, val subtitle: String) : Serializable
 
 
 
