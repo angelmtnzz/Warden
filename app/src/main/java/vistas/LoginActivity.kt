@@ -108,9 +108,7 @@ class LoginActivity : AppCompatActivity() {
 
         var users = listOf(
             User(0, "shussk02", "Saad", "Hussain", "shussk02@gmail.com", "saad", false, ""),
-            User(
-                0, "marcosfnmr", "Marcos", "Fernandez", "marcosfnmr@gmail.com", "marcos", false, ""
-            ),
+            User(0, "marcosfnmr", "Marcos", "Fernandez", "marcosfnmr@gmail.com", "marcos", false, ""),
             User(0, "angelmtnzz", "Angel", "Martínez", "angelmtnzz@gmail.com", "angel", false, ""),
 
             )
