@@ -31,6 +31,8 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var titleDao: TitleDao
     private lateinit var bookDao: BookDao
     private lateinit var filmDao: FilmDao
+    private lateinit var etNickname:EditText
+    private lateinit var etPassword:EditText
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,7 +56,8 @@ class LoginActivity : AppCompatActivity() {
 
     private fun initComponent() {
         btnLogin = findViewById(R.id.loginButton)
-
+        etNickname = binding.loginUserName
+        etPassword = binding.loginUserPassword
         userDao = WardenDatabase.getDatabase(this).userDao()
         titleDao = WardenDatabase.getDatabase(this).titleDao()
         filmDao = WardenDatabase.getDatabase(this).filmDao()
@@ -63,8 +66,6 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun login() {
-        var etNickname = findViewById<EditText>(R.id.loginUserName)
-        var etPassword = findViewById<EditText>(R.id.loginUserPassword)
         var name:String = etNickname.text.toString()
         var password:String = etPassword.text.toString()
         if (name.isNotEmpty() && password.isNotEmpty()) {
