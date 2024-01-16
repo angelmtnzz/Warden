@@ -39,6 +39,7 @@ abstract class WardenDatabase : RoomDatabase() {
     abstract fun filmDao(): FilmDao
     abstract fun serieDao(): SerieDao
 
+    //Se implementa el patron Singleton
     companion object {
         @Volatile
         private var INSTANCE: WardenDatabase? = null

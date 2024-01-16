@@ -13,6 +13,9 @@ interface TitleDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertTitle(title: Title)
 
+    @Query("SELECT COUNT(*) FROM Title WHERE name = :name")  // Comprueba si existe un title por su nombre
+    suspend fun doesTitleExist(name: String): Int
+
     @Query("SELECT * FROM Title ORDER BY id ASC")
     fun readAllData(): LiveData<List<Title>>
 

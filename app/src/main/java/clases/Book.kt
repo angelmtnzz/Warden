@@ -6,11 +6,12 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class Book(
+    override var name: String,
     var author: String,
     var pages: Int,
     var genre: String,
     var cover: Int,
-    override var name: String,
+
 
     ) : Title( 0, name=name) {
 

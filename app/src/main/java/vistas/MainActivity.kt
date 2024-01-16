@@ -8,6 +8,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import clases.Book
 import clases.Film
+import clases.Title
 import database.WardenDatabase
 import kotlinx.coroutines.launch
 import java.clases.R
@@ -57,19 +58,35 @@ class MainActivity : AppCompatActivity() {
      */
     private fun addBooksToDatabase(){
         val bookDao = WardenDatabase.getDatabase(this).bookDao()
-        var books = listOf(
-            Book("Tolkien", 1191, "Fantasy", R.drawable.coverbooktlotr, "The Lord of the rings"),
-            Book( "Dan Simmons", 648, "Sci-Fy", R.drawable.coverbookhyperion, "Hyperion"),
-            Book("Dan Simmons", 744, "Sci-Fy", R.drawable.coverbookfallhyperion, "The Fall of Hyperion"),
-            Book("H. P. Lovecraft", 176, "Horror", R.drawable.coverbookmadnessmountains, "At the Mountains of Madness"),
+        val titleDao = WardenDatabase.getDatabase(this).titleDao()
 
-        )
+        var books = listOf(
+            Book("The Lord of the rings","Tolkien", 1191, "Fantasy", R.drawable.coverbooktlotr ),
+            Book( "Hyperion","Dan Simmons", 648, "Sci-Fy", R.drawable.coverbookhyperion ),
+            Book("The Fall of Hyperion","Dan Simmons", 744, "Sci-Fy", R.drawable.coverbookfallhyperion),
+            Book("At the Mountains of Madness","H. P. Lovecraft", 176, "Horror", R.drawable.coverbookmadnessmountains,),
+
+            )
+        var titles = listOf(
+            Title(0,"The Lord of the rings"),
+            Title( 0,"Hyperion"),
+            Title(0,"The Fall of Hyperion"),
+            Title(0,"At the Mountains of Madness"),
+
+            )
         lifecycleScope.launch { books.forEach {
             val bookExists = bookDao.doesBookExist(it.name)
             if(bookExists==0) {
                 bookDao.insertBook(it)
             }
+
         }
+            titles.forEach{
+                val titleExists = titleDao.doesTitleExist(it.name)
+                if(titleExists==0) {
+                    titleDao.insertTitle(it)
+                }
+            }
         }
     }
     private fun setupNavigation() {
