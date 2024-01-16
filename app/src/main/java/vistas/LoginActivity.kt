@@ -34,7 +34,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var bookDao: BookDao
     private lateinit var filmDao: FilmDao
     private lateinit var etNickname: EditText
-    private lateinit var etPassword:EditText
+    private lateinit var etPassword: EditText
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -78,11 +78,11 @@ class LoginActivity : AppCompatActivity() {
 
     private fun login() {
 
-        var user = User(0,"","","","","",false,"")
+        var user = User(0, "", "", "", "", "", false, "")
 
         btnLogin.setOnClickListener {
-            var name:String = etNickname.text.toString()
-            var password:String = etPassword.text.toString()
+            var name: String = etNickname.text.toString()
+            var password: String = etPassword.text.toString()
             if (name.isNotEmpty() && password.isNotEmpty()) {
                 lifecycleScope.launch {
                     user = withContext(Dispatchers.IO) {
@@ -108,7 +108,6 @@ class LoginActivity : AppCompatActivity() {
 
         var users = listOf(
             User(0, "shussk02", "Saad", "Hussain", "shussk02@gmail.com", "saad", false, ""),
-            User(0, "vamig00", "Victor", "Amigo", "vamig00@gmail.com", "victor", false, ""),
             User(
                 0, "marcosfnmr", "Marcos", "Fernandez", "marcosfnmr@gmail.com", "marcos", false, ""
             ),
@@ -188,7 +187,14 @@ class LoginActivity : AppCompatActivity() {
     private fun addBooksToDatabase() {
 
         var books = listOf(
-            Book("The Lord of the rings", "Tolkien", 1191, "Fantasy", R.drawable.coverbooktlotr, true),
+            Book(
+                "The Lord of the rings",
+                "Tolkien",
+                1191,
+                "Fantasy",
+                R.drawable.coverbooktlotr,
+                true
+            ),
             Book("Hyperion", "Dan Simmons", 648, "Sci-Fy", R.drawable.coverbookhyperion, true),
             Book(
                 "The Fall of Hyperion",
