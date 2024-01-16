@@ -12,7 +12,9 @@ import clases.Film
 import clases.Title
 import clases.User
 import database.WardenDatabase
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import modelos.BookDao
 import modelos.FilmDao
 import modelos.TitleDao
@@ -25,18 +27,19 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
     private lateinit var btnLogin: Button
-
-
-
+    private lateinit var userDao: UserDao
+    private lateinit var titleDao: TitleDao
+    private lateinit var bookDao: BookDao
+    private lateinit var filmDao: FilmDao
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
-        setContentView(R.layout.activity_login)
+        setContentView(binding.root)
 
 
-
+        initComponent()
 
         addUsersToDatabase()  //Añade todos los usuarios
         addTitlesToDatabase()   //Añade todas las titles
@@ -44,7 +47,7 @@ class LoginActivity : AppCompatActivity() {
         addBooksToDatabase()
 
 
-        initComponent()
+
         login()
     }
 
@@ -52,51 +55,45 @@ class LoginActivity : AppCompatActivity() {
     private fun initComponent() {
         btnLogin = findViewById(R.id.loginButton)
 
+        userDao = WardenDatabase.getDatabase(this).userDao()
+        titleDao = WardenDatabase.getDatabase(this).titleDao()
+        filmDao = WardenDatabase.getDatabase(this).filmDao()
+        bookDao = WardenDatabase.getDatabase(this).bookDao()
+
     }
 
-    /*private fun login() {
-        val etNickname = findViewById<EditText>(R.id.loginUserName)
-        val etPassword = findViewById<EditText>(R.id.loginUserPassword)
-        val name = etNickname.text.toString()
-        val password = etPassword.text.toString()
-        var userDao = WardenDatabase.getDatabase(this).userDao()
-        lifecycleScope.launch { user = userDao.getUserByNickname(name) }
-        btnLogin.setOnClickListener {
-            if(user.nickname == name && user.password == password ){
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-            }
-            else{
-                Log.i("TAG", "login fallido ")
-            }
-
-        }
-    }*/
-
     private fun login() {
-        btnLogin.setOnClickListener {
-            val etNickname = binding.loginUserName
-            val etPassword = binding.loginUserPassword
-            val name = etNickname.text.toString()
-            val password = etPassword.text.toString()
-            val userDao = WardenDatabase.getDatabase(this).userDao()
-            lifecycleScope.launch {
-                var user = userDao.getUserByNickname(name)
+        var etNickname = findViewById<EditText>(R.id.loginUserName)
+        var etPassword = findViewById<EditText>(R.id.loginUserPassword)
+        var name:String = etNickname.text.toString()
+        var password:String = etPassword.text.toString()
+        if (name.isNotEmpty() && password.isNotEmpty()) {
+            var user:User = User(0,"","","","","",false,"")
 
-                if (true/**user.nickname == name && user.password == password*/) {
+            lifecycleScope.launch {
+                    user = withContext(Dispatchers.IO) {
+                    userDao.getUserByNickname("shussk02")
+                }
+            }
+
+            btnLogin.setOnClickListener {
+                if ("shussk02" == user.nickname && "saad" == user.password) {
                     val intent = Intent(this@LoginActivity, MainActivity::class.java)
                     startActivity(intent)
                 } else {
-                    Log.i("TAG", "login fallido ")
+                    Log.i("mine", "login fallido ")
                 }
+
             }
-        }}
+
+        }
+    }
 
     /**
      * Crea una lista de Peliculas, luego abre una corrutina y añade los libros a la BBDD
      */
     private fun addUsersToDatabase() {
-        var userDao = WardenDatabase.getDatabase(this).userDao()
+
         var users = listOf(
             User(0, "shussk02", "Saad", "Hussain", "shussk02@gmail.com", "saad", false, ""),
             User(0, "vamig00", "Victor", "Amigo", "vamig00@gmail.com", "victor", false, ""),
@@ -123,8 +120,6 @@ class LoginActivity : AppCompatActivity() {
      */
     private fun addTitlesToDatabase() {
 
-        var titleDao = WardenDatabase.getDatabase(this).titleDao()
-
         var titles = listOf(
             Title(0, "The Lord of the rings"),
             Title(0, "Hyperion"),
@@ -146,7 +141,6 @@ class LoginActivity : AppCompatActivity() {
      * Inicializa el dao y crea una lista de Peliculas, luego abre una corrutina y añade los libros a la BBDD
      */
     private fun addFilmsToDatabase() {
-        var filmDao = WardenDatabase.getDatabase(this).filmDao()
 
         var films = listOf(
             Film("Star Wars III", "George Lucas", 139, "Sci-Fy", R.drawable.coverfilmstarwars),
@@ -180,7 +174,6 @@ class LoginActivity : AppCompatActivity() {
      * Inicializa el dao y crea una lista de libros, luego abre una corrutina y añade los libros a la BBDD
      */
     private fun addBooksToDatabase() {
-        var bookDao = WardenDatabase.getDatabase(this).bookDao()
 
         var books = listOf(
             Book("The Lord of the rings", "Tolkien", 1191, "Fantasy", R.drawable.coverbooktlotr),
