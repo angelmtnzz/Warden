@@ -16,7 +16,10 @@ interface BookDao {
 
     @Query("SELECT COUNT(*) FROM Book WHERE name = :name")  // Comprueba si existe un libro por su nombre
     suspend fun doesBookExist(name: String): Int
-    
+
+    @Query("SELECT COUNT(*) FROM Book")
+    suspend fun getNumBooks(): Int
+
     @Query("SELECT * FROM Book")
     suspend fun getAllBooks(): List<Book>
 

@@ -33,7 +33,7 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
     //Para sacar dotos de los DAO
     private lateinit var wardenDatabase: WardenDatabase
     private lateinit var bookdao: BookDao
-    var itemsConsuming: MutableList<ItemConsuming>? = null
+    var itemsConsuming: MutableList<ItemConsuming> = mutableListOf()
 
 
     override fun onAttach(context: Context) {   // onAttach se ejecuta antes que onCreated, inicializamos la BBDD y el DAO aqui para que no haya problemas antes
@@ -79,11 +79,20 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
 
     private fun setupCarouselRecyclerView() {
         carouselRecyclerView = binding.carouselRecyclerView
-        carouselRecyclerView.adapter = CarouselAdapter(images)
-        val layoutManager = CarouselLayoutManager()
-        layoutManager.scrollToPosition(0)
-        carouselRecyclerView.layoutManager = layoutManager
-        CarouselSnapHelper().attachToRecyclerView(carouselRecyclerView)
+        lifecycleScope.launch {
+            val books = bookdao.getAllBooks()   // guardo el contenido de los libros en la variable books usando el metodo del DAO
+
+            for (i in 0..bookdao.getNumBooks()-1){  // si quitas el -1 PETA.
+                itemsConsuming.add(ItemConsuming(books[i].cover, books[i].name, books[i].pages.toString()))
+            }
+
+            carouselRecyclerView.adapter = CarouselAdapter(itemsConsuming)
+            val layoutManager = CarouselLayoutManager()
+            layoutManager.scrollToPosition(0)
+            carouselRecyclerView.layoutManager = layoutManager
+            CarouselSnapHelper().attachToRecyclerView(carouselRecyclerView)
+        }
+
     }
 
     data class ItemConsuming(val image: Int, val title: String, val subtitle: String)

@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity() {
             Book("Tolkien", 1191, "Fantasy", R.drawable.coverbooktlotr, "The Lord of the rings"),
             Book( "Dan Simmons", 648, "Sci-Fy", R.drawable.coverbookhyperion, "Hyperion"),
             Book("Dan Simmons", 744, "Sci-Fy", R.drawable.coverbookfallhyperion, "The Fall of Hyperion"),
-            Book("H. P. Lovecraft", 176, "Horror", R.drawable.coverbooktlotr, "At the Mountains of Madness"),
+            Book("H. P. Lovecraft", 176, "Horror", R.drawable.coverbookmadnessmountains, "At the Mountains of Madness"),
 
         )
         lifecycleScope.launch { books.forEach {
