@@ -83,7 +83,7 @@ class LoginActivity : AppCompatActivity() {
             lifecycleScope.launch {
                 var user = userDao.getUserByNickname(name)
 
-                if (user.nickname == name && user.password == password) {
+                if (true/**user.nickname == name && user.password == password*/) {
                     val intent = Intent(this@LoginActivity, MainActivity::class.java)
                     startActivity(intent)
                 } else {

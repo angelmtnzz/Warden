@@ -11,16 +11,14 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.transform.RoundedCornersTransformation
 import java.clases.R
+import java.clases.databinding.ImageItemBinding
 
 class CarouselAdapter(private val items: MutableList<MainPageFragment.ItemConsuming>):
     RecyclerView.Adapter<CarouselAdapter.CarouselViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CarouselViewHolder {
-        return CarouselViewHolder(
-            LayoutInflater.from(parent.context).inflate(
-                R.layout.image_item, parent, false
-            )
-        )
+        val binding = ImageItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return CarouselViewHolder(binding)
     }
 
     /**
@@ -51,18 +49,14 @@ class CarouselAdapter(private val items: MutableList<MainPageFragment.ItemConsum
     /**
      * Esto lo hacen en todos lso tutos pero no entiendo muy bien que es
      */
-    inner class CarouselViewHolder(view: View): RecyclerView.ViewHolder(view) {
-        private val carouselImageView: AppCompatImageView  =
-            view.findViewById(R.id.ivCarousel)
-        private val carouselTextView: AppCompatTextView =
-            view.findViewById(R.id.tvCarousel)
+    inner class CarouselViewHolder(private val binding: ImageItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: MainPageFragment.ItemConsuming) {
-            carouselImageView.load(item.image) {
+            binding.ivCarousel.load(item.image) {
                 transformations(RoundedCornersTransformation(8f))
             }
-            carouselTextView.text = item.title
-
+            binding.tvCarousel.text = item.title
         }
     }
 }

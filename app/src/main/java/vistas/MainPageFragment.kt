@@ -32,20 +32,15 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
     private lateinit var adapter: ItemConsumingAdapter
 
     //Para sacar dotos de los DAO
-    private lateinit var wardenDatabase: WardenDatabase
     private lateinit var bookdao: BookDao
     var itemsConsuming: MutableList<ItemConsuming> = mutableListOf()
 
 
     override fun onAttach(context: Context) {   // onAttach se ejecuta antes que onCreated, inicializamos la BBDD y el DAO aqui para que no haya problemas antes
         super.onAttach(context)
-        // Inicializo la BBDD
-        wardenDatabase = Room.databaseBuilder(
-            requireContext(),
-            WardenDatabase::class.java, "warden_database"
-        ).build()
+
         // Inicializo el DAO
-        bookdao = wardenDatabase.bookDao()
+        bookdao = WardenDatabase.getDatabase(requireContext()).bookDao()
 
     }
 
@@ -72,7 +67,7 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
             )
 
             if(itemsConsuming!=null){   //Importante poner el if para que no de nullpointer si hay algun error
-                adapter = itemsConsuming?.let { ItemConsumingAdapter(it) }!!
+                adapter = context?.let { ItemConsumingAdapter(itemsConsuming, it, R.layout.item_consumiendo) }!!
                 binding.rvConsumiendo.adapter = adapter
             }
         }
@@ -81,33 +76,49 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
     private fun setupCarouselRecyclerView() {
         carouselRecyclerView = binding.carouselRecyclerView
         lifecycleScope.launch {
-            val books = bookdao.getAllBooks()   // guardo el contenido de los libros en la variable books usando el metodo del DAO
+            val books = bookdao.getAllBooks()
+            itemsConsuming.clear()
 
-            for (i in 1..bookdao.getNumBooks()-1){  // si quitas el -1 PETA.
+            for (i in 0 until bookdao.getNumBooks()) {
                 itemsConsuming.add(ItemConsuming(books[i].cover, books[i].name, books[i].pages.toString()))
             }
 
-            carouselRecyclerView.adapter = CarouselAdapter(itemsConsuming)
+            val adapter = context?.let {
+                CarouselAdapter(itemsConsuming)
+            }
+            carouselRecyclerView.adapter = adapter
             val layoutManager = CarouselLayoutManager()
             layoutManager.scrollToPosition(0)
             carouselRecyclerView.layoutManager = layoutManager
             CarouselSnapHelper().attachToRecyclerView(carouselRecyclerView)
         }
-
     }
 
-    data class ItemConsuming(val image: Int, val title: String, val subtitle: String) : Serializable
+
+
+    data class ItemConsuming(val image: Int, val title: String, val subtitle: String) : Serializable    // Serializable permite enviarlo a traves de un intent a otra activity
 
 
 
     // Use a separate binding class for your item layout
-    class ItemConsumingAdapter(private val items: List<ItemConsuming>) : RecyclerView.Adapter<ItemConsumingAdapter.ItemConsumingViewHolder>() {
+    class ItemConsumingAdapter(
+        private val items: List<ItemConsuming>,
+        private val context: Context,
+        private val layoutResourceId: Int
+    ) : RecyclerView.Adapter<ItemConsumingAdapter.ItemConsumingViewHolder>() {
 
         inner class ItemConsumingViewHolder(private val binding: ItemConsumiendoBinding) : RecyclerView.ViewHolder(binding.root) {
             val imageView: ImageView = binding.itemConsumingCover
             val titleView: TextView = binding.itemConsumingTitle
             val subtitleView: TextView = binding.itemConsumingSubtitle
+
+            fun bind(itemConsuming: ItemConsuming) {
+                imageView.setImageResource(itemConsuming.image)
+                titleView.text = itemConsuming.title
+                subtitleView.text = itemConsuming.subtitle
+            }
         }
+
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemConsumingViewHolder {
             val binding = ItemConsumiendoBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -116,15 +127,15 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
 
         override fun onBindViewHolder(holder: ItemConsumingViewHolder, position: Int) {
             val itemConsuming = items[position]
-            holder.imageView.setImageResource(itemConsuming.image)
-            holder.titleView.text = itemConsuming.title
-            holder.subtitleView.text = itemConsuming.subtitle
+            holder.bind(itemConsuming)
 
             holder.itemView.setOnClickListener {
-                val intent = Intent(holder.itemView.context, BooksLibraryPage::class.java)
-                holder.itemView.context.startActivity(intent)
+                val intent = Intent(context, TitlePageActivity::class.java)
+                intent.putExtra("itemConsuming", itemConsuming)
+                context.startActivity(intent)
             }
         }
+
 
         override fun getItemCount(): Int {
             return items.size
