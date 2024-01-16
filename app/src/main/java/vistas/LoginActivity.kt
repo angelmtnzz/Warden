@@ -51,7 +51,6 @@ class LoginActivity : AppCompatActivity() {
         addBooksToDatabase()
 
         login()
-
         navigateToRegister()
     }
 
@@ -91,6 +90,7 @@ class LoginActivity : AppCompatActivity() {
                 }
                 if (name == user.nickname && password == user.password) {
                     val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                    intent.putExtra("nickname", user.nickname)
                     startActivity(intent)
                 } else {
                     Log.i("mine", "login fallido ")
