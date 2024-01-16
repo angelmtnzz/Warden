@@ -1,27 +1,48 @@
 package vistas
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import java.clases.R
 import java.clases.databinding.FragmentProfileBinding
 
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     private lateinit var binding: FragmentProfileBinding
+    //private lateinit var nameTextView: TextView     //TvNameTitle
+    //private lateinit var name: String               //title
+    //private lateinit var buttonMenu: ImageButton
+
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = FragmentProfileBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
+
+        /*
+        initComponent()
+
+        buttonMenu.setOnClickListener{ view->
+            val popupMenu = PopupMenu(this, view)
+            popupMenu.inflate(R.layout.item_menu_options)
+
+         */
+
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+    inflater: LayoutInflater, container: ViewGroup?,
+    savedInstanceState: Bundle?
     ): View? {
 
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+    // Inflate the layout for this fragment
+    return inflater.inflate(R.layout.fragment_profile, container, false)
     }
+
+/*
+private fun initComponent() {
+
+buttonMenu = findViewById(R.id.btnMenu)
+}
+*/
 }
