@@ -79,7 +79,7 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
             val books = bookdao.getAllBooks()
             itemsConsuming.clear()
 
-            for (i in 0 until bookdao.getNumBooks()) {
+            for (i in 1 until bookdao.getNumBooks()-1) {
                 itemsConsuming.add(ItemConsuming(books[i].cover, books[i].name, books[i].pages.toString(), books[i].author))
             }
 

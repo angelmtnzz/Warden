@@ -11,6 +11,7 @@ import clases.Book
 import clases.Film
 import clases.Title
 import clases.User
+import com.google.android.material.textfield.TextInputEditText
 import database.WardenDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -27,11 +28,12 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
     private lateinit var btnLogin: Button
+    private lateinit var btnRegister: Button
     private lateinit var userDao: UserDao
     private lateinit var titleDao: TitleDao
     private lateinit var bookDao: BookDao
     private lateinit var filmDao: FilmDao
-    private lateinit var etNickname:EditText
+    private lateinit var etNickname: EditText
     private lateinit var etPassword:EditText
 
 
@@ -48,14 +50,23 @@ class LoginActivity : AppCompatActivity() {
         addFilmsToDatabase()    //Añade todas las peliculas
         addBooksToDatabase()
 
-
-
         login()
+
+        register()
+    }
+
+    private fun register() {
+        btnRegister.setOnClickListener {
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
+
+        }
     }
 
 
     private fun initComponent() {
         btnLogin = findViewById(R.id.loginButton)
+        btnRegister = findViewById(R.id.loginRegisterButton)
         etNickname = binding.loginUserName
         etPassword = binding.loginUserPassword
         userDao = WardenDatabase.getDatabase(this).userDao()
@@ -66,28 +77,28 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun login() {
-        var name:String = etNickname.text.toString()
-        var password:String = etPassword.text.toString()
-        if (name.isNotEmpty() && password.isNotEmpty()) {
-            var user:User = User(0,"","","","","",false,"")
 
-            lifecycleScope.launch {
+        var user:User = User(0,"","","","","",false,"")
+
+        btnLogin.setOnClickListener {
+            var name:String = etNickname.text.toString()
+            var password:String = etPassword.text.toString()
+            if (name.isNotEmpty() && password.isNotEmpty()) {
+                lifecycleScope.launch {
                     user = withContext(Dispatchers.IO) {
-                    userDao.getUserByNickname("shussk02")
+                        userDao.getUserByNickname(name)
+                    }
                 }
-            }
-
-            btnLogin.setOnClickListener {
-                if ("shussk02" == user.nickname && "saad" == user.password) {
+                if (name == user.nickname && password == user.password) {
                     val intent = Intent(this@LoginActivity, MainActivity::class.java)
                     startActivity(intent)
                 } else {
                     Log.i("mine", "login fallido ")
                 }
-
             }
 
         }
+
     }
 
     /**
