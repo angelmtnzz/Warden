@@ -12,6 +12,7 @@ import clases.Book
 import clases.Film
 import clases.Title
 import clases.User
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import database.WardenDatabase
 import kotlinx.coroutines.Dispatchers
@@ -94,8 +95,23 @@ class LoginActivity : AppCompatActivity() {
                     startActivity(intent)
 
                 } else {
-                    Log.i("mine", "login fallido ")
+                    val mySnackbar = Snackbar.make(
+                        binding.root,
+                        "Usuario o contraseña incorrectos",
+                        Snackbar.LENGTH_LONG
+                    )
+
+                    mySnackbar.show()
                 }
+            }
+            else{
+                val mySnackbar = Snackbar.make(
+                    binding.root,
+                    "Usuario o contraseña no especificados",
+                    Snackbar.LENGTH_LONG
+                )
+
+                mySnackbar.show()
             }
 
         }
@@ -109,7 +125,16 @@ class LoginActivity : AppCompatActivity() {
 
         var users = listOf(
             User(0, "shussk02", "Saad", "Hussain", "shussk02@gmail.com", "saad", false, ""),
-            User(0, "marcosfnmr", "Marcos", "Fernandez", "marcosfnmr@gmail.com", "marcos", false, ""),
+            User(
+                0,
+                "marcosfnmr",
+                "Marcos",
+                "Fernandez",
+                "marcosfnmr@gmail.com",
+                "marcos",
+                false,
+                ""
+            ),
             User(0, "angelmtnzz", "Angel", "Martínez", "angelmtnzz@gmail.com", "angel", false, ""),
 
             )
