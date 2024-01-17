@@ -50,7 +50,7 @@ class LoginActivity : AppCompatActivity() {
         addUsersToDatabase()  //Añade todos los usuarios
         addTitlesToDatabase()   //Añade todas las titles
         addFilmsToDatabase()    //Añade todas las peliculas
-        addBooksToDatabase()
+        addBooksToDatabase()    //Añade todos los libros
 
         login()
         navigateToRegister()
@@ -156,10 +156,10 @@ class LoginActivity : AppCompatActivity() {
     private fun addTitlesToDatabase() {
 
         var titles = listOf(
-            Title(0, "The Lord of the rings"),
-            Title(0, "Hyperion"),
-            Title(0, "The Fall of Hyperion"),
-            Title(0, "At the Mountains of Madness"),
+            Title(0, "The Lord of the rings", R.drawable.coverbooktlotr, true),
+            Title(0, "Hyperion", R.drawable.coverbookhyperion, true),
+            Title(0, "The Fall of Hyperion", R.drawable.coverbookfallhyperion, false),
+            Title(0, "At the Mountains of Madness", R.drawable.coverbookmadnessmountains, true),
 
             )
         lifecycleScope.launch {
@@ -178,21 +178,23 @@ class LoginActivity : AppCompatActivity() {
     private fun addFilmsToDatabase() {
 
         var films = listOf(
-            Film("Star Wars III", "George Lucas", 139, "Sci-Fy", R.drawable.coverfilmstarwars),
+            Film("Star Wars III", "George Lucas", 139, "Sci-Fy", R.drawable.coverfilmstarwars, true),
             Film(
                 "Scott Pilgrim vs the World",
                 "Edgar Wright",
                 112,
                 "Comedy",
-                R.drawable.coverfilmcott
+                R.drawable.coverfilmcott,
+                false
             ),
-            Film("The Green Mile", "Frank darabond", 188, "horror", R.drawable.coverfilmgreenmile),
+            Film("The Green Mile", "Frank darabond", 188, "horror", R.drawable.coverfilmgreenmile, true),
             Film(
                 "Harry Potter and the Philosopher's Stone",
                 "Chris Columbus",
                 152,
                 "Fantasy",
-                R.drawable.coverfilmharrypotter
+                R.drawable.coverfilmharrypotter,
+                true
             )
         )
         lifecycleScope.launch {
