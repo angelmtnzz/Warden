@@ -33,7 +33,7 @@
             android:value="database.WardenDatabase" />
 
         <activity
-            android:name="vistas.BooksLibraryPage"
+            android:name="vistas.FavoriteLibraryPage"
             android:exported="false" />
         <activity
             android:name="vistas.MainActivity"

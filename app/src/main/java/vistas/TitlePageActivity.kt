@@ -36,6 +36,7 @@ class TitlePageActivity : AppCompatActivity() {
 
         bookdao = WardenDatabase.getDatabase(this).bookDao()
         initComponents()
+        updateFavoriteButtonState(isFavourite)
         initListeners()
 
         val cover = intent.getIntExtra("cover", 0) // 0 is the default value if not found
@@ -43,6 +44,7 @@ class TitlePageActivity : AppCompatActivity() {
         val subtitle = intent.getStringExtra("pages")
         val author = intent.getStringExtra("author")
         isFavourite = intent.getBooleanExtra("favourite", false)
+        updateFavoriteButtonState(isFavourite)
         initListeners()
         Log.d("WARDEN", "ISFAVOURITE=$isFavourite")
         updateFavoriteButtonState(isFavourite)  // pone el boton de color si esta en favs
@@ -85,17 +87,11 @@ class TitlePageActivity : AppCompatActivity() {
     }
 
     private fun updateFavoriteButtonState(isFavourite: Boolean) {
-        Log.d("WARDEN", "ISFAVOURITE=$isFavourite")
         val drawableId = if (isFavourite) {
-            Log.d("WARDEN", "ISFAVOURITE=$isFavourite")
             R.drawable.icon_star_selected
         } else {
             R.drawable.icon_star_noselected
         }
         ibFavoritesTitlePage.load(drawableId)
-        /**ibFavoritesTitlePage.imageTintList = null
-        val drawable = resources.getDrawable(drawableId, theme)
-        ibFavoritesTitlePage.setImageDrawable(drawable)*/
-
     }
 }
