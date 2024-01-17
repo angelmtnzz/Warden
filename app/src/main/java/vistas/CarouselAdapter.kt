@@ -1,5 +1,6 @@
 package vistas
 
+import android.content.Intent
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
@@ -57,6 +58,17 @@ class CarouselAdapter(private val items: MutableList<MainPageFragment.ItemConsum
                 transformations(RoundedCornersTransformation(8f))
             }
             binding.tvCarousel.text = item.title
+
+            // Set OnClickListener to navigate to TitlePageActivity
+            binding.root.setOnClickListener {
+                val intent = Intent(binding.root.context, TitlePageActivity::class.java)
+                intent.putExtra("cover", item.image)
+                intent.putExtra("name", item.title)
+                intent.putExtra("pages", item.subtitle)
+                intent.putExtra("author", item.author)
+                intent.putExtra("favourite", item.favourite)
+                binding.root.context.startActivity(intent)
+            }
         }
     }
 }

@@ -17,6 +17,7 @@ import java.clases.databinding.FragmentMainPageBinding
 import java.clases.databinding.ItemConsumiendoBinding
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.room.Room
 import database.WardenDatabase
@@ -28,7 +29,6 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
 
     private lateinit var binding: FragmentMainPageBinding
     private lateinit var carouselRecyclerView: RecyclerView
-    private val images = listOf(R.drawable.cyberpunkedgerunners, R.drawable.onepiececover, R.drawable.scottpilgrimcover, R.drawable.theofficecover)
     private lateinit var adapter: ItemConsumingAdapter
 
     //Para sacar dotos de los DAO
@@ -96,7 +96,6 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
     }
 
 
-
     data class ItemConsuming(val image: Int, val title: String, val subtitle: String, val author: String, val favourite: Boolean) : Serializable    // Serializable permite enviarlo a traves de un intent a otra activity
 
 
@@ -138,6 +137,7 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
                 intent.putExtra("pages", itemConsuming.subtitle)
                 intent.putExtra("author", itemConsuming.author)
                 intent.putExtra("favourite", itemConsuming.favourite)
+                intent.putExtra("itemConsuming", itemConsuming)
                 context.startActivity(intent)
             }
         }
