@@ -1,11 +1,10 @@
 package modelos
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+
 
 import clases.Film
 
@@ -16,7 +15,17 @@ interface FilmDao {
 
     @Query("SELECT COUNT(*) FROM Film WHERE name = :name")  // Comprueba si existe una pelicula por su nombre
     suspend fun doesFilmExist(name: String): Int
+    @Query("SELECT Favourite FROM Film WHERE name = :name")
+    suspend fun isFavourite(name: String): Boolean
 
+    @Query("UPDATE Film SET favourite = :isFavourite WHERE name = :name")   // Para cambiar el status de favorito
+    suspend fun updateFavouriteStatus(name: String, isFavourite: Boolean)
+
+    @Query("SELECT * FROM Film WHERE favourite = 1")
+    suspend fun getAllFavoriteFilms(): List<Film>
+
+    @Query("SELECT COUNT(*) FROM Film")
+    suspend fun getNumFilms(): Int
     @Query("SELECT * FROM Film")
     suspend fun getAllFilms(): List<Film>
 

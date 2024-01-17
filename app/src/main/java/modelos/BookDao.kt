@@ -1,9 +1,7 @@
 package modelos
 
-import androidx.lifecycle.LiveData
-import androidx.room.ColumnInfo
+
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
@@ -25,7 +23,6 @@ interface BookDao {
 
     @Query("SELECT * FROM Book WHERE favourite = 1")
     suspend fun getAllFavoriteBooks(): List<Book>
-
 
     @Query("SELECT COUNT(*) FROM Book")
     suspend fun getNumBooks(): Int

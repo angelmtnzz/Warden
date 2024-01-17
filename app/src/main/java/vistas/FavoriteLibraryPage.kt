@@ -3,32 +3,31 @@ package vistas
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.cardview.widget.CardView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import database.WardenDatabase
 import kotlinx.coroutines.launch
 import modelos.BookDao
-import vistas.TitlePageActivity
 import java.clases.R
 
 
 //Para sacar dotos de los DAO
 private lateinit var bookdao: BookDao
+
 class FavoriteLibraryPage : AppCompatActivity() {
 
     private lateinit var backwardsButton: CardView
     private lateinit var recyclerView: RecyclerView
 
     data class Book(val title: String, val imageUrl: Int, val isFavorite: Boolean)
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,7 +39,9 @@ class FavoriteLibraryPage : AppCompatActivity() {
         initComponents()
         initListeners()
         setupRecyclerView()
+
     }
+
 
     private fun initComponents() {
         backwardsButton = findViewById(R.id.backwardsButton)
@@ -61,12 +62,13 @@ class FavoriteLibraryPage : AppCompatActivity() {
                 // Aqui dentro va el clickListener del item
                 navigateToTitlePage(selectedBook)
             }
-
             recyclerView.adapter = adapter
-            recyclerView.layoutManager = LinearLayoutManager(this@FavoriteLibraryPage)     //con el @indicamos la clase a la que pertenece el this, si no se refiere a la corrutina
+            recyclerView.layoutManager =
+                LinearLayoutManager(this@FavoriteLibraryPage)     //con el @indicamos la clase a la que pertenece el this, si no se refiere a la corrutina
             //recyclerView.setHasFixedSize(true)
             Log.d("WARDEN", "Booklist=$bookList")   //Funciona
         }
+
     }
 
     private fun navigateToTitlePage(selectedBook: clases.Book) {    // PASAMOS LOS INTENT A LA TITLEPAGE
@@ -81,7 +83,10 @@ class FavoriteLibraryPage : AppCompatActivity() {
         startActivity(intent)
     }
 
-    class BookAdapter(private val bookList: List<clases.Book>, private val onItemClick: (clases.Book) -> Unit) :
+    class BookAdapter(
+        private val bookList: List<clases.Book>,
+        private val onItemClick: (clases.Book) -> Unit
+    ) :
         RecyclerView.Adapter<BookAdapter.BookViewHolder>() {
 
         class BookViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -90,7 +95,8 @@ class FavoriteLibraryPage : AppCompatActivity() {
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookViewHolder {
-            val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_titleview, parent, false)
+            val itemView =
+                LayoutInflater.from(parent.context).inflate(R.layout.item_titleview, parent, false)
             return BookViewHolder(itemView)
         }
 

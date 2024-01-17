@@ -10,9 +10,9 @@ data class Book(
     var author: String,
     var pages: Int,
     var genre: String,
-    var cover: Int,
-    var favourite: Boolean
+    override var cover: Int,
+    override var favourite: Boolean
 
-    ) : Title( 0, name=name) {
+    ) : Title( 0, name, cover, favourite) {
 
 }

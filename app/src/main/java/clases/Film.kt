@@ -9,8 +9,9 @@ data class Film(
     var director: String,
     var lenght: Int,
     var genre: String,
-    var cover: Int,
+    override var cover: Int,
+    override var favourite: Boolean
 
-) : Title(0, name=name) {
+) : Title(0, name, cover, favourite) {
 
 }

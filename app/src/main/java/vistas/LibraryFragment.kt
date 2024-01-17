@@ -37,7 +37,7 @@ class  LibraryFragment : Fragment(R.layout.fragment_library) {
         binding.rvLibrary.adapter = adapter
         val layoutManager = LinearLayoutManager(context)
         binding.rvLibrary.layoutManager = layoutManager
-
+        val favoriteItemCount = arguments?.getInt("favoriteItemCount", 0) ?: 0
         // Return the root view from the binding object
         return binding.root
     }
@@ -47,7 +47,7 @@ class  LibraryFragment : Fragment(R.layout.fragment_library) {
      */
     data class Category(val image: Int, val title: String, val subtitle: String)
     val categories = listOf(
-        Category(R.drawable.banner_favourites, "Favoritos", "Subtítulo 1"),
+        Category(R.drawable.banner_favourites, "Favoritos", "Subtitle"),
         Category(R.drawable.banner_books, "Libros", "Subtítulo 2"),
         Category(R.drawable.banner_films, "Películas", "Subtítulo 3"),
         Category(R.drawable.banner_series, "Series", "Subtítulo 4"),

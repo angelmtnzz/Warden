@@ -1,6 +1,5 @@
 package modelos
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -15,6 +14,18 @@ interface SerieDao {
 
     @Query("SELECT COUNT(*) FROM Serie WHERE name = :name")  // Comprueba si existe una serie por su nombre
     suspend fun doesSerieExist(name: String): Int
+
+    @Query("SELECT Favourite FROM Serie WHERE name = :name")
+    suspend fun isFavourite(name: String): Boolean
+
+    @Query("UPDATE Serie SET favourite = :isFavourite WHERE name = :name")   // Para cambiar el status de favorito
+    suspend fun updateFavouriteStatus(name: String, isFavourite: Boolean)
+
+    @Query("SELECT * FROM Serie WHERE favourite = 1")
+    suspend fun getAllFavoriteBooks(): List<Serie>
+
+    @Query("SELECT COUNT(*) FROM Serie")
+    suspend fun getNumBooks(): Int
 
     @Query("SELECT * FROM Serie")
     suspend fun getAllSeries(): List<Serie>
@@ -33,11 +44,6 @@ interface SerieDao {
     suspend fun getSerieDirector(id: Int): String
     @Query("SELECT director FROM Serie WHERE name= :name")
     suspend fun getSerieDirector(name: String): String
-
-    @Query("SELECT lenght FROM Serie WHERE id = :id")
-    suspend fun getSerieLenght(id: Int): Int
-    @Query("SELECT lenght FROM Serie WHERE name= :name")
-    suspend fun getSerieLenght(name: String): Int
 
     @Query("SELECT genre FROM Serie WHERE id = :id")
     suspend fun getSerieGenre(id: Int): String
