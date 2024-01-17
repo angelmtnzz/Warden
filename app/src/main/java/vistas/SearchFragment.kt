@@ -41,23 +41,6 @@ class SearchFragment : Fragment(R.layout.fragment_search), SearchView.OnQueryTex
 
         searchView.setOnQueryTextListener(this)
 
-        searchView.addOnLayoutChangeListener { _, _, _, _, bottom, _, _, _, oldBottom ->
-            if (bottom < oldBottom) {
-                fragmentContainer.setBackgroundColor(
-                    ContextCompat.getColor(
-                        requireContext(),
-                        R.color.color6G
-                    )
-                )
-            } else {
-                fragmentContainer.setBackgroundColor(
-                    ContextCompat.getColor(
-                        requireContext(),
-                        R.color.color7G
-                    )
-                )
-            }
-        }
 
         val searchManager = requireActivity().getSystemService(Context.SEARCH_SERVICE) as SearchManager
         searchView.setSearchableInfo(searchManager.getSearchableInfo(requireActivity().componentName))
