@@ -71,6 +71,7 @@
         android:layout_marginTop="20dp"
         android:minWidth="200dp"
         android:minHeight="300dp"
+        android:maxWidth="200dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayoutTitlePage"
@@ -85,6 +86,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:text="The Lord of The Rings"
+        android:gravity="center"
         android:textColor="@color/white"
         android:textSize="30sp"
         android:textStyle="bold"/>
@@ -97,6 +99,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:text="Tolkien"
+        android:gravity="center"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"/>
