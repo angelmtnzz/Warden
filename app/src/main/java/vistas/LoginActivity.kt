@@ -1,19 +1,20 @@
 package vistas
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.view.Gravity
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
-import androidx.fragment.app.Fragment
+import androidx.appcompat.app.AppCompatActivity
+import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.core.view.setMargins
 import androidx.lifecycle.lifecycleScope
 import clases.Book
 import clases.Film
 import clases.Title
 import clases.User
 import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.textfield.TextInputEditText
 import database.WardenDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -24,6 +25,7 @@ import modelos.TitleDao
 import modelos.UserDao
 import java.clases.R
 import java.clases.databinding.ActivityLoginBinding
+
 
 class LoginActivity : AppCompatActivity() {
 
@@ -77,6 +79,8 @@ class LoginActivity : AppCompatActivity() {
 
     }
 
+
+
     private fun login() {
 
         var user = User(0, "", "", "", "", "", false, "")
@@ -85,37 +89,43 @@ class LoginActivity : AppCompatActivity() {
             var name: String = etNickname.text.toString()
             var password: String = etPassword.text.toString()
             if (name.isNotEmpty() && password.isNotEmpty()) {
+
                 lifecycleScope.launch {
                     user = withContext(Dispatchers.IO) {
                         userDao.getUserByNickname(name)
                     }
                 }
+
                 if (name == user.nickname && password == user.password) {
                     val intent = Intent(this@LoginActivity, MainActivity::class.java)
                     startActivity(intent)
-
                 } else {
-                    val mySnackbar = Snackbar.make(
-                        binding.root,
-                        "Usuario o contraseña incorrectos",
-                        Snackbar.LENGTH_LONG
-                    )
 
-                    mySnackbar.show()
+                    setSnackBar("Usuario o contraseña incorrectos")
                 }
             }
             else{
-                val mySnackbar = Snackbar.make(
-                    binding.root,
-                    "Usuario o contraseña no especificados",
-                    Snackbar.LENGTH_LONG
-                )
-
-                mySnackbar.show()
+                setSnackBar("Usuario o contraseña no especificados")
             }
 
         }
 
+    }
+
+    private fun setSnackBar(msg: String) {
+        val mySnackbar = Snackbar.make(
+            binding.root,
+            msg,
+            Snackbar.LENGTH_LONG
+        ).setAnchorView(binding.loginLogo)
+
+        val view: View = mySnackbar.view
+        val params = view.layoutParams as CoordinatorLayout.LayoutParams
+        params.gravity = Gravity.TOP
+        params.setMargins(100, 300, 100, 0)
+        view.layoutParams = params
+
+        mySnackbar.show()
     }
 
     /**
