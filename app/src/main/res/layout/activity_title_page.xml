@@ -103,6 +103,39 @@
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"/>
+    <com.google.android.material.button.MaterialButtonToggleGroup
+        android:id="@+id/titleToggleButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvAuthorTitle">
+        <Button
+            style="?attr/materialButtonOutlinedStyle"
+            android:id="@+id/buttonToConsume"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/color7G"
+            tools:text="Por Leer"
+            android:textColor="@color/color6G"/>
+        <Button
+            style="?attr/materialButtonOutlinedStyle"
+            android:id="@+id/buttonConsuming"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/color7G"
+            tools:text="Leyendo"
+            android:textColor="@color/color6G"/>
+        <Button
+            style="?attr/materialButtonOutlinedStyle"
+            android:id="@+id/buttonConsumed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/color7G"
+            tools:text="Leído"
+            android:textColor="@color/color6G"/>
+    </com.google.android.material.button.MaterialButtonToggleGroup>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
