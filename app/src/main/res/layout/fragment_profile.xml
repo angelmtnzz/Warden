@@ -16,7 +16,7 @@
         android:backgroundTint="@color/color6G"
         android:src="@drawable/icon_menu"/>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -28,12 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="95dp"
             android:layout_marginBottom="10dp"
-            app:srcCompat="@drawable/default_profile_image" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            app:srcCompat="@drawable/default_profile_image"/>
 
             <TextView
                 android:id="@+id/profileUsername"
@@ -48,15 +43,61 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/loginUserName"
+                android:id="@+id/profileName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:text="UserName userSurname"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white" />
+
+            <TextView
+                android:id="@+id/profileStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:text="MAESTRO"
+                android:textAlignment="center"
                 android:textColor="@color/white"
                 android:layout_marginBottom="10dp"
                 android:textColorHint="@color/white" />
 
-        </LinearLayout>
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="3"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:padding="10dp">
+
+                <Button
+                    android:id="@+id/profileEstatistics"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Estadísticas"
+                    android:backgroundTint="@color/color1"
+                    android:textColor="@color/black"
+                    android:layout_marginRight="5dp"
+                    android:layout_gravity="fill_horizontal"/>
+                <Button
+                    android:id="@+id/profileConfiguration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Configuración"
+                    android:backgroundTint="@color/color5"
+                    android:textColor="@color/black"
+                    android:layout_marginRight="5dp"
+                    android:layout_gravity="fill_horizontal"/>
+                <Button
+                    android:id="@+id/profileLogout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="LOGOUT"
+                    android:backgroundTint="@color/color5G"
+                    android:textColor="@color/black"
+                    android:layout_marginRight="5dp"
+                    android:layout_gravity="fill_horizontal"/>
+            </GridLayout>
     </LinearLayout>
 </RelativeLayout>
