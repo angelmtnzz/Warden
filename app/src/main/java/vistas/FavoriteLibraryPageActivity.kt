@@ -20,13 +20,9 @@ import modelos.BookDao
 import modelos.TitleDao
 import java.clases.R
 
-
-//Para sacar dotos de los DAO
-
-private lateinit var titledao: TitleDao
-
 class FavoriteLibraryPageActivity : AppCompatActivity() {
 
+    private lateinit var titledao: TitleDao
     private lateinit var backwardsButton: CardView
     private lateinit var recyclerView: RecyclerView
 
@@ -34,13 +30,10 @@ class FavoriteLibraryPageActivity : AppCompatActivity() {
         setTheme(R.style.Theme_Warden_library)
         super.onCreate(savedInstanceState)
         titledao = WardenDatabase.getDatabase(this).titleDao()
-        
         setContentView(R.layout.activity_favorite_library_page)
-
         initComponents()
         initListeners()
         setupRecyclerView()
-
     }
 
 
@@ -67,13 +60,11 @@ class FavoriteLibraryPageActivity : AppCompatActivity() {
             recyclerView.layoutManager =
                 LinearLayoutManager(this@FavoriteLibraryPageActivity)     //con el @indicamos la clase a la que pertenece el this, si no se refiere a la corrutina
         }
-
     }
 
     private fun navigateToTitlePage(selectedTitle: clases.Title) {    // PASAMOS LOS INTENT A LA TITLEPAGE
-        // You can use the data from selectedBook to pass to the title page
-        lifecycleScope.launch {
 
+        lifecycleScope.launch {
 
             val intent = Intent(this@FavoriteLibraryPageActivity, TitlePageActivity::class.java)
             intent.putExtra("name", selectedTitle.name)
@@ -94,43 +85,40 @@ class FavoriteLibraryPageActivity : AppCompatActivity() {
                 intent.putExtra("author", serie.director)
                 intent.putExtra("pages", serie.numberSeasons)
             }
-            // Add other attributes as needed
             startActivity(intent)
         }
     }
 
     class TitleAdapter(
-        private val bookList: List<Title>,
+        private val titleList: List<Title>,
         private val onItemClick: (clases.Title) -> Unit
     ) :
-        RecyclerView.Adapter<TitleAdapter.BookViewHolder>() {
+        RecyclerView.Adapter<TitleAdapter.TitleViewHolder>() {
 
-        class BookViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        class TitleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             val titleTextView: TextView = itemView.findViewById(R.id.tvItemTitleView)
             val imageView: ImageView = itemView.findViewById(R.id.ivItemTitleView)
         }
 
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookViewHolder {
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TitleViewHolder {
             val itemView =
                 LayoutInflater.from(parent.context).inflate(R.layout.item_titleview, parent, false)
-            return BookViewHolder(itemView)
+            return TitleViewHolder(itemView)
         }
 
-        override fun onBindViewHolder(holder: BookViewHolder, position: Int) {
-            val currentBook = bookList[position]
+        override fun onBindViewHolder(holder: TitleViewHolder, position: Int) {
+            val currentTitle = titleList[position]
 
-            holder.titleTextView.text = currentBook.name
-            holder.imageView.setImageResource(currentBook.cover)
+            holder.titleTextView.text = currentTitle.name
+            holder.imageView.setImageResource(currentTitle.cover)
 
-
-            // ClickListener for each item in the RecyclerView
             holder.itemView.setOnClickListener {
-                onItemClick.invoke(currentBook)
+                onItemClick.invoke(currentTitle)
             }
         }
 
         override fun getItemCount(): Int {
-            return bookList.size
+            return titleList.size
         }
     }
 }

@@ -36,7 +36,6 @@ class  LibraryFragment : Fragment(R.layout.fragment_library) {
         binding.rvLibrary.adapter = adapter
         val layoutManager = LinearLayoutManager(context)
         binding.rvLibrary.layoutManager = layoutManager
-        val favoriteItemCount = arguments?.getInt("favoriteItemCount", 0) ?: 0
         // Return the root view from the binding object
         return binding.root
     }
@@ -46,7 +45,7 @@ class  LibraryFragment : Fragment(R.layout.fragment_library) {
      */
     data class Category(val image: Int, val title: String, val subtitle: String)
     val categories = listOf(
-        Category(R.drawable.banner_favourites, "Favoritos", "Subtitle"),
+        Category(R.drawable.banner_favourites, "Favoritos", "Subtitulo 1"),
         Category(R.drawable.banner_books, "Libros", "Subtítulo 2"),
         Category(R.drawable.banner_films, "Películas", "Subtítulo 3"),
         Category(R.drawable.banner_series, "Series", "Subtítulo 4"),
@@ -79,18 +78,17 @@ class  LibraryFragment : Fragment(R.layout.fragment_library) {
             holder.titleView.text = category.title
             holder.subtitleView.text = category.subtitle
 
-            // Set OnClickListener for the entire CardView
+            // onclickListener para la cardview
             holder.itemView.setOnClickListener {
-                // Customize the Intent based on the clicked item
+                // Cambio el Intent segun el Item pulsado
                 val intent = when (position) {
                     0 -> Intent(holder.itemView.context, FavoriteLibraryPageActivity::class.java) //TODO Sustituir con las actividades a redireccionar
                     1 -> Intent(holder.itemView.context, BooksLibraryPageActivity::class.java)
                     2 -> Intent(holder.itemView.context, FilmsLibraryPageActivity::class.java)
-                    // Add more cases for each category
+                    3 -> Intent(holder.itemView.context, SeriesLibraryPageActivity::class.java)
+                    // caso extra
                     else -> Intent(holder.itemView.context, FavoriteLibraryPageActivity::class.java)
                 }
-
-                // You can also pass data to the new activity using intent.putExtra if needed
                 holder.itemView.context.startActivity(intent)
             }
         }

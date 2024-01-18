@@ -23,9 +23,9 @@ import modelos.BookDao
 import modelos.FilmDao
 import java.clases.R
 
-private lateinit var filmDao: FilmDao
 class FilmsLibraryPageActivity : AppCompatActivity() {
 
+    private lateinit var filmDao: FilmDao
     private lateinit var backwardsButton: CardView
     private lateinit var recyclerView: RecyclerView
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,7 +52,7 @@ class FilmsLibraryPageActivity : AppCompatActivity() {
         }
     }
     private fun navigateToTitlePage(selectedFilm: clases.Film) {    // PASAMOS LOS INTENT A LA TITLEPAGE
-        // You can use the data from selectedFilm to pass to the title page
+
         lifecycleScope.launch {
 
             val intent = Intent(this@FilmsLibraryPageActivity, TitlePageActivity::class.java)
@@ -88,8 +88,6 @@ class FilmsLibraryPageActivity : AppCompatActivity() {
             holder.filmTextView.text = currentFilm.name
             holder.imageView.setImageResource(currentFilm.cover)
 
-
-            // ClickListener for each item in the RecyclerView
             holder.itemView.setOnClickListener {
                 onItemClick.invoke(currentFilm)
             }

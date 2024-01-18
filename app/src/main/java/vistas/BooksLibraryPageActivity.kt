@@ -21,9 +21,9 @@ import kotlinx.coroutines.launch
 import modelos.BookDao
 import java.clases.R
 
-private lateinit var bookDao: BookDao
 class BooksLibraryPageActivity : AppCompatActivity() {
 
+    private lateinit var bookDao: BookDao
     private lateinit var backwardsButton: CardView
     private lateinit var recyclerView: RecyclerView
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,7 +50,6 @@ class BooksLibraryPageActivity : AppCompatActivity() {
         }
     }
     private fun navigateToTitlePage(selectedBook: clases.Book) {    // PASAMOS LOS INTENT A LA TITLEPAGE
-        // You can use the data from selectedBook to pass to the title page
         lifecycleScope.launch {
 
             val intent = Intent(this@BooksLibraryPageActivity, TitlePageActivity::class.java)
@@ -86,8 +85,6 @@ class BooksLibraryPageActivity : AppCompatActivity() {
             holder.bookTextView.text = currentBook.name
             holder.imageView.setImageResource(currentBook.cover)
 
-
-            // ClickListener for each item in the RecyclerView
             holder.itemView.setOnClickListener {
                 onItemClick.invoke(currentBook)
             }
