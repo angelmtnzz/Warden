@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.lifecycle.lifecycleScope
 import clases.Book
+import clases.ConsumptionStatus
 import clases.Film
 import clases.Serie
 import clases.Title
@@ -23,6 +24,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import modelos.BookDao
 import modelos.FilmDao
+import modelos.SerieDao
 import modelos.TitleDao
 import modelos.UserDao
 import java.clases.R
@@ -39,6 +41,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var titleDao: TitleDao
     private lateinit var bookDao: BookDao
     private lateinit var filmDao: FilmDao
+    private lateinit var serieDao: SerieDao
     private lateinit var etNickname: EditText
     private lateinit var etPassword: EditText
 
@@ -83,6 +86,7 @@ class LoginActivity : AppCompatActivity() {
         titleDao = WardenDatabase.getDatabase(this).titleDao()
         filmDao = WardenDatabase.getDatabase(this).filmDao()
         bookDao = WardenDatabase.getDatabase(this).bookDao()
+        serieDao = WardenDatabase.getDatabase(this).serieDao()
 
     }
 
@@ -102,6 +106,8 @@ class LoginActivity : AppCompatActivity() {
                     }
                 }
 
+                var uNickname = user.nickname
+                var uPassword = user.password
                 if (name == user.nickname && password == user.password) {
                     val intent = Intent(this@LoginActivity, MainActivity::class.java)
                     startActivity(intent)
@@ -174,7 +180,7 @@ class LoginActivity : AppCompatActivity() {
 
         addBooksToDatabase()
         addFilmsToDatabase()
-        //addSeriesToDatabase() // Falta por agregar
+        addSeriesToDatabase()
 
         media = books + films + series
         Log.d("WARDEN", "$media")
@@ -203,7 +209,8 @@ class LoginActivity : AppCompatActivity() {
                 139,
                 "Sci-Fy",
                 R.drawable.coverfilmstarwars,
-                true
+                true,
+                ConsumptionStatus.CONSUMED
             ),
             Film(
                 "Scott Pilgrim vs the World",
@@ -211,7 +218,8 @@ class LoginActivity : AppCompatActivity() {
                 112,
                 "Comedy",
                 R.drawable.coverfilmcott,
-                false
+                false,
+                ConsumptionStatus.TO_CONSUME
             ),
             Film(
                 "The Green Mile",
@@ -219,7 +227,8 @@ class LoginActivity : AppCompatActivity() {
                 188,
                 "horror",
                 R.drawable.coverfilmgreenmile,
-                true
+                true,
+                ConsumptionStatus.TO_CONSUME
             ),
             Film(
                 "Harry Potter and the Philosopher's Stone",
@@ -227,7 +236,8 @@ class LoginActivity : AppCompatActivity() {
                 152,
                 "Fantasy",
                 R.drawable.coverfilmharrypotter,
-                true
+                true,
+                ConsumptionStatus.TO_CONSUME
             )
         )
         lifecycleScope.launch {
@@ -235,6 +245,39 @@ class LoginActivity : AppCompatActivity() {
                 val filmExists = filmDao.doesFilmExist(it.name)
                 if (filmExists == 0) {
                     filmDao.insertFilm(it)
+                }
+            }
+        }
+    }
+
+    private fun addSeriesToDatabase() {
+
+        series = listOf(
+            Serie(
+                "The Office",
+                9,
+                "Ricky Gervais",
+                "Comedy",
+                R.drawable.coverserietheoffice,
+                true,
+                ConsumptionStatus.TO_CONSUME
+            ),
+            Serie(
+                "Cyberpunk: Edgerunners",
+                1,
+                "Hiroyuki Imaishi",
+                "Cyberpunk",
+                R.drawable.coverserieedgerunners,
+                true,
+                ConsumptionStatus.CONSUMED
+            )
+
+        )
+        lifecycleScope.launch {
+            series.forEach {
+                val serieExists = serieDao.doesSerieExist(it.name)
+                if (serieExists == 0) {
+                    serieDao.insertSerie(it)
                 }
             }
         }
@@ -252,16 +295,24 @@ class LoginActivity : AppCompatActivity() {
                 1191,
                 "Fantasy",
                 R.drawable.coverbooktlotr,
-                true
+                true,
+                ConsumptionStatus.CONSUMING
             ),
-            Book("Hyperion", "Dan Simmons", 648, "Sci-Fy", R.drawable.coverbookhyperion, true),
+            Book(
+                "Hyperion",
+                "Dan Simmons",
+                648, "Sci-Fy",
+                R.drawable.coverbookhyperion,
+                true,
+                ConsumptionStatus.TO_CONSUME),
             Book(
                 "The Fall of Hyperion",
                 "Dan Simmons",
                 744,
                 "Sci-Fy",
                 R.drawable.coverbookfallhyperion,
-                false
+                false,
+                ConsumptionStatus.TO_CONSUME
             ),
             Book(
                 "At the Mountains of Madness",
@@ -269,7 +320,8 @@ class LoginActivity : AppCompatActivity() {
                 176,
                 "Horror",
                 R.drawable.coverbookmadnessmountains,
-                true
+                true,
+                ConsumptionStatus.TO_CONSUME
             ),
 
             )

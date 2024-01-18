@@ -10,6 +10,7 @@ data class Serie(
     var director: String,
     var genre: String,
     override var cover: Int,
-    override var favourite: Boolean
+    override var favourite: Boolean,
+    override var status: ConsumptionStatus
 
-) : Title( 0, name, cover, favourite) {}
+) : Title( 0, name, cover, favourite, status) {}

@@ -9,7 +9,8 @@ open class Title(
     var id: Int,
     open var name: String,
     open var cover: Int,
-    open var favourite: Boolean
+    open var favourite: Boolean,
+    open var status: ConsumptionStatus
 ) {
 }
 
@@ -19,6 +20,15 @@ open class Title(
  * atributos propios de su clase.
  */
 fun createTitleFromMedia(media: Title): Title {
-    return Title(0, media.name, media.cover, media.favourite)
+    return Title(0, media.name, media.cover, media.favourite, media.status)
+}
+
+/**
+ * Clase enum que contiene los tres valores posibles de Status
+ */
+enum class ConsumptionStatus {
+    CONSUMED,
+    CONSUMING,
+    TO_CONSUME
 }
 
