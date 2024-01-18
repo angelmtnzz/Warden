@@ -9,7 +9,7 @@
 
     <!---FragmentMainPage-->
     <string name="Recomendaciones">Recomendaciones</string>
-    <string name="Bienvenida">Bienvenido Usuario</string>
+    <string name="Bienvenida">Bienvenido %1$s</string>
     <string name="Consumiendo">Continua donde lo dejaste</string>
 
     <!---FragmentLibraryPage-->

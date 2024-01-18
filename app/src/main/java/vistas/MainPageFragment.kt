@@ -53,10 +53,17 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
 
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         binding = FragmentMainPageBinding.inflate(inflater, container, false)
+
+        // Accede al Intent de la Activity asociada al Fragment
+        val intentFromActivity = activity?.intent
+
+        // Ahora puedes usar intentFromActivity para obtener extras, etc.
+        val nickname = intentFromActivity?.getStringExtra("nickname")
+
+        binding.tvBienvenida.text = getString(R.string.Bienvenida, nickname)
 
         setupCarouselRecyclerView()
         return binding.root
@@ -67,28 +74,49 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
         val layoutManager = LinearLayoutManager(context)
         binding.rvConsumiendo.layoutManager = layoutManager
 
+
         lifecycleScope.launch {     // Hay que ejecutarlo tod0 dentro de la corrutina, si no lo salta y ejecuta al final
             //val books = bookdao.getAllBooks()   // guardo el contenido de los libros en la variable books usando el metodo del DAO
             val titles = titledao.getAllTitles()
 
             // saco lista de titulos, convierto a su clase y lo meto a la lista
-               // En un futuro comprobar cuales son los items con la condicion de consumiendo y insertarlos.
+            // En un futuro comprobar cuales son los items con la condicion de consumiendo y insertarlos.
 
-            if(titledao.doesBookExist(titles[0].name)==1){  // Si existe un libro con ese nombre
+            if (titledao.doesBookExist(titles[0].name) == 1) {  // Si existe un libro con ese nombre
                 val book = titledao.getBook(titles[0].name) // Cojo el libro
-                itemsConsuming.add(ItemConsuming(book.cover, book.name, book.pages.toString(), book.author, book.favourite))    // Lo inserto
+                itemsConsuming.add(
+                    ItemConsuming(
+                        book.cover, book.name, book.pages.toString(), book.author, book.favourite
+                    )
+                )    // Lo inserto
             }
-            if(titledao.doesFilmExist(titles[0].name)==1){  // Si existe una pelicula con ese nombre
+            if (titledao.doesFilmExist(titles[0].name) == 1) {  // Si existe una pelicula con ese nombre
                 val film = titledao.getFilm(titles[0].name) // Cojo la pelicula
-                itemsConsuming.add(ItemConsuming(film.cover, film.name, film.lenght.toString(), film.director, film.favourite))    // La inserto
+                itemsConsuming.add(
+                    ItemConsuming(
+                        film.cover, film.name, film.lenght.toString(), film.director, film.favourite
+                    )
+                )    // La inserto
             }
-            if(titledao.doesSerieExist(titles[0].name)==1){  // Si existe una serie con ese nombre
+            if (titledao.doesSerieExist(titles[0].name) == 1) {  // Si existe una serie con ese nombre
                 val serie = titledao.getSerie(titles[0].name) // Cojo la serie
-                itemsConsuming.add(ItemConsuming(serie.cover, serie.name, serie.numberSeasons.toString(), serie.director, serie.favourite))    // La inserto
+                itemsConsuming.add(
+                    ItemConsuming(
+                        serie.cover,
+                        serie.name,
+                        serie.numberSeasons.toString(),
+                        serie.director,
+                        serie.favourite
+                    )
+                )    // La inserto
             }
 
-            if(itemsConsuming!=null){   //Importante poner el if para que no de nullpointer si hay algun error
-                adapter = context?.let { ItemConsumingAdapter(itemsConsuming, it, R.layout.item_consumiendo) }!!
+            if (itemsConsuming != null) {   //Importante poner el if para que no de nullpointer si hay algun error
+                adapter = context?.let {
+                    ItemConsumingAdapter(
+                        itemsConsuming, it, R.layout.item_consumiendo
+                    )
+                }!!
                 binding.rvConsumiendo.adapter = adapter
             }
         }
@@ -105,17 +133,41 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
             itemsConsuming.clear()
 
             for (i in 1 until titledao.getNumTitles()) {   // Recorro la lista de titulos
-                if(titledao.doesBookExist(titles[i].name)==1){  // Si existe un libro con ese nombre
+                if (titledao.doesBookExist(titles[i].name) == 1) {  // Si existe un libro con ese nombre
                     val book = titledao.getBook(titles[i].name) // Cojo el libro
-                    itemsConsuming.add(ItemConsuming(book.cover, book.name, book.pages.toString(), book.author, book.favourite))    // Lo inserto
+                    itemsConsuming.add(
+                        ItemConsuming(
+                            book.cover,
+                            book.name,
+                            book.pages.toString(),
+                            book.author,
+                            book.favourite
+                        )
+                    )    // Lo inserto
                 }
-                if(titledao.doesFilmExist(titles[i].name)==1){  // Si existe una pelicula con ese nombre
+                if (titledao.doesFilmExist(titles[i].name) == 1) {  // Si existe una pelicula con ese nombre
                     val film = titledao.getFilm(titles[i].name) // Cojo la pelicula
-                    itemsConsuming.add(ItemConsuming(film.cover, film.name, film.lenght.toString(), film.director, film.favourite))    // La inserto
+                    itemsConsuming.add(
+                        ItemConsuming(
+                            film.cover,
+                            film.name,
+                            film.lenght.toString(),
+                            film.director,
+                            film.favourite
+                        )
+                    )    // La inserto
                 }
-                if(titledao.doesSerieExist(titles[i].name)==1){  // Si existe una serie con ese nombre
+                if (titledao.doesSerieExist(titles[i].name) == 1) {  // Si existe una serie con ese nombre
                     val serie = titledao.getSerie(titles[i].name) // Cojo la serie
-                    itemsConsuming.add(ItemConsuming(serie.cover, serie.name, serie.numberSeasons.toString(), serie.director, serie.favourite))    // La inserto
+                    itemsConsuming.add(
+                        ItemConsuming(
+                            serie.cover,
+                            serie.name,
+                            serie.numberSeasons.toString(),
+                            serie.director,
+                            serie.favourite
+                        )
+                    )    // La inserto
                 }
 
             }
@@ -132,8 +184,13 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
     }
 
 
-    data class ItemConsuming(val image: Int, val title: String, val subtitle: String, val author: String, val favourite: Boolean) : Serializable    // Serializable permite enviarlo a traves de un intent a otra activity
-
+    data class ItemConsuming(
+        val image: Int,
+        val title: String,
+        val subtitle: String,
+        val author: String,
+        val favourite: Boolean
+    ) : Serializable    // Serializable permite enviarlo a traves de un intent a otra activity
 
 
     // Use a separate binding class for your item layout
@@ -143,7 +200,8 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
         private val layoutResourceId: Int
     ) : RecyclerView.Adapter<ItemConsumingAdapter.ItemConsumingViewHolder>() {
 
-        inner class ItemConsumingViewHolder(private val binding: ItemConsumiendoBinding) : RecyclerView.ViewHolder(binding.root) {
+        inner class ItemConsumingViewHolder(private val binding: ItemConsumiendoBinding) :
+            RecyclerView.ViewHolder(binding.root) {
             val imageView: ImageView = binding.itemConsumingCover
             val titleView: TextView = binding.itemConsumingTitle
             val subtitleView: TextView = binding.itemConsumingSubtitle
@@ -157,7 +215,8 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
 
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemConsumingViewHolder {
-            val binding = ItemConsumiendoBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            val binding =
+                ItemConsumiendoBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             return ItemConsumingViewHolder(binding)
         }
 

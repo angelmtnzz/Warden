@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.fragment.app.add
 import androidx.lifecycle.lifecycleScope
 import clases.Book
 import clases.ConsumptionStatus
@@ -44,6 +45,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var serieDao: SerieDao
     private lateinit var etNickname: EditText
     private lateinit var etPassword: EditText
+
 
     // Listas para guardar los titles que se crean
     private var films: List<Film> =
@@ -105,11 +107,13 @@ class LoginActivity : AppCompatActivity() {
                         userDao.getUserByNickname(name)
                     }
                 }
+                var uNickname = user?.nickname
+                var uPassword = user?.password
 
-                var uNickname = user.nickname
-                var uPassword = user.password
-                if (name == user.nickname && password == user.password) {
+                if (uNickname!= null && uPassword != null && name == uNickname && password == uPassword) {
                     val intent = Intent(this@LoginActivity, MainActivity::class.java)
+
+                    intent.putExtra("nickname", name)
                     startActivity(intent)
                 } else {
 
@@ -125,15 +129,13 @@ class LoginActivity : AppCompatActivity() {
 
     private fun setSnackBar(msg: String) {
         val mySnackbar = Snackbar.make(
-            binding.root,
-            msg,
-            Snackbar.LENGTH_LONG
+            binding.root, msg, Snackbar.LENGTH_LONG
         ).setAnchorView(binding.loginLogo)
 
         val view: View = mySnackbar.view
         val params = view.layoutParams as CoordinatorLayout.LayoutParams
         params.gravity = Gravity.TOP
-        params.setMargins(100, 300, 100, 0)
+        params.setMargins(100, 200, 100, 0)
         view.layoutParams = params
 
         mySnackbar.show()
@@ -147,14 +149,7 @@ class LoginActivity : AppCompatActivity() {
         var users = listOf(
             User(0, "shussk02", "Saad", "Hussain", "shussk02@gmail.com", "saad", false, ""),
             User(
-                0,
-                "marcosfnmr",
-                "Marcos",
-                "Fernandez",
-                "marcosfnmr@gmail.com",
-                "marcos",
-                false,
-                ""
+                0, "marcosfnmr", "Marcos", "Fernandez", "marcosfnmr@gmail.com", "marcos", false, ""
             ),
             User(0, "angelmtnzz", "Angel", "Martínez", "angelmtnzz@gmail.com", "angel", false, ""),
 
@@ -211,8 +206,7 @@ class LoginActivity : AppCompatActivity() {
                 R.drawable.coverfilmstarwars,
                 true,
                 ConsumptionStatus.CONSUMED
-            ),
-            Film(
+            ), Film(
                 "Scott Pilgrim vs the World",
                 "Edgar Wright",
                 112,
@@ -220,8 +214,7 @@ class LoginActivity : AppCompatActivity() {
                 R.drawable.coverfilmcott,
                 false,
                 ConsumptionStatus.TO_CONSUME
-            ),
-            Film(
+            ), Film(
                 "The Green Mile",
                 "Frank darabond",
                 188,
@@ -229,8 +222,7 @@ class LoginActivity : AppCompatActivity() {
                 R.drawable.coverfilmgreenmile,
                 true,
                 ConsumptionStatus.TO_CONSUME
-            ),
-            Film(
+            ), Film(
                 "Harry Potter and the Philosopher's Stone",
                 "Chris Columbus",
                 152,
@@ -261,8 +253,7 @@ class LoginActivity : AppCompatActivity() {
                 R.drawable.coverserietheoffice,
                 true,
                 ConsumptionStatus.TO_CONSUME
-            ),
-            Serie(
+            ), Serie(
                 "Cyberpunk: Edgerunners",
                 1,
                 "Hiroyuki Imaishi",
@@ -301,10 +292,12 @@ class LoginActivity : AppCompatActivity() {
             Book(
                 "Hyperion",
                 "Dan Simmons",
-                648, "Sci-Fy",
+                648,
+                "Sci-Fy",
                 R.drawable.coverbookhyperion,
                 true,
-                ConsumptionStatus.TO_CONSUME),
+                ConsumptionStatus.TO_CONSUME
+            ),
             Book(
                 "The Fall of Hyperion",
                 "Dan Simmons",
