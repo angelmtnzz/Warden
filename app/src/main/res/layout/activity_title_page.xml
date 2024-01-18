@@ -116,25 +116,25 @@
             android:id="@+id/buttonToConsume"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/color7G"
+            android:backgroundTint="@color/color5"
             tools:text="Por Leer"
-            android:textColor="@color/color6G"/>
+            android:textColor="@color/white"/>
         <Button
             style="?attr/materialButtonOutlinedStyle"
             android:id="@+id/buttonConsuming"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/color7G"
+            android:backgroundTint="@color/color5"
             tools:text="Leyendo"
-            android:textColor="@color/color6G"/>
+            android:textColor="@color/white"/>
         <Button
             style="?attr/materialButtonOutlinedStyle"
             android:id="@+id/buttonConsumed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/color7G"
+            android:backgroundTint="@color/color5"
             tools:text="Leído"
-            android:textColor="@color/color6G"/>
+            android:textColor="@color/white"/>
     </com.google.android.material.button.MaterialButtonToggleGroup>
 
 

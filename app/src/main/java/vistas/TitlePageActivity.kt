@@ -9,6 +9,7 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import clases.Book
 import clases.ConsumptionStatus
@@ -71,12 +72,14 @@ class TitlePageActivity : AppCompatActivity() {
         buttonConsuming = findViewById(R.id.buttonConsuming)
         buttonConsumed = findViewById(R.id.buttonConsumed)
 
+
         val cover = intent.getIntExtra("cover", 0) // 0 es el valor por defecto por si no lo encuentra
         title = intent.getStringExtra("name")
         val subtitle = intent.getStringExtra("pages")
         val author = intent.getStringExtra("author")
         isFavourite = intent.getBooleanExtra("favourite", false)
         updateFavoriteButtonState(isFavourite)
+        initToggleButtonColors()
         ivTitle.load(cover) {
             transformations(RoundedCornersTransformation(8f))
         }
@@ -126,21 +129,67 @@ class TitlePageActivity : AppCompatActivity() {
 
                     if (titledao.doesBookExist(title.toString()) == 1) {
                         bookdao.updateStatus(title.toString(), it)
+                        updateButtonStyle(it)
                     }
                     if (titledao.doesFilmExist(title.toString()) == 1) {
                         filmdao.updateStatus(title.toString(), it)
+                        updateButtonStyle(it)
                     }
                     if (titledao.doesSerieExist(title.toString()) == 1) {
                         seriedao.updateStatus(title.toString(), it)
+                        updateButtonStyle(it)
                     }
                 }
             }
         }
     }
-    private fun updateTitleStatus(newStatus: ConsumptionStatus) {
+    private fun initToggleButtonColors(){
         lifecycleScope.launch {
-            titledao.updateStatus(title.toString(), newStatus)
+            val status = titledao.getStatus(title.toString())
+
+            if (titledao.doesBookExist(title.toString()) == 1) {
+                bookdao.updateStatus(title.toString(), status)
+                updateButtonStyle(status)
+            }
+            if (titledao.doesFilmExist(title.toString()) == 1) {
+                filmdao.updateStatus(title.toString(), status)
+                updateButtonStyle(status)
+            }
+            if (titledao.doesSerieExist(title.toString()) == 1) {
+                seriedao.updateStatus(title.toString(), status)
+                updateButtonStyle(status)
+            }
         }
+    }
+    private fun updateButtonStyle( it: ConsumptionStatus) {
+        resetButtonStyle()
+        when(it){
+            ConsumptionStatus.TO_CONSUME -> updateButtonColor(buttonToConsume, it)
+            ConsumptionStatus.CONSUMING -> updateButtonColor(buttonConsuming, it)
+            ConsumptionStatus.CONSUMED -> updateButtonColor(buttonConsumed, it)
+        }
+    }
+    private fun updateButtonColor(button: Button, status: ConsumptionStatus) {
+        val backgroundColorResId = when (status) {
+            ConsumptionStatus.TO_CONSUME -> R.color.color1
+            ConsumptionStatus.CONSUMING -> R.color.color1
+            ConsumptionStatus.CONSUMED -> R.color.color1
+        }
+        val backgroundColor = ContextCompat.getColor(this, backgroundColorResId)
+        button.setBackgroundColor(backgroundColor)
+
+        button.setTextColor(resources.getColor(R.color.black))
+    }
+
+
+    private fun resetButtonStyle() {
+        buttonToConsume.setBackgroundColor(resources.getColor(R.color.color5))
+        buttonToConsume.setTextColor(resources.getColor(R.color.white))
+        buttonConsuming.setBackgroundColor(resources.getColor(R.color.color5))
+        buttonConsuming.setTextColor(resources.getColor(R.color.white))
+        buttonConsumed.setBackgroundColor(resources.getColor(R.color.color5))
+        buttonConsumed.setTextColor(resources.getColor(R.color.white))
+
     }
 
     private fun updateFavoriteButtonState(isFavourite: Boolean) {
