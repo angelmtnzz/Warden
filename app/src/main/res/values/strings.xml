@@ -21,6 +21,8 @@
     <string name="subtituloLibros"> Libros</string>
     <string name="subtituloPeliculas"> Películas</string>
     <string name="subtituloSeries"> Series</string>
+
+    <!---Login-->
     <string name="title_activity_login">LoginActivity</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>

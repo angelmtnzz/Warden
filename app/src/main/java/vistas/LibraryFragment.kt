@@ -1,6 +1,5 @@
 package vistas
 
-import vistas.FavoriteLibraryPage
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -84,11 +83,11 @@ class  LibraryFragment : Fragment(R.layout.fragment_library) {
             holder.itemView.setOnClickListener {
                 // Customize the Intent based on the clicked item
                 val intent = when (position) {
-                    0 -> Intent(holder.itemView.context, FavoriteLibraryPage::class.java) //TODO Sustituir con las actividades a redireccionar
-                    1 -> Intent(holder.itemView.context, FavoriteLibraryPage::class.java)
-                    2 -> Intent(holder.itemView.context, FavoriteLibraryPage::class.java)
+                    0 -> Intent(holder.itemView.context, FavoriteLibraryPageActivity::class.java) //TODO Sustituir con las actividades a redireccionar
+                    1 -> Intent(holder.itemView.context, BooksLibraryPageActivity::class.java)
+                    2 -> Intent(holder.itemView.context, FavoriteLibraryPageActivity::class.java)
                     // Add more cases for each category
-                    else -> Intent(holder.itemView.context, FavoriteLibraryPage::class.java)
+                    else -> Intent(holder.itemView.context, FavoriteLibraryPageActivity::class.java)
                 }
 
                 // You can also pass data to the new activity using intent.putExtra if needed

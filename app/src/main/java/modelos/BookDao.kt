@@ -32,8 +32,8 @@ interface BookDao {
 
     @Query("SELECT status FROM Book WHERE name = :name")            // Devuelve el status del libro
     suspend fun getStatus(name: String): ConsumptionStatus
-    @Query("SELECT * FROM Film WHERE status = :status")
-    suspend fun getFilmsByStatus(status: ConsumptionStatus): List<Title>
+    @Query("SELECT * FROM Book WHERE status = :status")
+    suspend fun getBooksByStatus(status: ConsumptionStatus): List<Book>
 
     @Query("SELECT * FROM Book WHERE favourite = 1")
     suspend fun getAllFavoriteBooks(): List<Book>

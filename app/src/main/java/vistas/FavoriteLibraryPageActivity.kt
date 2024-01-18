@@ -22,21 +22,17 @@ import java.clases.R
 
 
 //Para sacar dotos de los DAO
-private lateinit var bookdao: BookDao
+
 private lateinit var titledao: TitleDao
 
-class FavoriteLibraryPage : AppCompatActivity() {
+class FavoriteLibraryPageActivity : AppCompatActivity() {
 
     private lateinit var backwardsButton: CardView
     private lateinit var recyclerView: RecyclerView
 
-    data class Book(val title: String, val imageUrl: Int, val isFavorite: Boolean)
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.Theme_Warden_library)
         super.onCreate(savedInstanceState)
-        bookdao = WardenDatabase.getDatabase(this).bookDao()
         titledao = WardenDatabase.getDatabase(this).titleDao()
         
         setContentView(R.layout.activity_favorite_library_page)
@@ -62,16 +58,14 @@ class FavoriteLibraryPage : AppCompatActivity() {
     private fun setupRecyclerView() {
         lifecycleScope.launch {
             val titleList =
-                titledao.getAllFavoriteTitles()   // cargo la lista de libros
+                titledao.getAllFavoriteTitles()   // cargo la lista de Titulos en favoritos
             val adapter = TitleAdapter(titleList) { selectedTitle ->
                 // Aqui dentro va el clickListener del item
                 navigateToTitlePage(selectedTitle)
             }
             recyclerView.adapter = adapter
             recyclerView.layoutManager =
-                LinearLayoutManager(this@FavoriteLibraryPage)     //con el @indicamos la clase a la que pertenece el this, si no se refiere a la corrutina
-            //recyclerView.setHasFixedSize(true)
-            Log.d("WARDEN", "Booklist=$titleList")   //Funciona
+                LinearLayoutManager(this@FavoriteLibraryPageActivity)     //con el @indicamos la clase a la que pertenece el this, si no se refiere a la corrutina
         }
 
     }
@@ -81,7 +75,7 @@ class FavoriteLibraryPage : AppCompatActivity() {
         lifecycleScope.launch {
 
 
-            val intent = Intent(this@FavoriteLibraryPage, TitlePageActivity::class.java)
+            val intent = Intent(this@FavoriteLibraryPageActivity, TitlePageActivity::class.java)
             intent.putExtra("name", selectedTitle.name)
             intent.putExtra("cover", selectedTitle.cover)
             intent.putExtra("favourite", selectedTitle.favourite)
