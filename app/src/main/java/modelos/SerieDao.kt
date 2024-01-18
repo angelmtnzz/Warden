@@ -33,7 +33,7 @@ interface SerieDao {
     @Query("SELECT status FROM Serie WHERE name = :name")            // Devuelve el status de la serie
     suspend fun getStatus(name: String): ConsumptionStatus
     @Query("SELECT * FROM Serie WHERE status = :status")
-    suspend fun getSeriesByStatus(status: ConsumptionStatus): List<Title>
+    suspend fun getSeriesByStatus(status: ConsumptionStatus): List<Serie>
 
     @Query("SELECT * FROM Serie WHERE favourite = 1")
     suspend fun getAllFavoriteSeries(): List<Serie>

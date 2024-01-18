@@ -85,7 +85,7 @@ class  LibraryFragment : Fragment(R.layout.fragment_library) {
                 val intent = when (position) {
                     0 -> Intent(holder.itemView.context, FavoriteLibraryPageActivity::class.java) //TODO Sustituir con las actividades a redireccionar
                     1 -> Intent(holder.itemView.context, BooksLibraryPageActivity::class.java)
-                    2 -> Intent(holder.itemView.context, FavoriteLibraryPageActivity::class.java)
+                    2 -> Intent(holder.itemView.context, FilmsLibraryPageActivity::class.java)
                     // Add more cases for each category
                     else -> Intent(holder.itemView.context, FavoriteLibraryPageActivity::class.java)
                 }

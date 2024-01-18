@@ -32,7 +32,7 @@ interface FilmDao {
     @Query("SELECT status FROM Film WHERE name = :name")            // Devuelve el status del libro
     suspend fun getStatus(name: String): ConsumptionStatus
     @Query("SELECT * FROM Film WHERE status = :status")
-    suspend fun getFilmsByStatus(status: ConsumptionStatus): List<Title>
+    suspend fun getFilmsByStatus(status: ConsumptionStatus): List<Film>
 
     @Query("SELECT * FROM Film WHERE favourite = 1")
     suspend fun getAllFavoriteFilms(): List<Film>
