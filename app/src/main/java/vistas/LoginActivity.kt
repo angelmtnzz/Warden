@@ -41,12 +41,16 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var etNickname: EditText
     private lateinit var etPassword: EditText
 
-    private var films: List<Film> = emptyList()         // Lista de Films que se añadiran a la database
-    private var books: List<Book> = emptyList()         // Lista de Books que se añadiran a la database
-    private var series: List<Serie> = emptyList()       // lista de Series que se añadiran a la database
-    private var titles: MutableList<Title> = mutableListOf()       // lista de Titles clonados que se añadiran a la database
-    var media:List<Title> = emptyList()
-
+    // Listas para guardar los titles que se crean
+    private var films: List<Film> =
+        emptyList()         // Lista de Films que se añadiran a la database
+    private var books: List<Book> =
+        emptyList()         // Lista de Books que se añadiran a la database
+    private var series: List<Serie> =
+        emptyList()       // lista de Series que se añadiran a la database
+    private var titles: MutableList<Title> =
+        mutableListOf()       // lista de Titles clonados que se añadiran a la database
+    var media: List<Title> = emptyList()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,12 +58,8 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         initComponent()
-
-        addUsersToDatabase()  //Añade todos los usuarios
-        addTitlesToDatabase()   //Añade todas las titles
-
+        addDataToDatabase()
         login()
         navigateToRegister()
     }
@@ -164,22 +164,24 @@ class LoginActivity : AppCompatActivity() {
     }
 
 
-    /**
-     * Inicializa el dao y crea una lista de Peliculas, luego abre una corrutina y añade los libros a la BBDD
-     */
+    private fun addDataToDatabase() {
+        addUsersToDatabase()
+        addTitlesToDatabase()
+    }
+
     private fun addTitlesToDatabase() {
 
         addBooksToDatabase()
         addFilmsToDatabase()
-        //addSeriesToDatabase()
+        //addSeriesToDatabase() // Falta por agregar
 
         media = books + films + series
-        for (i in 0..media.size-1){
+        for (i in 0..media.size - 1) {
             titles.add(createTitleFromMedia(media[i]))  //Clono el titulo y lo añado a titles
         }
         lifecycleScope.launch {
             films.forEach {
-                val titleExists = titleDao.doesTitleExist(it.name)
+                val titleExists = titleDao.doesTitleExist(it.name)  // Compruebo si existe
                 if (titleExists == 0) {
                     titleDao.insertTitle(it)
                 }
