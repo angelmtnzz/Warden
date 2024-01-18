@@ -8,12 +8,13 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.coordinatorlayout.widget.CoordinatorLayout
-import androidx.core.view.setMargins
 import androidx.lifecycle.lifecycleScope
 import clases.Book
 import clases.Film
+import clases.Serie
 import clases.Title
 import clases.User
+import clases.createTitleFromMedia
 import com.google.android.material.snackbar.Snackbar
 import database.WardenDatabase
 import kotlinx.coroutines.Dispatchers
@@ -40,6 +41,13 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var etNickname: EditText
     private lateinit var etPassword: EditText
 
+    private var films: List<Film> = emptyList()         // Lista de Films que se añadiran a la database
+    private var books: List<Book> = emptyList()         // Lista de Books que se añadiran a la database
+    private var series: List<Serie> = emptyList()       // lista de Series que se añadiran a la database
+    private var titles: MutableList<Title> = mutableListOf()       // lista de Titles clonados que se añadiran a la database
+    var media:List<Title> = emptyList()
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,8 +59,6 @@ class LoginActivity : AppCompatActivity() {
 
         addUsersToDatabase()  //Añade todos los usuarios
         addTitlesToDatabase()   //Añade todas las titles
-        addFilmsToDatabase()    //Añade todas las peliculas
-        addBooksToDatabase()    //Añade todos los libros
 
         login()
         navigateToRegister()
@@ -80,7 +86,6 @@ class LoginActivity : AppCompatActivity() {
     }
 
 
-
     private fun login() {
 
         var user = User(0, "", "", "", "", "", false, "")
@@ -103,8 +108,7 @@ class LoginActivity : AppCompatActivity() {
 
                     setSnackBar("Usuario o contraseña incorrectos")
                 }
-            }
-            else{
+            } else {
                 setSnackBar("Usuario o contraseña no especificados")
             }
 
@@ -165,15 +169,16 @@ class LoginActivity : AppCompatActivity() {
      */
     private fun addTitlesToDatabase() {
 
-        var titles = listOf(
-            Title(0, "The Lord of the rings", R.drawable.coverbooktlotr, true),
-            Title(0, "Hyperion", R.drawable.coverbookhyperion, true),
-            Title(0, "The Fall of Hyperion", R.drawable.coverbookfallhyperion, false),
-            Title(0, "At the Mountains of Madness", R.drawable.coverbookmadnessmountains, true),
+        addBooksToDatabase()
+        addFilmsToDatabase()
+        //addSeriesToDatabase()
 
-            )
+        media = books + films + series
+        for (i in 0..media.size-1){
+            titles.add(createTitleFromMedia(media[i]))  //Clono el titulo y lo añado a titles
+        }
         lifecycleScope.launch {
-            titles.forEach {
+            films.forEach {
                 val titleExists = titleDao.doesTitleExist(it.name)
                 if (titleExists == 0) {
                     titleDao.insertTitle(it)
@@ -187,8 +192,15 @@ class LoginActivity : AppCompatActivity() {
      */
     private fun addFilmsToDatabase() {
 
-        var films = listOf(
-            Film("Star Wars III", "George Lucas", 139, "Sci-Fy", R.drawable.coverfilmstarwars, true),
+        films = listOf(
+            Film(
+                "Star Wars III",
+                "George Lucas",
+                139,
+                "Sci-Fy",
+                R.drawable.coverfilmstarwars,
+                true
+            ),
             Film(
                 "Scott Pilgrim vs the World",
                 "Edgar Wright",
@@ -197,7 +209,14 @@ class LoginActivity : AppCompatActivity() {
                 R.drawable.coverfilmcott,
                 false
             ),
-            Film("The Green Mile", "Frank darabond", 188, "horror", R.drawable.coverfilmgreenmile, true),
+            Film(
+                "The Green Mile",
+                "Frank darabond",
+                188,
+                "horror",
+                R.drawable.coverfilmgreenmile,
+                true
+            ),
             Film(
                 "Harry Potter and the Philosopher's Stone",
                 "Chris Columbus",
@@ -222,7 +241,7 @@ class LoginActivity : AppCompatActivity() {
      */
     private fun addBooksToDatabase() {
 
-        var books = listOf(
+        books = listOf(
             Book(
                 "The Lord of the rings",
                 "Tolkien",

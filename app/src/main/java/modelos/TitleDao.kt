@@ -21,4 +21,5 @@ interface TitleDao {
 
     @Query("SELECT * FROM Title WHERE name LIKE :searchQuery")
     fun search(searchQuery: String): Flow<List<Title>>
+
 }

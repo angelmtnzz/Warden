@@ -13,3 +13,12 @@ open class Title(
 ) {
 }
 
+/**
+ * Crea un nuevo título a partir de un Book, Serie o film que se le pase como argumento
+ * el titulo creado mantendra los atributos nombre, cover y favourite pero perdera los demas
+ * atributos propios de su clase.
+ */
+fun createTitleFromMedia(media: Title): Title {
+    return Title(0, media.name, media.cover, media.favourite)
+}
+
