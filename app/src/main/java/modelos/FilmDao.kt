@@ -4,10 +4,11 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import clases.Book
+import clases.ConsumptionStatus
 
 
 import clases.Film
+import clases.Title
 
 @Dao
 interface FilmDao {
@@ -24,6 +25,14 @@ interface FilmDao {
 
     @Query("UPDATE Film SET favourite = :isFavourite WHERE name = :name")   // Para cambiar el status de favorito
     suspend fun updateFavouriteStatus(name: String, isFavourite: Boolean)
+    
+    @Query("UPDATE Film SET status = :newStatus WHERE name = :name")        //Para cambiar el Status
+    suspend fun updateStatus(name: String, newStatus: ConsumptionStatus)
+
+    @Query("SELECT status FROM Film WHERE name = :name")            // Devuelve el status del libro
+    suspend fun getStatus(name: String): ConsumptionStatus
+    @Query("SELECT * FROM Film WHERE status = :status")
+    suspend fun getFilmsByStatus(status: ConsumptionStatus): List<Title>
 
     @Query("SELECT * FROM Film WHERE favourite = 1")
     suspend fun getAllFavoriteFilms(): List<Film>
