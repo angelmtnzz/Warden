@@ -15,6 +15,9 @@ import database.WardenDatabase
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import modelos.BookDao
+import modelos.FilmDao
+import modelos.SerieDao
+import modelos.TitleDao
 import java.clases.R
 
 private lateinit var backwardsButton: CardView  //Boton para volver atras
@@ -24,6 +27,9 @@ private lateinit var tvAuthorTitle: TextView
 private lateinit var ibFavoritesTitlePage: ImageButton
 private var isFavourite: Boolean = false
 private lateinit var bookdao: BookDao
+private lateinit var filmdao: FilmDao
+private lateinit var seriedao: SerieDao
+private lateinit var titledao: TitleDao
 private lateinit var title: String
 
 
@@ -35,6 +41,7 @@ class TitlePageActivity : AppCompatActivity() {
         setContentView(R.layout.activity_title_page)
 
         bookdao = WardenDatabase.getDatabase(this).bookDao()
+        titledao = WardenDatabase.getDatabase(this).titleDao()
         initComponents()
         updateFavoriteButtonState(isFavourite)
         initListeners()
@@ -46,7 +53,6 @@ class TitlePageActivity : AppCompatActivity() {
         isFavourite = intent.getBooleanExtra("favourite", false)
         updateFavoriteButtonState(isFavourite)
         initListeners()
-        Log.d("WARDEN", "ISFAVOURITE=$isFavourite")
         updateFavoriteButtonState(isFavourite)  // pone el boton de color si esta en favs
 
         ivTitle.load(cover) {
@@ -72,16 +78,25 @@ class TitlePageActivity : AppCompatActivity() {
             finish()    //Cierra la actividad actual y vuelve a la anterior
         }
         ibFavoritesTitlePage.setOnClickListener {
-            // Toggle the isFavourite status
+            // Cambio el status de favorito al pulsar el boton
             isFavourite = !isFavourite
 
-            // Update the ImageButton state
+            // Actualizo el botón
             updateFavoriteButtonState(isFavourite)
 
-            // Update the database
+            // Actualizo la BDD
             lifecycleScope.launch {
-                // Use the actual book name here
-                bookdao.updateFavouriteStatus(title.toString(), isFavourite)
+                titledao.updateFavouriteStatus(title.toString(), isFavourite)
+
+                if(titledao.doesBookExist(title.toString())==1){
+                    bookdao.updateFavouriteStatus(title.toString(), isFavourite)
+                }
+                if(titledao.doesFilmExist(title.toString())==1){
+                    filmdao.updateFavouriteStatus(title.toString(), isFavourite)
+                }
+                if(titledao.doesSerieExist(title.toString())==1){
+                    seriedao.updateFavouriteStatus(title.toString(), isFavourite)
+                }
             }
         }
     }

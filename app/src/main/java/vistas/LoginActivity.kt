@@ -2,6 +2,7 @@ package vistas
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.widget.Button
@@ -176,11 +177,12 @@ class LoginActivity : AppCompatActivity() {
         //addSeriesToDatabase() // Falta por agregar
 
         media = books + films + series
+        Log.d("WARDEN", "$media")
         for (i in 0..media.size - 1) {
             titles.add(createTitleFromMedia(media[i]))  //Clono el titulo y lo añado a titles
         }
         lifecycleScope.launch {
-            films.forEach {
+            titles.forEach {
                 val titleExists = titleDao.doesTitleExist(it.name)  // Compruebo si existe
                 if (titleExists == 0) {
                     titleDao.insertTitle(it)

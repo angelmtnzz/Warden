@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import clases.Book
 
 
 import clases.Film
@@ -15,6 +16,9 @@ interface FilmDao {
 
     @Query("SELECT COUNT(*) FROM Film WHERE name = :name")  // Comprueba si existe una pelicula por su nombre
     suspend fun doesFilmExist(name: String): Int
+    @Query("SELECT * FROM Film WHERE name = :name")
+    suspend fun getFilm(name: String): Film
+
     @Query("SELECT Favourite FROM Film WHERE name = :name")
     suspend fun isFavourite(name: String): Boolean
 

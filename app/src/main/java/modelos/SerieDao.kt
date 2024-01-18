@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import clases.Book
 import clases.Serie
 
 
@@ -14,6 +15,10 @@ interface SerieDao {
 
     @Query("SELECT COUNT(*) FROM Serie WHERE name = :name")  // Comprueba si existe una serie por su nombre
     suspend fun doesSerieExist(name: String): Int
+
+    @Query("SELECT * FROM Serie WHERE name = :name")
+    suspend fun getSerie(name: String): Serie
+
 
     @Query("SELECT Favourite FROM Serie WHERE name = :name")
     suspend fun isFavourite(name: String): Boolean

@@ -20,9 +20,13 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.room.Room
+import clases.Book
+import clases.Film
+import clases.Title
 import database.WardenDatabase
 import kotlinx.coroutines.launch
 import modelos.BookDao
+import modelos.TitleDao
 import java.io.Serializable
 
 class MainPageFragment : Fragment(R.layout.fragment_main_page) {
@@ -32,14 +36,17 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
     private lateinit var adapter: ItemConsumingAdapter
 
     //Para sacar dotos de los DAO
-    private lateinit var bookdao: BookDao
+    private lateinit var bookdao: BookDao   //Borrar
+    private lateinit var titledao: TitleDao
     var itemsConsuming: MutableList<ItemConsuming> = mutableListOf()
 
 
     override fun onAttach(context: Context) {   // onAttach se ejecuta antes que onCreated, inicializamos la BBDD y el DAO aqui para que no haya problemas antes
         super.onAttach(context)
         // Inicializo el DAO
-        bookdao = WardenDatabase.getDatabase(requireContext()).bookDao()
+        bookdao = WardenDatabase.getDatabase(requireContext()).bookDao()    //Borrar
+
+        titledao = WardenDatabase.getDatabase(requireContext()).titleDao()
 
 
     }
@@ -61,11 +68,24 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
         binding.rvConsumiendo.layoutManager = layoutManager
 
         lifecycleScope.launch {     // Hay que ejecutarlo tod0 dentro de la corrutina, si no lo salta y ejecuta al final
-            val books = bookdao.getAllBooks()   // guardo el contenido de los libros en la variable books usando el metodo del DAO
+            //val books = bookdao.getAllBooks()   // guardo el contenido de los libros en la variable books usando el metodo del DAO
+            val titles = titledao.getAllTitles()
 
-            itemsConsuming = mutableListOf(
-                ItemConsuming(books[0].cover, books[0].name, books[0].pages.toString(), books[0].author, books[0].favourite) // Asigno a itemconsuming los valores de book (en caso de ser mas de uno podemos hacerlo con un for)
-            )
+            // saco lista de titulos, convierto a su clase y lo meto a la lista
+               // En un futuro comprobar cuales son los items con la condicion de consumiendo y insertarlos.
+
+            if(titledao.doesBookExist(titles[0].name)==1){  // Si existe un libro con ese nombre
+                val book = titledao.getBook(titles[0].name) // Cojo el libro
+                itemsConsuming.add(ItemConsuming(book.cover, book.name, book.pages.toString(), book.author, book.favourite))    // Lo inserto
+            }
+            if(titledao.doesFilmExist(titles[0].name)==1){  // Si existe una pelicula con ese nombre
+                val film = titledao.getFilm(titles[0].name) // Cojo la pelicula
+                itemsConsuming.add(ItemConsuming(film.cover, film.name, film.lenght.toString(), film.director, film.favourite))    // La inserto
+            }
+            if(titledao.doesSerieExist(titles[0].name)==1){  // Si existe una serie con ese nombre
+                val serie = titledao.getSerie(titles[0].name) // Cojo la serie
+                itemsConsuming.add(ItemConsuming(serie.cover, serie.name, serie.numberSeasons.toString(), serie.director, serie.favourite))    // La inserto
+            }
 
             if(itemsConsuming!=null){   //Importante poner el if para que no de nullpointer si hay algun error
                 adapter = context?.let { ItemConsumingAdapter(itemsConsuming, it, R.layout.item_consumiendo) }!!
@@ -78,10 +98,26 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
         carouselRecyclerView = binding.carouselRecyclerView
         lifecycleScope.launch {
             val books = bookdao.getAllBooks()
+            val titles: List<Title> = titledao.getAllTitles()
+
+
+
             itemsConsuming.clear()
 
-            for (i in 1 until bookdao.getNumBooks()) {
-                itemsConsuming.add(ItemConsuming(books[i].cover, books[i].name, books[i].pages.toString(), books[i].author, books[i].favourite))
+            for (i in 1 until titledao.getNumTitles()) {   // Recorro la lista de titulos
+                if(titledao.doesBookExist(titles[i].name)==1){  // Si existe un libro con ese nombre
+                    val book = titledao.getBook(titles[i].name) // Cojo el libro
+                    itemsConsuming.add(ItemConsuming(book.cover, book.name, book.pages.toString(), book.author, book.favourite))    // Lo inserto
+                }
+                if(titledao.doesFilmExist(titles[i].name)==1){  // Si existe una pelicula con ese nombre
+                    val film = titledao.getFilm(titles[i].name) // Cojo la pelicula
+                    itemsConsuming.add(ItemConsuming(film.cover, film.name, film.lenght.toString(), film.director, film.favourite))    // La inserto
+                }
+                if(titledao.doesSerieExist(titles[i].name)==1){  // Si existe una serie con ese nombre
+                    val serie = titledao.getSerie(titles[i].name) // Cojo la serie
+                    itemsConsuming.add(ItemConsuming(serie.cover, serie.name, serie.numberSeasons.toString(), serie.director, serie.favourite))    // La inserto
+                }
+
             }
 
             val adapter = context?.let {
