@@ -41,6 +41,8 @@ class TitlePageActivity : AppCompatActivity() {
         setContentView(R.layout.activity_title_page)
 
         bookdao = WardenDatabase.getDatabase(this).bookDao()
+        filmdao = WardenDatabase.getDatabase(this).filmDao()
+        seriedao = WardenDatabase.getDatabase(this).serieDao()
         titledao = WardenDatabase.getDatabase(this).titleDao()
         initComponents()
         updateFavoriteButtonState(isFavourite)

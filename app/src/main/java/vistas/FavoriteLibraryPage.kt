@@ -16,11 +16,13 @@ import androidx.recyclerview.widget.RecyclerView
 import database.WardenDatabase
 import kotlinx.coroutines.launch
 import modelos.BookDao
+import modelos.TitleDao
 import java.clases.R
 
 
 //Para sacar dotos de los DAO
 private lateinit var bookdao: BookDao
+private lateinit var titledao: TitleDao
 
 class FavoriteLibraryPage : AppCompatActivity() {
 
