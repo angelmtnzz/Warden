@@ -13,6 +13,7 @@ import androidx.cardview.widget.CardView
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import clases.Title
 import database.WardenDatabase
 import kotlinx.coroutines.launch
 import modelos.BookDao
@@ -36,6 +37,8 @@ class FavoriteLibraryPage : AppCompatActivity() {
         setTheme(R.style.Theme_Warden_library)
         super.onCreate(savedInstanceState)
         bookdao = WardenDatabase.getDatabase(this).bookDao()
+        titledao = WardenDatabase.getDatabase(this).titleDao()
+        
         setContentView(R.layout.activity_favorite_library_page)
 
         initComponents()
@@ -58,38 +61,55 @@ class FavoriteLibraryPage : AppCompatActivity() {
 
     private fun setupRecyclerView() {
         lifecycleScope.launch {
-            val bookList =
-                bookdao.getAllFavoriteBooks()   // cargo la lista de libros
-            val adapter = BookAdapter(bookList) { selectedBook ->
+            val titleList =
+                titledao.getAllFavoriteTitles()   // cargo la lista de libros
+            val adapter = TitleAdapter(titleList) { selectedTitle ->
                 // Aqui dentro va el clickListener del item
-                navigateToTitlePage(selectedBook)
+                navigateToTitlePage(selectedTitle)
             }
             recyclerView.adapter = adapter
             recyclerView.layoutManager =
                 LinearLayoutManager(this@FavoriteLibraryPage)     //con el @indicamos la clase a la que pertenece el this, si no se refiere a la corrutina
             //recyclerView.setHasFixedSize(true)
-            Log.d("WARDEN", "Booklist=$bookList")   //Funciona
+            Log.d("WARDEN", "Booklist=$titleList")   //Funciona
         }
 
     }
 
-    private fun navigateToTitlePage(selectedBook: clases.Book) {    // PASAMOS LOS INTENT A LA TITLEPAGE
+    private fun navigateToTitlePage(selectedTitle: clases.Title) {    // PASAMOS LOS INTENT A LA TITLEPAGE
         // You can use the data from selectedBook to pass to the title page
-        val intent = Intent(this, TitlePageActivity::class.java)
-        intent.putExtra("name", selectedBook.name)
-        intent.putExtra("cover", selectedBook.cover)
-        intent.putExtra("author", selectedBook.author)
-        intent.putExtra("pages", selectedBook.pages)
-        intent.putExtra("favourite", selectedBook.favourite)
-        // Add other attributes as needed
-        startActivity(intent)
+        lifecycleScope.launch {
+
+
+            val intent = Intent(this@FavoriteLibraryPage, TitlePageActivity::class.java)
+            intent.putExtra("name", selectedTitle.name)
+            intent.putExtra("cover", selectedTitle.cover)
+            intent.putExtra("favourite", selectedTitle.favourite)
+            if(titledao.doesBookExist(selectedTitle.name)==1){
+                val book = titledao.getBook(selectedTitle.name)
+                intent.putExtra("author", book.author)
+                intent.putExtra("pages", book.pages)
+            }
+            if(titledao.doesFilmExist(selectedTitle.name)==1){
+                val film = titledao.getFilm(selectedTitle.name)
+                intent.putExtra("author", film.director)
+                intent.putExtra("pages", film.lenght)
+            }
+            if(titledao.doesSerieExist(selectedTitle.name)==1){
+                val serie = titledao.getSerie(selectedTitle.name)
+                intent.putExtra("author", serie.director)
+                intent.putExtra("pages", serie.numberSeasons)
+            }
+            // Add other attributes as needed
+            startActivity(intent)
+        }
     }
 
-    class BookAdapter(
-        private val bookList: List<clases.Book>,
-        private val onItemClick: (clases.Book) -> Unit
+    class TitleAdapter(
+        private val bookList: List<Title>,
+        private val onItemClick: (clases.Title) -> Unit
     ) :
-        RecyclerView.Adapter<BookAdapter.BookViewHolder>() {
+        RecyclerView.Adapter<TitleAdapter.BookViewHolder>() {
 
         class BookViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             val titleTextView: TextView = itemView.findViewById(R.id.tvItemTitleView)
