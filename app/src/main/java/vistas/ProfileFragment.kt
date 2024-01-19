@@ -26,6 +26,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     private lateinit var profileConfiguration: Button
     private lateinit var userDao: UserDao
     private lateinit var logoutButton: Button
+    private lateinit var upgradeButton: Button
     private lateinit var user: User
     //private lateinit var nameTextView: TextView     //TvNameTitle
     //private lateinit var name: String               //title
@@ -77,6 +78,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     private fun initComponents() {
         logoutButton = binding.profileLogout
         profileConfiguration = binding.profileConfiguration
+        upgradeButton = binding.profileUpgrade
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -98,6 +100,10 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         profileConfiguration.setOnClickListener{
             val intent = Intent(activity, ConfigurationActivity::class.java)
             intent.putExtra("nickname", nickname)
+            startActivity(intent)
+        }
+        upgradeButton.setOnClickListener{
+            val intent = Intent(activity, SendEmailActivity::class.java)
             startActivity(intent)
         }
     }
