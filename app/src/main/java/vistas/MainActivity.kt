@@ -1,6 +1,7 @@
 package vistas
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.provider.ContactsContract.CommonDataKinds.Nickname
 import androidx.appcompat.app.AppCompatActivity
@@ -38,4 +39,5 @@ class MainActivity : AppCompatActivity() {
             navController
         )
     }
+
 }

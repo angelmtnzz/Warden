@@ -3,6 +3,7 @@ package vistas
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.widget.Button
@@ -34,18 +35,44 @@ class ConfigurationActivity : AppCompatActivity() {
     private lateinit var etEmail: EditText
     private lateinit var etNewPassword: EditText
     private lateinit var etConfirmNewPassword: EditText
+    private lateinit var user: User
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityConfigurationBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+
         initComponents()
+
+        val nick = intent.extras?.getString("nickname")
+
+        setUserParams(nick.toString())
+
         configure()
 
     }
 
+    private fun setUserParams(nick: String) {
+        user = User(0, "", "", "", "", "", false, "")
+
+        lifecycleScope.launch {
+            user = withContext(Dispatchers.IO) {
+                userDao.getUserByNickname(nick)
+
+            }
+            etNickname.setText(user.nickname)
+            etCurrentPassword.setText(user.password)
+            etName.setText(user.name)
+            etSurname.setText(user.apellidos)
+            etEmail.setText(user.email)
+        }
+
+    }
+
     private fun configure() {
+
 
         registerButton.setOnClickListener {
             var nickname = etNickname.text.toString()
@@ -57,6 +84,17 @@ class ConfigurationActivity : AppCompatActivity() {
             var confirmedNewPassword = etConfirmNewPassword.text.toString()
 
             if (nickname.isNotEmpty() &&
+                currentPassword.isNotEmpty() &&
+                name.isNotEmpty() &&
+                surname.isNotEmpty() &&
+                email.isNotEmpty() &&
+                newPassword.isEmpty() &&
+                confirmedNewPassword.isEmpty()
+            ) {
+                finish()
+            } else if (
+                nickname.isNotEmpty() &&
+                currentPassword.isNotEmpty() &&
                 name.isNotEmpty() &&
                 surname.isNotEmpty() &&
                 email.isNotEmpty() &&
@@ -64,25 +102,40 @@ class ConfigurationActivity : AppCompatActivity() {
                 confirmedNewPassword.isNotEmpty()
             ) {
 
-                if(confirmedNewPassword == newPassword){
+                if (confirmedNewPassword == newPassword) {
 
-                    var user = User(0, nickname, name, surname, email, confirmedNewPassword, false, "")
+                    /*var user =
+                        User(0, nickname, name, surname, email, confirmedNewPassword, false, "")*/
 
                     lifecycleScope.launch {
-                        userDao.updateUser(user)
+                        try {
+                            if(userDao.doesUserExist(nickname) > 0){
+                                userDao.updateUserByNickname(nickname, name, surname, email, confirmedNewPassword)
+                                finish()
+                            }
+                            else{
+                                Log.d("conf", "configure: usuario no existe")
+                            }
+
+
+                            // Puedes cerrar la actividad después de una configuración exitosa
+                            //finish()
+
+                            // O puedes navegar a otra actividad si es necesario
+                            // val intent = Intent(this@ConfigurationActivity, OtraActivity::class.java)
+                            // startActivity(intent)
+                        } catch (e: Exception) {
+                            Log.d("conf", "configure:error al actuliazar ")
+                        }
                     }
 
-                    navigateToLogin()
+                } else {
+                    setSnackBar("No se cumple la verificacion de nueva contraseña")
                 }
-                else {
-                    setSnackBar("Las constraseñas no coinciden")
-                }
-
 
             } else{
-                setSnackBar("Debes rellenar todos los campos")
+                setSnackBar("Campos obligatorios no especificados")
             }
-
 
 
         }
@@ -98,15 +151,10 @@ class ConfigurationActivity : AppCompatActivity() {
         val view: View = mySnackbar.view
         val params = view.layoutParams as CoordinatorLayout.LayoutParams
         params.gravity = Gravity.TOP
-        params.setMargins(100, 200, 100, 0)
+        params.setMargins(100, 50, 100, 0)
         view.layoutParams = params
 
         mySnackbar.show()
-    }
-
-    private fun navigateToLogin() {
-        val intent = Intent(this, LoginActivity::class.java)
-        startActivity(intent)
     }
 
     private fun initComponents() {
@@ -114,13 +162,13 @@ class ConfigurationActivity : AppCompatActivity() {
         userDao = WardenDatabase.getDatabase(this).userDao()
         registerButton = binding.configRegisterButton
         etNickname = binding.configNickname
+        etCurrentPassword = binding.configCurrentPassword
         etName = binding.configUserName
         etSurname = binding.configUserSurname
         etEmail = binding.configUserEmail
         etNewPassword = binding.configUserPassword
         etConfirmNewPassword = binding.configUserConfirmedPassword
     }
-
 
 
 }

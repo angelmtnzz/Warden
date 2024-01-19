@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/color6G">
@@ -9,95 +9,102 @@
         android:id="@+id/btnMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:layout_marginEnd="16dp"
+        android:layout_alignParentEnd="true"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:backgroundTint="@color/color6G"
-        android:src="@drawable/icon_menu"/>
+        android:src="@drawable/icon_menu" />
 
-    <LinearLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
 
         <ImageView
             android:id="@+id/profilePicture"
             android:layout_width="match_parent"
             android:layout_height="95dp"
             android:layout_marginBottom="10dp"
-            app:srcCompat="@drawable/default_profile_image"/>
+            app:srcCompat="@drawable/default_profile_image" />
 
-            <TextView
-                android:id="@+id/profileUsername"
-                android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/profileUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            tools:text="USERNAME"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/profileUserUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:text="@string/username_usersurname"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:layout_marginBottom="8dp"
+            />
+
+        <TextView
+            android:id="@+id/profileStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:ems="10"
+            android:text="@string/range"
+            android:textSize="14sp"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white" />
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:columnCount="3"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <Button
+                android:id="@+id/profileEstatistics"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:text="USERNAME"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="20dp"
+                android:layout_gravity="fill_horizontal"
+                android:layout_marginRight="5dp"
+                android:backgroundTint="@color/color1"
+                android:text="Estadísticas"
+                android:textColor="@color/black" />
 
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/profileName"
-                android:layout_width="match_parent"
+            <Button
+                android:id="@+id/profileConfiguration"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:text="UserName userSurname"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white" />
+                android:layout_gravity="fill_horizontal"
+                android:layout_marginRight="5dp"
+                android:backgroundTint="@color/color5"
+                android:text="Editar perfil"
+                android:textColor="@color/black" />
 
-            <TextView
-                android:id="@+id/profileStatus"
-                android:layout_width="match_parent"
+            <Button
+                android:id="@+id/profileLogout"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:text="MAESTRO"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:layout_marginBottom="10dp"
-                android:textColorHint="@color/white" />
-
-            <GridLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:columnCount="3"
-                android:orientation="horizontal"
-                android:layout_marginTop="20dp"
-                android:padding="10dp">
-
-                <Button
-                    android:id="@+id/profileEstatistics"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Estadísticas"
-                    android:backgroundTint="@color/color1"
-                    android:textColor="@color/black"
-                    android:layout_marginRight="5dp"
-                    android:layout_gravity="fill_horizontal"/>
-                <Button
-                    android:id="@+id/profileConfiguration"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Editar perfil"
-                    android:backgroundTint="@color/color5"
-                    android:textColor="@color/black"
-                    android:layout_marginRight="5dp"
-                    android:layout_gravity="fill_horizontal"/>
-                <Button
-                    android:id="@+id/profileLogout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="LOGOUT"
-                    android:backgroundTint="@color/color5G"
-                    android:textColor="@color/black"
-                    android:layout_marginRight="5dp"
-                    android:layout_gravity="fill_horizontal"/>
-            </GridLayout>
+                android:layout_gravity="fill_horizontal"
+                android:layout_marginRight="5dp"
+                android:backgroundTint="@color/color5G"
+                android:text="LOGOUT"
+                android:textColor="@color/black" />
+        </GridLayout>
     </LinearLayout>
 </RelativeLayout>

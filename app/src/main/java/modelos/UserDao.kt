@@ -13,8 +13,17 @@ interface UserDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertUser(user: User)
 
-    @Update(onConflict = OnConflictStrategy.IGNORE)
+    @Update(onConflict = OnConflictStrategy.REPLACE)
     suspend fun updateUser(user: User)
+
+    @Query("UPDATE User SET name = :newName, apellidos = :newSurname, email = :newEmail, password = :newPassword WHERE nickname = :nickname")
+    suspend fun updateUserByNickname(
+        nickname: String,
+        newName: String,
+        newSurname: String,
+        newEmail: String,
+        newPassword: String
+    )
 
     @Query("SELECT COUNT(*) FROM User WHERE nickname = :nickname")  // Comprueba si existe un libro por su nombre
     suspend fun doesUserExist(nickname: String): Int

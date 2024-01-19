@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_alignParentTop="true"
     android:background="@android:color/transparent">
 
@@ -10,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/color6G"
+
         android:gravity="center"
         android:orientation="vertical">
 
@@ -44,7 +46,7 @@
                 android:layout_marginBottom="10dp"
                 android:alpha="0.5"
                 android:ems="10"
-                android:hint="Nickame"
+                android:hint="@string/old_data"
                 android:inputType="textPersonName"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white" />
@@ -56,10 +58,11 @@
                 android:layout_marginBottom="10dp"
                 android:alpha="0.5"
                 android:ems="10"
-                android:hint="Current password"
+                android:hint="@string/old_data"
                 android:inputType="textPersonName"
                 android:textColor="@color/white"
-                android:textColorHint="@color/white" />
+                android:textColorHint="@color/white"
+                tools:ignore="TextFields" />
 
             <EditText
                 android:id="@+id/configUserName"
@@ -68,7 +71,7 @@
                 android:layout_marginBottom="10dp"
                 android:alpha="0.5"
                 android:ems="10"
-                android:hint="Name"
+                android:hint="@string/old_data"
                 android:inputType="textPersonName"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white" />
@@ -80,7 +83,7 @@
                 android:layout_marginBottom="10dp"
                 android:alpha="0.5"
                 android:ems="10"
-                android:hint="Surname"
+                android:hint="@string/old_data"
                 android:inputType="textPersonName"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white" />
@@ -92,7 +95,7 @@
                 android:layout_marginBottom="10dp"
                 android:alpha="0.5"
                 android:ems="10"
-                android:hint="Email"
+                android:hint="@string/old_data"
                 android:inputType="textEmailAddress"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white" />
@@ -104,7 +107,7 @@
                 android:layout_marginBottom="10dp"
                 android:alpha="0.5"
                 android:ems="10"
-                android:hint="New password"
+                android:hint="@string/new_password"
                 android:inputType="textPassword"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white" />
@@ -116,7 +119,7 @@
                 android:layout_marginBottom="10dp"
                 android:alpha="0.5"
                 android:ems="10"
-                android:hint="Confirm new password"
+                android:hint="@string/new_confirmedPassword"
                 android:inputType="textPassword"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white" />

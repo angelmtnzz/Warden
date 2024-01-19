@@ -45,7 +45,7 @@
                 android:alpha="0.5"
                 android:ems="10"
                 android:layout_marginBottom="16dp"
-                android:hint="Username"
+                android:hint="Nickname"
                 android:inputType="textPersonName"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white" />
