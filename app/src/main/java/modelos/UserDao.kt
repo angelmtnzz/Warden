@@ -5,12 +5,16 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Update
 import clases.User
 
 @Dao
 interface UserDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertUser(user: User)
+
+    @Update(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun updateUser(user: User)
 
     @Query("SELECT COUNT(*) FROM User WHERE nickname = :nickname")  // Comprueba si existe un libro por su nombre
     suspend fun doesUserExist(nickname: String): Int

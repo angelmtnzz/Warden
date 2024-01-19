@@ -84,7 +84,7 @@
                     android:id="@+id/profileConfiguration"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Configuración"
+                    android:text="Editar perfil"
                     android:backgroundTint="@color/color5"
                     android:textColor="@color/black"
                     android:layout_marginRight="5dp"

@@ -1,9 +1,11 @@
 package vistas
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import java.clases.R
 import java.clases.databinding.FragmentProfileBinding
@@ -11,6 +13,7 @@ import java.clases.databinding.FragmentProfileBinding
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     private lateinit var binding: FragmentProfileBinding
+    private lateinit var profileConfiguration: Button
     //private lateinit var nameTextView: TextView     //TvNameTitle
     //private lateinit var name: String               //title
     //private lateinit var buttonMenu: ImageButton
@@ -19,30 +22,28 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         binding = FragmentProfileBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
 
-        /*
-        initComponent()
-
-        buttonMenu.setOnClickListener{ view->
-            val popupMenu = PopupMenu(this, view)
-            popupMenu.inflate(R.layout.item_menu_options)
-
-         */
-
     }
 
     override fun onCreateView(
-    inflater: LayoutInflater, container: ViewGroup?,
-    savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
+        binding = FragmentProfileBinding.inflate(inflater, container, false)
 
-    // Inflate the layout for this fragment
-    return inflater.inflate(R.layout.fragment_profile, container, false)
+        // Accede al Intent de la Activity asociada al Fragment
+        val intentFromActivity = activity?.intent
+
+        // Ahora puedes usar intentFromActivity para obtener extras, etc.
+        val nickname = intentFromActivity?.getStringExtra("nickname")
+        val userName = intentFromActivity?.getStringExtra("name")
+        val userSurname = intentFromActivity?.getStringExtra("apellidos")
+        val completeName = "userName" + " " + "userSurname"
+
+        binding.profileUsername.text = nickname
+        binding.profileName.text = completeName
+        //binding.profileStatus
+
+        return binding.root
     }
 
-/*
-private fun initComponent() {
-
-buttonMenu = findViewById(R.id.btnMenu)
-}
-*/
 }
