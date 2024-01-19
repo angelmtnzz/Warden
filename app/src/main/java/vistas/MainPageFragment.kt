@@ -21,6 +21,7 @@ import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.room.Room
 import clases.Book
+import clases.ConsumptionStatus
 import clases.Film
 import clases.Title
 import database.WardenDatabase
@@ -39,7 +40,7 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
     private lateinit var bookdao: BookDao   //Borrar
     private lateinit var titledao: TitleDao
     var itemsConsuming: MutableList<ItemConsuming> = mutableListOf()
-
+    var itemsConsumingList: MutableList<ItemConsuming> = mutableListOf()
 
     override fun onAttach(context: Context) {   // onAttach se ejecuta antes que onCreated, inicializamos la BBDD y el DAO aqui para que no haya problemas antes
         super.onAttach(context)
@@ -74,50 +75,57 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
         val layoutManager = LinearLayoutManager(context)
         binding.rvConsumiendo.layoutManager = layoutManager
 
-
         lifecycleScope.launch {     // Hay que ejecutarlo tod0 dentro de la corrutina, si no lo salta y ejecuta al final
-            //val books = bookdao.getAllBooks()   // guardo el contenido de los libros en la variable books usando el metodo del DAO
-            val titles = titledao.getAllTitles()
-
-            // saco lista de titulos, convierto a su clase y lo meto a la lista
-            // En un futuro comprobar cuales son los items con la condicion de consumiendo y insertarlos.
-
-            if (titledao.doesBookExist(titles[0].name) == 1) {  // Si existe un libro con ese nombre
-                val book = titledao.getBook(titles[0].name) // Cojo el libro
-                itemsConsuming.add(
-                    ItemConsuming(
-                        book.cover, book.name, book.pages.toString(), book.author, book.favourite
-                    )
-                )    // Lo inserto
+            val titles = titledao.getTitlesByStatus(ConsumptionStatus.CONSUMING)    // Devuelve los Titles que se estan consumiendo
+            itemsConsumingList.clear()
+            Log.d("WARDEN", "LISTA=$titles")
+            for (i in 0..titles.size-1) {
+                if (titledao.doesBookExist(titles[i].name) == 1) {  // Si existe un libro con ese nombre
+                    val book = titledao.getBook(titles[i].name) // Cojo el libro
+                    itemsConsumingList.add(
+                        ItemConsuming(
+                            book.cover,
+                            book.name,
+                            book.pages.toString(),
+                            book.author,
+                            book.favourite
+                        )
+                    )    // Lo inserto
+                }
+                if (titledao.doesFilmExist(titles[i].name) == 1) {  // Si existe una pelicula con ese nombre
+                    val film = titledao.getFilm(titles[i].name) // Cojo la pelicula
+                    itemsConsumingList.add(
+                        ItemConsuming(
+                            film.cover,
+                            film.name,
+                            film.lenght.toString(),
+                            film.director,
+                            film.favourite
+                        )
+                    )    // La inserto
+                }
+                if (titledao.doesSerieExist(titles[i].name) == 1) {  // Si existe una serie con ese nombre
+                    val serie = titledao.getSerie(titles[i].name) // Cojo la serie
+                    itemsConsumingList.add(
+                        ItemConsuming(
+                            serie.cover,
+                            serie.name,
+                            serie.numberSeasons.toString(),
+                            serie.director,
+                            serie.favourite
+                        )
+                    )    // La inserto
+                }
             }
-            if (titledao.doesFilmExist(titles[0].name) == 1) {  // Si existe una pelicula con ese nombre
-                val film = titledao.getFilm(titles[0].name) // Cojo la pelicula
-                itemsConsuming.add(
-                    ItemConsuming(
-                        film.cover, film.name, film.lenght.toString(), film.director, film.favourite
-                    )
-                )    // La inserto
-            }
-            if (titledao.doesSerieExist(titles[0].name) == 1) {  // Si existe una serie con ese nombre
-                val serie = titledao.getSerie(titles[0].name) // Cojo la serie
-                itemsConsuming.add(
-                    ItemConsuming(
-                        serie.cover,
-                        serie.name,
-                        serie.numberSeasons.toString(),
-                        serie.director,
-                        serie.favourite
-                    )
-                )    // La inserto
-            }
-
-            if (itemsConsuming != null) {   //Importante poner el if para que no de nullpointer si hay algun error
-                adapter = context?.let {
-                    ItemConsumingAdapter(
-                        itemsConsuming, it, R.layout.item_consumiendo
-                    )
-                }!!
+            Log.d("WARDEN", "LISTA=$itemsConsuming")
+            if(itemsConsumingList != null) {
+                adapter = context?.let { ItemConsumingAdapter(itemsConsumingList, it, R.layout.item_consumiendo) }!!
                 binding.rvConsumiendo.adapter = adapter
+                adapter.notifyDataSetChanged()
+            } else {
+                // If 'itemsConsuming' is null, clear the adapter and notify it of the change
+                itemsConsumingList.clear()
+                adapter.notifyDataSetChanged()
             }
         }
     }
@@ -132,7 +140,7 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
 
             itemsConsuming.clear()
 
-            for (i in 1 until titledao.getNumTitles()) {   // Recorro la lista de titulos
+            for (i in 0 until titledao.getNumTitles()-1) {   // Recorro la lista de titulos EMPEZANDO EN 0
                 if (titledao.doesBookExist(titles[i].name) == 1) {  // Si existe un libro con ese nombre
                     val book = titledao.getBook(titles[i].name) // Cojo el libro
                     itemsConsuming.add(
